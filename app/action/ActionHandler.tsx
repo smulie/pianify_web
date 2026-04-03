@@ -35,17 +35,8 @@ function EyeIcon({ open }: { open: boolean }) {
 /* ── Piano logo ── */
 function PianifyLogo() {
   return (
-    <div className="logo-wrapper">
-      <div className="logo-icon">
-        <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="3" y="5" width="22" height="16" rx="2" fill="white" fillOpacity="0.15"/>
-          <rect x="3" y="5" width="22" height="11" rx="2" fill="white" fillOpacity="0.9"/>
-          <rect x="7" y="5" width="4" height="8" rx="1" fill="#1e1c31"/>
-          <rect x="13" y="5" width="4" height="8" rx="1" fill="#1e1c31"/>
-          <rect x="19" y="5" width="4" height="8" rx="1" fill="#1e1c31"/>
-        </svg>
-      </div>
-      <span className="logo-name">Pianify</span>
+    <div className="logo-wrapper" style={{ marginBottom: 24 }}>
+      <img src="/logo.png" alt="Pianify" style={{ width: 140, height: 'auto' }} />
     </div>
   );
 }

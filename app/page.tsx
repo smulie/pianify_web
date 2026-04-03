@@ -35,10 +35,10 @@ export default function Home() {
       {/* Download Buttons */}
       <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap', justifyContent: 'center', marginBottom: 60, alignItems: 'center' }}>
         <a href="#" className="hover-scale" style={{ display: 'block' }}>
-          <img src="/apple.svg" alt="Download on the App Store" style={{ height: 'auto', maxHeight: 150, width: '100%', maxWidth: 200, display: 'block' }} />
+          <img src="/apple.svg" alt="Download on the App Store" style={{ height: 50, width: 'auto', display: 'block' }} />
         </a>
         <a href="#" className="hover-scale" style={{ display: 'block' }}>
-          <img src="/ggplay.svg" alt="GET IT ON Google Play" style={{ height: 'auto', maxHeight: 140, width: '100%', maxWidth: 190, display: 'block' }} />
+          <img src="/ggplay.svg" alt="GET IT ON Google Play" style={{ height: 50, width: 'auto', display: 'block' }} />
         </a>
       </div>
 
@@ -49,14 +49,12 @@ export default function Home() {
         </h3>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: 12 }}>
           <Link href="/reset-password" style={{ textDecoration: 'none' }}>
-            <div style={{ background: 'rgba(196, 66, 240, 0.1)', border: '1px solid rgba(196, 66, 240, 0.2)', padding: '16px', borderRadius: 12, textAlign: 'center', transition: 'background 0.2s', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-              <div style={{ fontSize: 24, marginBottom: 8 }}>🔑</div>
+            <div style={{ background: 'rgba(196, 66, 240, 0.1)', border: '1px solid rgba(196, 66, 240, 0.2)', padding: '16px', borderRadius: 10, textAlign: 'center', transition: 'background 0.2s', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <div style={{ fontSize: 14, fontWeight: 600, color: '#e879f9' }}>Lấy lại mật khẩu</div>
             </div>
           </Link>
           <Link href="/delete-account" style={{ textDecoration: 'none' }}>
-            <div style={{ background: 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.2)', padding: '16px', borderRadius: 12, textAlign: 'center', transition: 'background 0.2s', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-              <div style={{ fontSize: 24, marginBottom: 8 }}>🗑️</div>
+            <div style={{ background: 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.2)', padding: '16px', borderRadius: 10, textAlign: 'center', transition: 'background 0.2s', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <div style={{ fontSize: 14, fontWeight: 600, color: '#fca5a5' }}>Yêu cầu xóa dữ liệu</div>
             </div>
           </Link>
