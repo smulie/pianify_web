@@ -1,8 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
-import { signInWithEmailAndPassword, deleteUser, signOut, signInWithPopup, GoogleAuthProvider, OAuthProvider } from 'firebase/auth';
+import { useState, useEffect } from 'react';
+import { signInWithEmailAndPassword, deleteUser, signOut, signInWithRedirect, getRedirectResult, GoogleAuthProvider, OAuthProvider } from 'firebase/auth';
 import { auth } from '../../lib/firebase';
 
 /* ── Piano logo ── */
@@ -30,6 +30,24 @@ export default function DeleteAccountHandler() {
   const [confirmText, setConfirmText] = useState('');
 
   const isLoading = loadingEmail || loadingGoogle;
+
+  /* ── 0. Handle Redirect Result ── */
+  useEffect(() => {
+    setLoadingGoogle(true);
+    getRedirectResult(auth).then((result) => {
+      if (result && result.user) {
+        if (result.user.email) setEmail(result.user.email);
+        setStage('warning');
+      }
+      setLoadingGoogle(false);
+    }).catch((err) => {
+      setLoadingGoogle(false);
+      const code = (err as { code?: string }).code;
+      if (code && code !== 'auth/redirect-cancelled-by-user') {
+        setError('Đã xảy ra lỗi đăng nhập. Vui lòng thử lại.');
+      }
+    });
+  }, []);
 
   /* ── 1. Đăng nhập để định danh ── */
   const handleAuth = async (e: React.FormEvent) => {
@@ -63,8 +81,8 @@ export default function DeleteAccountHandler() {
     setLoadingGoogle(true);
     try {
       const provider = new GoogleAuthProvider();
-      await signInWithPopup(auth, provider);
-      setStage('warning');
+      provider.setCustomParameters({ prompt: 'select_account' });
+      await signInWithRedirect(auth, provider);
     } catch (err: unknown) {
       const code = (err as { code?: string }).code;
       if (code === 'auth/popup-closed-by-user' || code === 'auth/cancelled-popup-request') {
@@ -89,8 +107,7 @@ export default function DeleteAccountHandler() {
       const provider = new OAuthProvider('apple.com');
       provider.addScope('email');
       provider.addScope('name');
-      await signInWithPopup(auth, provider);
-      setStage('warning');
+      await signInWithRedirect(auth, provider);
     } catch (err: unknown) {
       const code = (err as { code?: string }).code;
       if (code === 'auth/popup-closed-by-user' || code === 'auth/cancelled-popup-request') {
@@ -295,7 +312,7 @@ export default function DeleteAccountHandler() {
           <div style={{ fontSize: 14, color: 'rgba(249,249,251,0.85)', lineHeight: 1.6, marginBottom: 32 }}>
             <p style={{ marginBottom: 16 }}>
               Bạn đang yêu cầu xóa vĩnh viễn tài khoản:<br/>
-              <strong style={{ color: '#fff', fontSize: 15 }}>{email}</strong>
+              <strong style={{ color: '#fff', fontSize: 15 }}>{auth.currentUser?.email || email}</strong>
             </p>
             <ul style={{ paddingLeft: 20, marginBottom: 20, listStyle: 'disc' }}>
               <li style={{ marginBottom: 8 }}>Hồ sơ, tiến trình học và các bài tập luyện sẽ bị xóa vĩnh viễn.</li>
