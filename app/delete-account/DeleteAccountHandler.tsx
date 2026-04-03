@@ -195,11 +195,11 @@ export default function DeleteAccountHandler() {
 
   /* ── BƯỚC 2: CẢNH BÁO & FRICTION (WARNING) ── */
   if (stage === 'warning') {
-    const canDelete = (confirmText === 'DELETE');
+    const canDelete = (confirmText.trim().toUpperCase() === 'DELETE');
 
     return (
       <div className="page-wrapper" style={{ flexDirection: 'column' }}>
-        <div className="card" style={{ padding: '40px 24px', position: 'relative', marginBottom: 24, background: '#1c1b29' }}>
+        <div className="card" style={{ padding: '40px 24px', position: 'relative', marginBottom: 24, background: '#1c1b29', width: '100%', maxWidth: 440 }}>
           {/* Close button */}
           <button 
             type="button"
@@ -240,6 +240,26 @@ export default function DeleteAccountHandler() {
             <div style={{ flex: 1, textAlign: 'center' }}>
               <div style={{ fontSize: 22, marginBottom: 4 }}>🎵</div>
               <div style={{ fontSize: 12, fontWeight: 700, color: 'rgba(249,249,251,0.6)' }}>Bài học</div>
+            </div>
+          </div>
+
+          {/* Đoạn text cảnh báo được đẩy lên đây và làm đẹp hơn */}
+          <div style={{ fontSize: 14, color: 'rgba(249,249,251,0.85)', lineHeight: 1.6, marginBottom: 32 }}>
+            <p style={{ marginBottom: 16 }}>
+              Bạn đang yêu cầu xóa vĩnh viễn tài khoản:<br/>
+              <strong style={{ color: '#fff', fontSize: 15 }}>{email}</strong>
+            </p>
+            <ul style={{ paddingLeft: 20, marginBottom: 20, listStyle: 'disc' }}>
+              <li style={{ marginBottom: 8 }}>Hồ sơ, tiến trình học và các bài tập luyện sẽ bị xóa vĩnh viễn.</li>
+              <li>Thao tác này <strong style={{ color: '#ef4444' }}>KHÔNG THỂ</strong> hoàn tác sau khi thực hiện.</li>
+            </ul>
+            <div style={{ 
+              padding: '16px 20px', background: 'rgba(245, 158, 11, 0.08)', 
+              border: '1px solid rgba(245, 158, 11, 0.15)', borderRadius: 12, 
+              color: '#fcd34d', fontSize: 13.5, lineHeight: 1.5 
+            }}>
+              <strong style={{ display: 'block', color: '#fbbf24', marginBottom: 4 }}>Lưu ý quan trọng:</strong> 
+              Xóa tài khoản sẽ KHÔNG tự động hủy các gói dùng thử hoặc đăng ký trả phí (Premium) của bạn. Bạn phải tự quản lý việc hủy gói trên Google Play hoặc App Store.
             </div>
           </div>
 
@@ -286,22 +306,6 @@ export default function DeleteAccountHandler() {
             >
               {loading ? <><div className="spinner" />Đang xử lý…</> : 'Xóa tài khoản'}
             </button>
-          </div>
-        </div>
-
-        {/* Thông tin giải thích thêm (hiển thị giống ảnh thứ 2) */}
-        <div style={{ maxWidth: 420, width: '100%', fontSize: 14.5, color: 'rgba(249,249,251,0.9)', lineHeight: 1.6, padding: '0 8px' }}>
-          <p style={{ marginBottom: 16 }}>Bạn đang yêu cầu xóa vĩnh viễn tài khoản:<br/><strong style={{ color: '#fff' }}>{email}</strong></p>
-          <ul style={{ paddingLeft: 20, marginBottom: 24, listStyle: 'disc' }}>
-            <li style={{ marginBottom: 12 }}>Hồ sơ, tiến trình học và các bài tập luyện sẽ bị xóa vĩnh viễn.</li>
-            <li>Thao tác này <span style={{textTransform: 'uppercase'}}>không thể</span> hoàn tác sau khi thực hiện.</li>
-          </ul>
-          <div style={{ 
-            padding: 16, background: 'rgba(245, 158, 11, 0.08)', 
-            border: '1px solid rgba(245, 158, 11, 0.2)', borderRadius: 8, 
-            color: '#fcd34d', fontSize: 14, lineHeight: 1.5 
-          }}>
-            <strong>Lưu ý quan trọng:</strong> Xóa tài khoản sẽ KHÔNG tự động hủy các gói dùng thử hoặc đăng ký trả phí (Premium) của bạn. Bạn phải tự quản lý việc hủy gói trên Google Play hoặc App Store.
           </div>
         </div>
       </div>
