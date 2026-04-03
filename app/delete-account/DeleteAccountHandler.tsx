@@ -351,7 +351,7 @@ export default function DeleteAccountHandler() {
               disabled={!canDelete || loadingEmail}
               onClick={handleDelete}
               style={{
-                width: '60%', padding: '14px', borderRadius: 10,
+                width: '100%', maxWidth: 280, padding: '14px', borderRadius: 10,
                 fontSize: 15, fontWeight: 700, cursor: canDelete ? 'pointer' : 'not-allowed',
                 background: canDelete ? 'linear-gradient(135deg, #ef4444 0%, #b91c1c 100%)' : 'rgba(255,255,255,0.03)',
                 color: canDelete ? '#fff' : 'rgba(255,255,255,0.3)',
