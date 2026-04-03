@@ -195,80 +195,119 @@ export default function DeleteAccountHandler() {
 
   /* ── BƯỚC 2: CẢNH BÁO & FRICTION (WARNING) ── */
   if (stage === 'warning') {
-    const canDelete = (confirmText === 'XOA' || confirmText === 'xoa');
+    const canDelete = (confirmText === 'DELETE');
 
     return (
-      <div className="page-wrapper">
-        <div className="card">
-          <div style={{ textAlign: 'center', marginBottom: 20 }}>
-            <div style={{
-              width: 56, height: 56,
-              background: 'rgba(239,68,68,0.12)',
-              border: '2px solid rgba(239,68,68,0.3)',
-              borderRadius: '50%',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              margin: '0 auto 16px',
-            }}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
-              </svg>
+      <div className="page-wrapper" style={{ flexDirection: 'column' }}>
+        <div className="card" style={{ padding: '40px 24px', position: 'relative', marginBottom: 24, background: '#1c1b29' }}>
+          {/* Close button */}
+          <button 
+            type="button"
+            onClick={handleCancel}
+            style={{ 
+              position: 'absolute', top: 16, right: 16, 
+              background: 'transparent', border: 'none', color: 'rgba(255,255,255,0.4)', 
+              cursor: 'pointer', fontSize: 20, padding: 8
+            }}
+          >
+            ✕
+          </button>
+          
+          <div style={{ textAlign: 'center', marginBottom: 24 }}>
+            <div style={{ fontSize: 44, marginBottom: 12, display: 'flex', justifyContent: 'center', gap: 12, alignItems: 'center' }}>
+              <span>🥺</span>
+              <span>🎹</span>
             </div>
-            <h1 className="card-title">Cảnh báo xóa dữ liệu</h1>
+            <h1 className="card-title" style={{ fontSize: 22, marginBottom: 8, fontWeight: 800 }}>Bạn muốn rời đi?</h1>
+            <p className="card-subtitle" style={{ fontSize: 13, marginBottom: 0 }}>
+              Tài khoản và toàn bộ dữ liệu sẽ bị xóa vĩnh viễn.
+            </p>
           </div>
 
-          <div style={{ background: 'rgba(0,0,0,0.2)', padding: 16, borderRadius: 10, fontSize: 13.5, color: 'rgba(249,249,251,0.85)', lineHeight: 1.5, marginBottom: 20 }}>
-            <p style={{ marginBottom: 10 }}>Bạn đang yêu cầu xóa vĩnh viễn tài khoản: <strong style={{ color: '#fff' }}>{email}</strong></p>
-            <ul style={{ paddingLeft: 20, marginBottom: 12, listStyle: 'disc' }}>
-              <li style={{ marginBottom: 4 }}>Hồ sơ, tiến trình học và các bài tập luyện sẽ bị xóa vĩnh viễn.</li>
-              <li>Thao tác này KHÔNG THỂ hoàn tác sau khi thực hiện.</li>
-            </ul>
-            <div style={{ padding: 12, background: 'rgba(245, 158, 11, 0.1)', border: '1px solid rgba(245, 158, 11, 0.3)', borderRadius: 8, color: '#fcd34d', fontSize: 13 }}>
-              <strong>Lưu ý quan trọng:</strong> Xóa tài khoản sẽ KHÔNG tự động hủy các gói dùng thử hoặc đăng ký trả phí (Premium) của bạn. Bạn phải tự quản lý việc hủy gói trên Google Play hoặc App Store.
+          <div style={{ 
+            display: 'flex', justifyContent: 'space-between', 
+            background: 'transparent', border: '1px solid rgba(255,255,255,0.08)',
+            borderRadius: 12, padding: '16px 0', marginBottom: 28
+          }}>
+            <div style={{ flex: 1, textAlign: 'center', borderRight: '1px solid rgba(255,255,255,0.08)' }}>
+              <div style={{ fontSize: 22, marginBottom: 4 }}>🔥</div>
+              <div style={{ fontSize: 12, fontWeight: 700, color: 'rgba(249,249,251,0.6)' }}>Streak</div>
+            </div>
+            <div style={{ flex: 1, textAlign: 'center', borderRight: '1px solid rgba(255,255,255,0.08)' }}>
+              <div style={{ fontSize: 22, marginBottom: 4 }}>🏆</div>
+              <div style={{ fontSize: 12, fontWeight: 700, color: 'rgba(249,249,251,0.6)' }}>Huy hiệu</div>
+            </div>
+            <div style={{ flex: 1, textAlign: 'center' }}>
+              <div style={{ fontSize: 22, marginBottom: 4 }}>🎵</div>
+              <div style={{ fontSize: 12, fontWeight: 700, color: 'rgba(249,249,251,0.6)' }}>Bài học</div>
             </div>
           </div>
 
           {error && (
-            <div className="alert alert-error">
+            <div className="alert alert-error" style={{ marginBottom: 20 }}>
               {error}
             </div>
           )}
 
-          <div className="form-group" style={{ marginBottom: 24 }}>
-            <label className="form-label" style={{ fontWeight: 600 }}>Gõ chữ XOA để xác nhận đồng ý</label>
+          <div className="form-group" style={{ marginBottom: 20, textAlign: 'center' }}>
+            <label className="form-label" style={{ fontWeight: 500, color: 'rgba(249,249,251,0.5)', marginBottom: 12, fontSize: 13 }}>Gõ DELETE để xác nhận</label>
             <input
               className="form-input"
               type="text"
-              placeholder="Nhập XOA"
+              placeholder="D E L E T E"
               value={confirmText}
               onChange={e => setConfirmText(e.target.value)}
               disabled={loading}
               autoComplete="off"
-              style={{ textAlign: 'center', fontWeight: 'bold', letterSpacing: 2, fontSize: 16 }}
+              style={{ 
+                textAlign: 'center', fontWeight: '800', 
+                letterSpacing: confirmText ? 6 : 2, 
+                fontSize: 18, textTransform: 'uppercase',
+                background: '#13111c', border: '1px solid rgba(255,255,255,0.05)',
+                padding: '16px', borderRadius: 10, outline: 'none', color: '#fff'
+              }}
             />
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10, alignItems: 'center' }}>
             <button 
               type="button" 
-              className="btn-danger" 
               disabled={!canDelete || loading}
               onClick={handleDelete}
+              style={{
+                width: '60%', padding: '14px', borderRadius: 10,
+                fontSize: 15, fontWeight: 700, cursor: canDelete ? 'pointer' : 'not-allowed',
+                background: canDelete ? 'linear-gradient(135deg, #ef4444 0%, #b91c1c 100%)' : 'rgba(255,255,255,0.03)',
+                color: canDelete ? '#fff' : 'rgba(255,255,255,0.3)',
+                border: canDelete ? 'none' : '1px solid rgba(255,255,255,0.1)',
+                transition: 'all 0.2s',
+                display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8
+              }}
             >
-              {loading ? <><div className="spinner" />Đang xử lý…</> : 'Xóa tài khoản vĩnh viễn'}
+              {loading ? <><div className="spinner" />Đang xử lý…</> : 'Xóa tài khoản'}
             </button>
-            <button 
-              type="button" 
-              style={{ padding: 13, background: 'transparent', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 10, color: '#fff', cursor: 'pointer', fontSize: 14, fontWeight: 500 }}
-              onClick={handleCancel}
-              disabled={loading}
-            >
-              Hủy và quay lại
-            </button>
+          </div>
+        </div>
+
+        {/* Thông tin giải thích thêm (hiển thị giống ảnh thứ 2) */}
+        <div style={{ maxWidth: 420, width: '100%', fontSize: 14.5, color: 'rgba(249,249,251,0.9)', lineHeight: 1.6, padding: '0 8px' }}>
+          <p style={{ marginBottom: 16 }}>Bạn đang yêu cầu xóa vĩnh viễn tài khoản:<br/><strong style={{ color: '#fff' }}>{email}</strong></p>
+          <ul style={{ paddingLeft: 20, marginBottom: 24, listStyle: 'disc' }}>
+            <li style={{ marginBottom: 12 }}>Hồ sơ, tiến trình học và các bài tập luyện sẽ bị xóa vĩnh viễn.</li>
+            <li>Thao tác này <span style={{textTransform: 'uppercase'}}>không thể</span> hoàn tác sau khi thực hiện.</li>
+          </ul>
+          <div style={{ 
+            padding: 16, background: 'rgba(245, 158, 11, 0.08)', 
+            border: '1px solid rgba(245, 158, 11, 0.2)', borderRadius: 8, 
+            color: '#fcd34d', fontSize: 14, lineHeight: 1.5 
+          }}>
+            <strong>Lưu ý quan trọng:</strong> Xóa tài khoản sẽ KHÔNG tự động hủy các gói dùng thử hoặc đăng ký trả phí (Premium) của bạn. Bạn phải tự quản lý việc hủy gói trên Google Play hoặc App Store.
           </div>
         </div>
       </div>
     );
   }
+
 
 
   /* ── BƯỚC 3: HOÀN TẤT (SUCCESS) ── */
