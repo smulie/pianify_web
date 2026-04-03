@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { confirmPasswordReset, verifyPasswordResetCode } from 'firebase/auth';
@@ -255,7 +256,7 @@ export default function ActionHandler() {
           </button>
         </form>
 
-        <a href="pianify://" className="back-link">← Quay lại ứng dụng Pianify</a>
+        <Link href="/" className="back-link">← Quay lại trang chủ</Link>
       </div>
     </div>
   );

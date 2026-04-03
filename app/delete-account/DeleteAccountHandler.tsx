@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useState } from 'react';
 import { signInWithEmailAndPassword, deleteUser, signOut, signInWithPopup, GoogleAuthProvider, OAuthProvider } from 'firebase/auth';
 import { auth } from '../../lib/firebase';
@@ -233,7 +234,7 @@ export default function DeleteAccountHandler() {
             </button>
           </div>
 
-          <a href="pianify://" className="back-link">← Quay lại ứng dụng Pianify</a>
+          <Link href="/" className="back-link">← Quay lại trang chủ</Link>
         </div>
       </div>
     );
@@ -379,7 +380,7 @@ export default function DeleteAccountHandler() {
           <p className="card-subtitle" style={{ fontSize: 13, color: 'rgba(249,249,251,0.45)' }}>
             Tiến trình xóa dữ liệu trên hệ thống sẽ hoàn tất hoàn toàn trong vài ngày tới theo Chính sách bảo mật. Cảm ơn bạn đã tin tưởng kết nối cùng Pianify.
           </p>
-          <a href="pianify://" className="btn-primary" style={{ textDecoration: 'none' }}>Về lại ứng dụng</a>
+          <Link href="/" className="btn-primary" style={{ textDecoration: 'none' }}>Về lại trang chủ</Link>
         </div>
       </div>
     );
