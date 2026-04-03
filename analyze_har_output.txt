@@ -1,0 +1,64 @@
+--- Top 20 slowest requests ---
+- GET https://pianify.app/reset-password?_rsc=1r34m
+  -> Total time: 19368ms
+     (DNS: -1ms, Connect: -1ms, SSL: -1ms, Wait/TTFB: 19367ms, Receive: 0ms, Blocked: 1ms)
+- GET https://pianify.app/delete-account?_rsc=1r34m
+  -> Total time: 19367ms
+     (DNS: -1ms, Connect: -1ms, SSL: -1ms, Wait/TTFB: 19366ms, Receive: 0ms, Blocked: 1ms)
+- POST https://pianify.app/cdn-cgi/rum?
+  -> Total time: 67ms
+     (DNS: -1ms, Connect: -1ms, SSL: -1ms, Wait/TTFB: 44ms, Receive: 0ms, Blocked: 22ms)
+- POST https://pianify.app/cdn-cgi/rum?
+  -> Total time: 39ms
+     (DNS: -1ms, Connect: -1ms, SSL: -1ms, Wait/TTFB: 38ms, Receive: 0ms, Blocked: 1ms)
+- GET https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046
+  -> Total time: 13ms
+     (DNS: -1ms, Connect: -1ms, SSL: -1ms, Wait/TTFB: 1ms, Receive: 0ms, Blocked: 12ms)
+- GET https://pianify.app/_next/static/chunks/0bogtdbh.dcu1.js
+  -> Total time: 12ms
+     (DNS: -1ms, Connect: -1ms, SSL: -1ms, Wait/TTFB: 1ms, Receive: 3ms, Blocked: 8ms)
+- GET https://pianify.app/_next/static/chunks/0ka051yepewro.js
+  -> Total time: 12ms
+     (DNS: -1ms, Connect: -1ms, SSL: -1ms, Wait/TTFB: 2ms, Receive: 1ms, Blocked: 9ms)
+- GET https://pianify.app/_next/static/chunks/0d3shmwh5_nmn.js
+  -> Total time: 11ms
+     (DNS: -1ms, Connect: -1ms, SSL: -1ms, Wait/TTFB: 2ms, Receive: 1ms, Blocked: 8ms)
+- GET https://pianify.app/_next/static/chunks/0257pdz1-imal.js
+  -> Total time: 11ms
+     (DNS: -1ms, Connect: -1ms, SSL: -1ms, Wait/TTFB: 1ms, Receive: 2ms, Blocked: 8ms)
+- GET https://pianify.app/_next/static/chunks/01xlw8hd842-c.js
+  -> Total time: 11ms
+     (DNS: -1ms, Connect: -1ms, SSL: -1ms, Wait/TTFB: 1ms, Receive: 1ms, Blocked: 8ms)
+- GET https://pianify.app/_next/static/chunks/turbopack-03vczdo173pm_.js
+  -> Total time: 11ms
+     (DNS: -1ms, Connect: -1ms, SSL: -1ms, Wait/TTFB: 1ms, Receive: 1ms, Blocked: 8ms)
+- GET https://pianify.app/_next/static/chunks/0pqt~8bl3ukh4.js
+  -> Total time: 5ms
+     (DNS: -1ms, Connect: -1ms, SSL: -1ms, Wait/TTFB: 0ms, Receive: 0ms, Blocked: 5ms)
+- GET https://pianify.app/_next/static/chunks/00gq-v0e07i1q.js
+  -> Total time: 5ms
+     (DNS: -1ms, Connect: -1ms, SSL: -1ms, Wait/TTFB: 0ms, Receive: 0ms, Blocked: 5ms)
+- GET https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap
+  -> Total time: 5ms
+     (DNS: -1ms, Connect: -1ms, SSL: -1ms, Wait/TTFB: 2ms, Receive: 1ms, Blocked: 2ms)
+- GET https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2pL7SUc.wo
+  -> Total time: 3ms
+     (DNS: -1ms, Connect: -1ms, SSL: -1ms, Wait/TTFB: 1ms, Receive: 0ms, Blocked: 2ms)
+- GET https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7SUc.wo
+  -> Total time: 3ms
+     (DNS: -1ms, Connect: -1ms, SSL: -1ms, Wait/TTFB: 1ms, Receive: 1ms, Blocked: 2ms)
+- GET https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2
+  -> Total time: 2ms
+     (DNS: -1ms, Connect: -1ms, SSL: -1ms, Wait/TTFB: 0ms, Receive: 1ms, Blocked: 1ms)
+- GET https://pianify.app/ggplay.svg
+  -> Total time: 2ms
+     (DNS: -1ms, Connect: -1ms, SSL: -1ms, Wait/TTFB: 1ms, Receive: 0ms, Blocked: 1ms)
+- GET https://pianify.app/logo.png
+  -> Total time: 2ms
+     (DNS: -1ms, Connect: -1ms, SSL: -1ms, Wait/TTFB: 1ms, Receive: 1ms, Blocked: 1ms)
+- GET https://pianify.app/apple.svg
+  -> Total time: 2ms
+     (DNS: -1ms, Connect: -1ms, SSL: -1ms, Wait/TTFB: 1ms, Receive: 1ms, Blocked: 1ms)
+
+Total requests: 22
+Total size: 0.00 MB

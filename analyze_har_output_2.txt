@@ -1,0 +1,46 @@
+--- Top 20 slowest requests ---
+- GET https://pianify.app/reset-password?_rsc=137yn
+  -> Total time: 36212ms
+     (DNS: -1ms, Connect: -1ms, SSL: -1ms, Wait/TTFB: 19450ms, Receive: 1ms, Blocked: 16761ms)
+- GET https://pianify.app/reset-password?_rsc=137yn
+  -> Total time: 19451ms
+     (DNS: -1ms, Connect: -1ms, SSL: -1ms, Wait/TTFB: 19449ms, Receive: 1ms, Blocked: 1ms)
+- GET https://pianify.app/reset-password?_rsc=1pn8p
+  -> Total time: 19423ms
+     (DNS: -1ms, Connect: -1ms, SSL: -1ms, Wait/TTFB: 19421ms, Receive: 1ms, Blocked: 1ms)
+- GET https://pianify.app/reset-password?_rsc=nn07o
+  -> Total time: 19423ms
+     (DNS: -1ms, Connect: -1ms, SSL: -1ms, Wait/TTFB: 19421ms, Receive: 1ms, Blocked: 1ms)
+- GET https://pianify.app/reset-password?_rsc=wzvwe
+  -> Total time: 19413ms
+     (DNS: -1ms, Connect: -1ms, SSL: -1ms, Wait/TTFB: 19411ms, Receive: 0ms, Blocked: 1ms)
+- GET https://pianify.app/delete-account?_rsc=k150h
+  -> Total time: 19410ms
+     (DNS: -1ms, Connect: -1ms, SSL: -1ms, Wait/TTFB: 19408ms, Receive: 1ms, Blocked: 1ms)
+- GET https://pianify.app/delete-account?_rsc=10rrb
+  -> Total time: 19410ms
+     (DNS: -1ms, Connect: -1ms, SSL: -1ms, Wait/TTFB: 19408ms, Receive: 1ms, Blocked: 1ms)
+- GET https://pianify.app/delete-account?_rsc=1pn8p
+  -> Total time: 19385ms
+     (DNS: -1ms, Connect: -1ms, SSL: -1ms, Wait/TTFB: 19383ms, Receive: 0ms, Blocked: 1ms)
+- POST https://pianify.app/cdn-cgi/rum?
+  -> Total time: 61ms
+     (DNS: -1ms, Connect: -1ms, SSL: -1ms, Wait/TTFB: 42ms, Receive: 0ms, Blocked: 16ms)
+- GET https://pianify.app/_next/static/chunks/0qlw_yahadk1k.js
+  -> Total time: 2ms
+     (DNS: -1ms, Connect: -1ms, SSL: -1ms, Wait/TTFB: 1ms, Receive: 1ms, Blocked: 1ms)
+- GET https://pianify.app/_next/static/chunks/0ousd6jjc-fwj.js
+  -> Total time: 2ms
+     (DNS: -1ms, Connect: -1ms, SSL: -1ms, Wait/TTFB: 1ms, Receive: 0ms, Blocked: 1ms)
+- GET https://pianify.app/logo.png
+  -> Total time: 1ms
+     (DNS: -1ms, Connect: -1ms, SSL: -1ms, Wait/TTFB: 0ms, Receive: 0ms, Blocked: 1ms)
+- GET https://pianify.app/_next/static/chunks/0lhmlfcopjsa_.js
+  -> Total time: 1ms
+     (DNS: -1ms, Connect: -1ms, SSL: -1ms, Wait/TTFB: 0ms, Receive: 0ms, Blocked: 0ms)
+- GET https://pianify.app/_next/static/chunks/0-a9xzwvk_ijx.js
+  -> Total time: 1ms
+     (DNS: -1ms, Connect: -1ms, SSL: -1ms, Wait/TTFB: 0ms, Receive: 0ms, Blocked: 1ms)
+
+Total requests: 14
+Total size: 0.00 MB

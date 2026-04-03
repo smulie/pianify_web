@@ -1,0 +1,75 @@
+
+> web-app@0.1.0 build
+> next build
+
+Γû▓ Next.js 16.2.2 (Turbopack)
+- Environments: .env.local
+
+  Creating an optimized production build ...
+
+> Build error occurred
+Error: Turbopack build failed with 2 errors:
+./app/delete-account/page.tsx:3:30
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+   1 | import dynamic from 'next/dynamic';
+   2 |
+>  3 | const DeleteAccountHandler = dynamic(() => import('./DeleteAccountHandler'), { 
+     |                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  4 |   ssr: false,
+     | ^^^^^^^^^^^^^
+>  5 |   loading: () => (
+     | ^^^^^^^^^^^^^^^^^^
+>  6 |     <div className="page-wrapper">
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  7 |       <div className="card" style={{ display: 'flex', justifyContent: 'center', padding: '...
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  8 |         <div className="spinner" style={{ borderColor: 'rgba(255,255,255,0.2)', borderTopC...
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  9 |       </div>
+     | ^^^^^^^^^^^^
+> 10 |     </div>
+     | ^^^^^^^^^^
+> 11 |   )
+     | ^^^
+> 12 | });
+     | ^^
+  13 |
+  14 | export default function DeleteAccountPage() {
+  15 |   return <DeleteAccountHandler />;
+
+Ecmascript file had an error
+
+
+./app/reset-password/page.tsx:3:30
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+   1 | import dynamic from 'next/dynamic';
+   2 |
+>  3 | const ResetPasswordHandler = dynamic(() => import('./ResetPasswordHandler'), { 
+     |                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  4 |   ssr: false,
+     | ^^^^^^^^^^^^^
+>  5 |   loading: () => (
+     | ^^^^^^^^^^^^^^^^^^
+>  6 |     <div className="page-wrapper">
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  7 |       <div className="card" style={{ display: 'flex', justifyContent: 'center', padding: '...
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  8 |         <div className="spinner" style={{ borderColor: 'rgba(255,255,255,0.2)', borderTopC...
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  9 |       </div>
+     | ^^^^^^^^^^^^
+> 10 |     </div>
+     | ^^^^^^^^^^
+> 11 |   )
+     | ^^^
+> 12 | });
+     | ^^
+  13 |
+  14 | export default function ResetPasswordPage() {
+  15 |   return <ResetPasswordHandler />;
+
+Ecmascript file had an error
+
+
+    at <unknown> (./app/delete-account/page.tsx:3:30)
+    at <unknown> (./app/reset-password/page.tsx:3:30)

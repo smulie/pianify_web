@@ -1,0 +1,7 @@
+--- Top 20 slowest requests ---
+- GET https://pianify.app/logo.png
+  -> Total time: 2ms
+     (DNS: -1ms, Connect: -1ms, SSL: -1ms, Wait/TTFB: 0ms, Receive: 1ms, Blocked: 1ms)
+
+Total requests: 1
+Total size: 0.00 MB
