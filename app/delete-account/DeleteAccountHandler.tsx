@@ -84,6 +84,7 @@ export default function DeleteAccountHandler() {
       provider.setCustomParameters({ prompt: 'select_account' });
       await signInWithRedirect(auth, provider);
     } catch (err: unknown) {
+      setLoadingGoogle(false);
       const code = (err as { code?: string }).code;
       if (code === 'auth/popup-closed-by-user' || code === 'auth/cancelled-popup-request') {
         setError('');
@@ -92,8 +93,6 @@ export default function DeleteAccountHandler() {
       } else {
         setError('Đã xảy ra lỗi đăng nhập Google. Vui lòng thử lại.');
       }
-    } finally {
-      setLoadingGoogle(false);
     }
   };
 
@@ -109,6 +108,7 @@ export default function DeleteAccountHandler() {
       provider.addScope('name');
       await signInWithRedirect(auth, provider);
     } catch (err: unknown) {
+      setLoadingGoogle(false);
       const code = (err as { code?: string }).code;
       if (code === 'auth/popup-closed-by-user' || code === 'auth/cancelled-popup-request') {
         setError('');
@@ -117,8 +117,6 @@ export default function DeleteAccountHandler() {
       } else {
         setError('Đã xảy ra lỗi đăng nhập Apple. Vui lòng thử lại.');
       }
-    } finally {
-      setLoadingGoogle(false);
     }
   };
 
