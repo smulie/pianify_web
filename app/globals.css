@@ -199,6 +199,46 @@ html, body {
   transform: none;
 }
 
+.btn-danger {
+  width: 100%;
+  padding: 13px;
+  background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 4px 16px rgba(239, 68, 68, 0.4);
+  letter-spacing: 0.1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.btn-danger:hover:not(:disabled) {
+  opacity: 0.92;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.5);
+}
+
+.btn-danger:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-danger:disabled {
+  background: #3f3f46;
+  box-shadow: none;
+  color: #a1a1aa;
+  cursor: not-allowed;
+  transform: none;
+}
+
+
 /* ─── Spinner ───────────────────────────────────── */
 .spinner {
   width: 18px;

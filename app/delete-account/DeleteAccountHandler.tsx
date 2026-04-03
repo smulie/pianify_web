@@ -1,0 +1,261 @@
+'use client';
+
+import { useState } from 'react';
+import { signInWithEmailAndPassword, deleteUser, signOut } from 'firebase/auth';
+import { auth } from '../../lib/firebase';
+
+/* ── Piano logo ── */
+function PianifyLogo() {
+  return (
+    <div className="logo-wrapper">
+      <div className="logo-icon">
+        <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="3" y="5" width="22" height="16" rx="2" fill="white" fillOpacity="0.15"/>
+          <rect x="3" y="5" width="22" height="11" rx="2" fill="white" fillOpacity="0.9"/>
+          <rect x="7" y="5" width="4" height="8" rx="1" fill="#1e1c31"/>
+          <rect x="13" y="5" width="4" height="8" rx="1" fill="#1e1c31"/>
+          <rect x="19" y="5" width="4" height="8" rx="1" fill="#1e1c31"/>
+        </svg>
+      </div>
+      <span className="logo-name">Pianify</span>
+    </div>
+  );
+}
+
+type Stage = 'auth' | 'warning' | 'success';
+
+export default function DeleteAccountHandler() {
+  const [stage, setStage] = useState<Stage>('auth');
+  
+  // Auth Form State
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  // Warning Form State
+  const [confirmText, setConfirmText] = useState('');
+
+  /* ── 1. Đăng nhập để định danh ── */
+  const handleAuth = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+    setLoading(true);
+    
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      // Đăng nhập thành công, chuyển sang bước cảnh báo
+      setStage('warning');
+    } catch (err: unknown) {
+      const code = (err as { code?: string }).code;
+      if (code === 'auth/wrong-password' || code === 'auth/user-not-found' || code === 'auth/invalid-credential') {
+        setError('Email hoặc mật khẩu không chính xác.');
+      } else if (code === 'auth/too-many-requests') {
+        setError('Tài khoản tạm thời bị khóa do đăng nhập sai nhiều lần. Hãy thử lại sau.');
+      } else {
+        setError('Đã xảy ra lỗi đăng nhập. Vui lòng thử lại.');
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  /* ── 2. Thực hiện Xóa tài khoản ── */
+  const handleDelete = async () => {
+    if (confirmText !== 'XOA' && confirmText !== 'xoa') return;
+    
+    setError('');
+    setLoading(true);
+
+    try {
+      const user = auth.currentUser;
+      if (!user) {
+        throw new Error('User not authenticated');
+      }
+
+      await deleteUser(user);
+      setStage('success');
+    } catch (err: unknown) {
+      const code = (err as { code?: string }).code;
+      if (code === 'auth/requires-recent-login') {
+        setError('Phiên đăng nhập đã hết hạn. Vui lòng tải lại trang và đăng nhập lại.');
+      } else {
+        setError('Đã xảy ra lỗi khi xóa tài khoản. Vui lòng thử lại hoặc liên hệ hỗ trợ.');
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  /* ── Hủy yêu cầu ── */
+  const handleCancel = async () => {
+    await signOut(auth);
+    setStage('auth');
+    setPassword('');
+    setConfirmText('');
+    setError('');
+  };
+
+  /* ──────────────────────────────────────────────────────── */
+  /* ── BƯỚC 1: XÁC THỰC (AUTH) ── */
+  if (stage === 'auth') {
+    return (
+      <div className="page-wrapper">
+        <div className="card">
+          <PianifyLogo />
+          <h1 className="card-title">Xóa tài khoản</h1>
+          <p className="card-subtitle">
+            Vui lòng đăng nhập để xác nhận quyền sở hữu tài khoản trước khi yêu cầu xóa dữ liệu.
+          </p>
+
+          {error && (
+            <div className="alert alert-error">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" style={{ flexShrink: 0, marginTop: 1 }}>
+                <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+              </svg>
+              {error}
+            </div>
+          )}
+
+          <form onSubmit={handleAuth}>
+            <div className="form-group">
+              <label className="form-label">Email tài khoản</label>
+              <input
+                className="form-input"
+                type="email"
+                placeholder="nguoidung@example.com"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+                disabled={loading}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label className="form-label">Mật khẩu</label>
+              <input
+                className="form-input"
+                type="password"
+                placeholder="Mật khẩu của bạn"
+                value={password}
+                onChange={e => setPassword(e.target.value)}
+                disabled={loading}
+                required
+              />
+            </div>
+
+            <button type="submit" className="btn-primary" disabled={loading}>
+              {loading ? <><div className="spinner" />Đang xác thực…</> : 'Tiếp tục'}
+            </button>
+          </form>
+
+          <a href="pianify://" className="back-link">← Quay lại ứng dụng Pianify</a>
+        </div>
+      </div>
+    );
+  }
+
+
+  /* ── BƯỚC 2: CẢNH BÁO & FRICTION (WARNING) ── */
+  if (stage === 'warning') {
+    const canDelete = (confirmText === 'XOA' || confirmText === 'xoa');
+
+    return (
+      <div className="page-wrapper">
+        <div className="card">
+          <div style={{ textAlign: 'center', marginBottom: 20 }}>
+            <div style={{
+              width: 56, height: 56,
+              background: 'rgba(239,68,68,0.12)',
+              border: '2px solid rgba(239,68,68,0.3)',
+              borderRadius: '50%',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              margin: '0 auto 16px',
+            }}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+              </svg>
+            </div>
+            <h1 className="card-title">Cảnh báo xóa dữ liệu</h1>
+          </div>
+
+          <div style={{ background: 'rgba(0,0,0,0.2)', padding: 16, borderRadius: 10, fontSize: 13.5, color: 'rgba(249,249,251,0.85)', lineHeight: 1.5, marginBottom: 20 }}>
+            <p style={{ marginBottom: 10 }}>Bạn đang yêu cầu xóa vĩnh viễn tài khoản: <strong style={{ color: '#fff' }}>{email}</strong></p>
+            <ul style={{ paddingLeft: 20, marginBottom: 12, listStyle: 'disc' }}>
+              <li style={{ marginBottom: 4 }}>Hồ sơ, tiến trình học và các bài tập luyện sẽ bị xóa vĩnh viễn.</li>
+              <li>Thao tác này KHÔNG THỂ hoàn tác sau khi thực hiện.</li>
+            </ul>
+            <div style={{ padding: 12, background: 'rgba(245, 158, 11, 0.1)', border: '1px solid rgba(245, 158, 11, 0.3)', borderRadius: 8, color: '#fcd34d', fontSize: 13 }}>
+              <strong>Lưu ý quan trọng:</strong> Xóa tài khoản sẽ KHÔNG tự động hủy các gói dùng thử hoặc đăng ký trả phí (Premium) của bạn. Bạn phải tự quản lý việc hủy gói trên Google Play hoặc App Store.
+            </div>
+          </div>
+
+          {error && (
+            <div className="alert alert-error">
+              {error}
+            </div>
+          )}
+
+          <div className="form-group" style={{ marginBottom: 24 }}>
+            <label className="form-label" style={{ fontWeight: 600 }}>Gõ chữ XOA để xác nhận đồng ý</label>
+            <input
+              className="form-input"
+              type="text"
+              placeholder="Nhập XOA"
+              value={confirmText}
+              onChange={e => setConfirmText(e.target.value)}
+              disabled={loading}
+              autoComplete="off"
+              style={{ textAlign: 'center', fontWeight: 'bold', letterSpacing: 2, fontSize: 16 }}
+            />
+          </div>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+            <button 
+              type="button" 
+              className="btn-danger" 
+              disabled={!canDelete || loading}
+              onClick={handleDelete}
+            >
+              {loading ? <><div className="spinner" />Đang xử lý…</> : 'Xóa tài khoản vĩnh viễn'}
+            </button>
+            <button 
+              type="button" 
+              style={{ padding: 13, background: 'transparent', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 10, color: '#fff', cursor: 'pointer', fontSize: 14, fontWeight: 500 }}
+              onClick={handleCancel}
+              disabled={loading}
+            >
+              Hủy và quay lại
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+
+  /* ── BƯỚC 3: HOÀN TẤT (SUCCESS) ── */
+  if (stage === 'success') {
+    return (
+      <div className="page-wrapper">
+        <div className="card">
+          <PianifyLogo />
+          <div className="success-icon" style={{ marginTop: 20 }}>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#86efac" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </div>
+          <h1 className="card-title">Đã xóa tài khoản</h1>
+          <p className="card-subtitle" style={{ marginBottom: 24 }}>
+            Yêu cầu của bạn đã được thực hiện. Tài khoản và quyền truy cập của bạn đã bị gỡ bỏ khỏi hệ thống.
+          </p>
+          <p className="card-subtitle" style={{ fontSize: 13, color: 'rgba(249,249,251,0.45)' }}>
+            Tiến trình xóa dữ liệu trên hệ thống sẽ hoàn tất hoàn toàn trong vài ngày tới theo Chính sách bảo mật. Cảm ơn bạn đã tin tưởng kết nối cùng Pianify.
+          </p>
+          <a href="pianify://" className="btn-primary" style={{ textDecoration: 'none' }}>Về lại ứng dụng</a>
+        </div>
+      </div>
+    );
+  }
+
+  return null;
+}
