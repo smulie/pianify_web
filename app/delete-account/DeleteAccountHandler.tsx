@@ -43,8 +43,9 @@ export default function DeleteAccountHandler() {
     }).catch((err) => {
       setLoadingGoogle(false);
       const code = (err as { code?: string }).code;
-      if (code && code !== 'auth/redirect-cancelled-by-user') {
-        setError('Đã xảy ra lỗi đăng nhập. Vui lòng thử lại.');
+      const message = (err as Error).message || String(err);
+      if (code !== 'auth/redirect-cancelled-by-user') {
+        setError(`Lỗi đăng nhập: ${message}`);
       }
     });
   }, []);
