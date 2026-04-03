@@ -5,28 +5,25 @@ export const metadata = {
   description: 'Đánh thức đam mê âm nhạc. Tự học trọn bộ kỹ năng từ cơ bản đến nâng cao cùng Pianify.',
 };
 
+const PianifyLogo = () => (
+  <div className="logo-wrapper" style={{ animation: 'pop-in 0.5s ease', marginBottom: 24, transform: 'scale(1.2)' }}>
+    <div className="logo-icon">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 2A2 2 0 0 0 2 4v16a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4zm1 18V4h2v14H5zm4 0V4h2v9h-2v9zm4 0V4h2v9h-2v9zm4 0V4h2v14h-2z" fill="#fff"/>
+      </svg>
+    </div>
+    <h1 className="logo-name" style={{ fontSize: 28, marginTop: 4 }}>Pianify</h1>
+  </div>
+);
+
 export default function Home() {
   return (
     <div className="page-wrapper" style={{ flexDirection: 'column', padding: '0 20px' }}>
       
       {/* Header & Logo */}
-      <div style={{ textAlign: 'center', marginBottom: 40, animation: 'pop-in 0.5s ease' }}>
-        <div style={{ 
-          width: 80, height: 80, 
-          background: 'linear-gradient(135deg, #C442F0 0%, #7B2FBE 100%)',
-          borderRadius: 20,
-          margin: '0 auto 20px',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          boxShadow: '0 12px 32px rgba(196, 66, 240, 0.4)'
-        }}>
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M3 12h18"/><path d="M3 18h18"/><path d="M3 6h18"/><path d="M8 6v12"/><path d="M16 6v12"/>
-          </svg>
-        </div>
-        <h1 style={{ fontSize: 36, fontWeight: 800, marginBottom: 12, letterSpacing: -1, background: 'linear-gradient(90deg, #fff 0%, #d8b4fe 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-          Pianify
-        </h1>
-        <p style={{ fontSize: 16, color: 'rgba(249, 249, 251, 0.7)', maxWidth: 400, margin: '0 auto', lineHeight: 1.6 }}>
+      <div style={{ textAlign: 'center', marginBottom: 40 }}>
+        <PianifyLogo />
+        <p style={{ fontSize: 16, color: 'rgba(249, 249, 251, 0.7)', maxWidth: 400, margin: '8px auto 0', lineHeight: 1.6 }}>
           Người bạn đồng hành đánh thức đam mê âm nhạc. Ứng dụng tự học hiệu quả dành cho người mới và nâng cao.
         </p>
       </div>
