@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Pianify – Quên mật khẩu",
-  description: "Đặt lại mật khẩu tài khoản Pianify của bạn.",
+  title: "Pianify",
+  description: "Ứng dụng học Piano hiệu quả dành cho mọi người.",
 };
 
 export default function RootLayout({

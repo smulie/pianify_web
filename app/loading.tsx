@@ -12,13 +12,6 @@ export default function GlobalLoading() {
         {/* Vòng xoay Loading */}
         <div className="spinner" style={{ borderColor: 'rgba(255,255,255,0.1)', borderTopColor: '#fff', width: 36, height: 36 }} />
       </div>
-
-      <style>{`
-        @keyframes pulse {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.5; }
-        }
-      `}</style>
     </div>
   );
 }

@@ -23,25 +23,26 @@ export default function DeleteAccountHandler() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loadingEmail, setLoadingEmail] = useState(false);
-  const [loadingGoogle, setLoadingGoogle] = useState(false);
+  const [loadingSocial, setLoadingSocial] = useState(false);
   const [error, setError] = useState('');
 
   // Warning Form State
   const [confirmText, setConfirmText] = useState('');
+  const [loadingDelete, setLoadingDelete] = useState(false);
 
-  const isLoading = loadingEmail || loadingGoogle;
+  const isLoading = loadingEmail || loadingSocial;
 
   /* ── 0. Handle Redirect Result ── */
   useEffect(() => {
-    setLoadingGoogle(true);
+    setLoadingSocial(true);
     getRedirectResult(auth).then((result) => {
       if (result && result.user) {
         if (result.user.email) setEmail(result.user.email);
         setStage('warning');
       }
-      setLoadingGoogle(false);
+      setLoadingSocial(false);
     }).catch((err) => {
-      setLoadingGoogle(false);
+      setLoadingSocial(false);
       const code = (err as { code?: string }).code;
       const message = (err as Error).message || String(err);
       if (code !== 'auth/redirect-cancelled-by-user') {
@@ -79,13 +80,13 @@ export default function DeleteAccountHandler() {
   const handleGoogleAuth = async () => {
     if (isLoading) return;
     setError('');
-    setLoadingGoogle(true);
+    setLoadingSocial(true);
     try {
       const provider = new GoogleAuthProvider();
       provider.setCustomParameters({ prompt: 'select_account' });
       await signInWithRedirect(auth, provider);
     } catch (err: unknown) {
-      setLoadingGoogle(false);
+      setLoadingSocial(false);
       const code = (err as { code?: string }).code;
       if (code === 'auth/popup-closed-by-user' || code === 'auth/cancelled-popup-request') {
         setError('');
@@ -101,15 +102,14 @@ export default function DeleteAccountHandler() {
   const handleAppleAuth = async () => {
     if (isLoading) return;
     setError('');
-    // Dùng chung loading block với Google để khóa màn hình
-    setLoadingGoogle(true); 
+    setLoadingSocial(true);
     try {
       const provider = new OAuthProvider('apple.com');
       provider.addScope('email');
       provider.addScope('name');
       await signInWithRedirect(auth, provider);
     } catch (err: unknown) {
-      setLoadingGoogle(false);
+      setLoadingSocial(false);
       const code = (err as { code?: string }).code;
       if (code === 'auth/popup-closed-by-user' || code === 'auth/cancelled-popup-request') {
         setError('');
@@ -126,7 +126,7 @@ export default function DeleteAccountHandler() {
     if (confirmText.trim().toUpperCase() !== 'DELETE') return;
     
     setError('');
-    setLoadingEmail(true);
+    setLoadingDelete(true);
 
     try {
       const user = auth.currentUser;
@@ -144,7 +144,7 @@ export default function DeleteAccountHandler() {
         setError('Đã xảy ra lỗi khi xóa tài khoản. Vui lòng thử lại.');
       }
     } finally {
-      setLoadingEmail(false);
+      setLoadingDelete(false);
     }
   };
 
@@ -155,6 +155,7 @@ export default function DeleteAccountHandler() {
     setPassword('');
     setConfirmText('');
     setError('');
+    setLoadingDelete(false);
   };
 
   /* ──────────────────────────────────────────────────────── */
@@ -219,7 +220,7 @@ export default function DeleteAccountHandler() {
               display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
               opacity: isLoading ? 0.5 : 1
             }}>
-              {loadingGoogle ? <><div className="spinner" />Đang thiết lập…</> : (
+              {loadingSocial ? <><div className="spinner"/>Đang thiết lập…</> : (
                 <>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
@@ -239,7 +240,7 @@ export default function DeleteAccountHandler() {
               display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
               opacity: isLoading ? 0.5 : 1
             }}>
-              {loadingGoogle ? <><div className="spinner" style={{ borderColor: 'rgba(0,0,0,0.2)', borderTopColor: '#000' }} />Đang thiết lập…</> : (
+              {loadingSocial ? <><div className="spinner" style={{ borderColor: 'rgba(0,0,0,0.2)', borderTopColor: '#000' }}/>Đang thiết lập…</> : (
                 <>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="#000" xmlns="http://www.w3.org/2000/svg">
                     <path d="M16.36 10.99c.02-3.1 2.5-4.57 2.6-4.63-1.44-2.12-3.66-2.43-4.46-2.48-1.9-.19-3.72 1.13-4.7 1.13-.98 0-2.45-1.12-4.04-1.09-2.07.03-3.99 1.2-5.06 3.08-2.16 3.75-.55 9.3 1.54 12.33 1.02 1.48 2.21 3.16 3.8 3.1 1.52-.06 2.1-.98 3.9-.98s2.34.98 3.92.95c1.64-.02 2.67-1.52 3.67-3.01 1.15-1.68 1.63-3.32 1.65-3.4-.04-.01-3.13-1.2-3.15-4.78M14.93 5.4c.84-1.02 1.41-2.43 1.26-3.85-1.22.05-2.69.82-3.55 1.84-.77.91-1.42 2.35-1.24 3.75 1.36.1 2.7-.68 3.53-1.74"/>
@@ -356,7 +357,7 @@ export default function DeleteAccountHandler() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10, alignItems: 'center' }}>
             <button 
               type="button" 
-              disabled={!canDelete || loadingEmail}
+              disabled={!canDelete || loadingDelete}
               onClick={handleDelete}
               style={{
                 width: '100%', maxWidth: 280, padding: '14px', borderRadius: 10,
@@ -368,7 +369,7 @@ export default function DeleteAccountHandler() {
                 display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8
               }}
             >
-              {loadingEmail ? <><div className="spinner" />Đang xử lý…</> : 'Xóa tài khoản'}
+              {loadingDelete ? <><div className="spinner" />Đang xử lý…</> : 'Xóa tài khoản'}
             </button>
           </div>
         </div>

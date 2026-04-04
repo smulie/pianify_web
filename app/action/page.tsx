@@ -1,7 +1,7 @@
-'use client';
-
 import { Suspense } from 'react';
 import ActionHandler from './ActionHandler';
+
+export const dynamic = 'force-static';
 
 export default function ActionPage() {
   return (
