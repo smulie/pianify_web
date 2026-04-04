@@ -1,0 +1,202 @@
+=== TOTAL REQUESTS: 39
+=== PAGE TIMINGS: {
+  "onContentLoad": 19522.774999961257,
+  "onLoad": 19679.714999976568
+}
+
+=== ALL REQUESTS (sorted slowest first) ===
+[19760ms] GET https://pianify.app/?_rsc=cz5nl
+  TTFB=19758ms Blocked=1ms DNS=-1ms Connect=-1ms SSL=-1ms
+  Status: 200 | Size: 0KB | Type: text/x-component
+  Cache-Control: s-maxage=31536000
+
+[19699ms] GET https://pianify.app/delete-account?_rsc=1r34m
+  TTFB=19697ms Blocked=1ms DNS=-1ms Connect=-1ms SSL=-1ms
+  Status: 200 | Size: 0KB | Type: text/x-component
+  Cache-Control: s-maxage=31536000
+
+[19698ms] GET https://pianify.app/reset-password?_rsc=1r34m
+  TTFB=19695ms Blocked=2ms DNS=-1ms Connect=-1ms SSL=-1ms
+  Status: 200 | Size: 0KB | Type: text/x-component
+  Cache-Control: s-maxage=31536000
+
+[19664ms] GET https://pianify.app/?_rsc=1vot2
+  TTFB=19662ms Blocked=1ms DNS=-1ms Connect=-1ms SSL=-1ms
+  Status: 200 | Size: 0KB | Type: text/x-component
+  Cache-Control: s-maxage=31536000
+
+[19663ms] GET https://pianify.app/?_rsc=g4268
+  TTFB=19660ms Blocked=2ms DNS=-1ms Connect=-1ms SSL=-1ms
+  Status: 200 | Size: 0KB | Type: text/x-component
+  Cache-Control: s-maxage=31536000
+
+[19535ms] GET https://pianify.app/
+  TTFB=19342ms Blocked=2ms DNS=70ms Connect=119ms SSL=48ms
+  Status: 200 | Size: 0KB | Type: text/html
+  Cache-Control: s-maxage=31536000
+
+[19472ms] GET https://pianify.app/reset-password?_rsc=137yn
+  TTFB=19469ms Blocked=1ms DNS=-1ms Connect=-1ms SSL=-1ms
+  Status: 200 | Size: 0KB | Type: text/x-component
+  Cache-Control: s-maxage=31536000
+
+[19468ms] GET https://pianify.app/reset-password?_rsc=iu4hw
+  TTFB=19466ms Blocked=1ms DNS=-1ms Connect=-1ms SSL=-1ms
+  Status: 200 | Size: 0KB | Type: text/x-component
+  Cache-Control: s-maxage=31536000
+
+[19461ms] GET https://pianify.app/reset-password?_rsc=1pn8p
+  TTFB=19459ms Blocked=1ms DNS=-1ms Connect=-1ms SSL=-1ms
+  Status: 200 | Size: 0KB | Type: text/x-component
+  Cache-Control: s-maxage=31536000
+
+[19461ms] GET https://pianify.app/reset-password?_rsc=nn07o
+  TTFB=19459ms Blocked=1ms DNS=-1ms Connect=-1ms SSL=-1ms
+  Status: 200 | Size: 0KB | Type: text/x-component
+  Cache-Control: s-maxage=31536000
+
+[19460ms] GET https://pianify.app/delete-account?_rsc=1pn8p
+  TTFB=19458ms Blocked=1ms DNS=-1ms Connect=-1ms SSL=-1ms
+  Status: 200 | Size: 0KB | Type: text/x-component
+  Cache-Control: s-maxage=31536000
+
+[19460ms] GET https://pianify.app/delete-account?_rsc=10rrb
+  TTFB=19457ms Blocked=1ms DNS=-1ms Connect=-1ms SSL=-1ms
+  Status: 200 | Size: 0KB | Type: text/x-component
+  Cache-Control: s-maxage=31536000
+
+[19459ms] GET https://pianify.app/delete-account?_rsc=k150h
+  TTFB=19457ms Blocked=1ms DNS=-1ms Connect=-1ms SSL=-1ms
+  Status: 200 | Size: 0KB | Type: text/x-component
+  Cache-Control: s-maxage=31536000
+
+[19459ms] GET https://pianify.app/reset-password?_rsc=wzvwe
+  TTFB=19456ms Blocked=2ms DNS=-1ms Connect=-1ms SSL=-1ms
+  Status: 200 | Size: 0KB | Type: text/x-component
+  Cache-Control: s-maxage=31536000
+
+[45ms] POST https://pianify.app/cdn-cgi/rum?
+  TTFB=44ms Blocked=1ms DNS=-1ms Connect=-1ms SSL=-1ms
+  Status: 204 | Size: 0KB | Type: text/plain
+  Cache-Control: (none)
+
+[42ms] POST https://pianify.app/cdn-cgi/rum?
+  TTFB=40ms Blocked=1ms DNS=-1ms Connect=-1ms SSL=-1ms
+  Status: 204 | Size: 0KB | Type: text/plain
+  Cache-Control: (none)
+
+[2ms] GET https://pianify.app/favicon.ico?favicon.0x3dzn~oxb6tn.ico
+  TTFB=1ms Blocked=1ms DNS=-1ms Connect=-1ms SSL=-1ms
+  Status: 200 | Size: 0KB | Type: image/x-icon
+  Cache-Control: public, max-age=14400, must-revalidate
+
+[1ms] GET https://pianify.app/ggplay.svg
+  TTFB=1ms Blocked=1ms DNS=-1ms Connect=-1ms SSL=-1ms
+  Status: 200 | Size: 0KB | Type: image/svg+xml
+  Cache-Control: public, max-age=14400
+
+[1ms] GET https://pianify.app/apple.svg
+  TTFB=1ms Blocked=1ms DNS=-1ms Connect=-1ms SSL=-1ms
+  Status: 200 | Size: 0KB | Type: image/svg+xml
+  Cache-Control: public, max-age=14400
+
+[0ms] GET https://pianify.app/_next/static/chunks/0f7wn_9wxu~b_.js
+  TTFB=0ms Blocked=-1ms DNS=-1ms Connect=-1ms SSL=-1ms
+  Status: 200 | Size: 0KB | Type: application/javascript
+  Cache-Control: public, max-age=31536000, immutable
+
+[0ms] GET https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap
+  TTFB=0ms Blocked=-1ms DNS=-1ms Connect=-1ms SSL=-1ms
+  Status: 200 | Size: 0KB | Type: text/css
+  Cache-Control: private, max-age=86400, stale-while-revalidate=604800
+
+[0ms] GET https://pianify.app/_next/static/chunks/0qlw_yahadk1k.js
+  TTFB=0ms Blocked=-1ms DNS=-1ms Connect=-1ms SSL=-1ms
+  Status: 200 | Size: 0KB | Type: application/javascript
+  Cache-Control: public, max-age=31536000, immutable
+
+[0ms] GET https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2pL7SUc.woff2
+  TTFB=0ms Blocked=-1ms DNS=-1ms Connect=-1ms SSL=-1ms
+  Status: 200 | Size: 0KB | Type: font/woff2
+  Cache-Control: public, max-age=31536000
+
+[0ms] GET https://pianify.app/logo.png
+  TTFB=0ms Blocked=-1ms DNS=-1ms Connect=-1ms SSL=-1ms
+  Status: 200 | Size: 0KB | Type: image/png
+  Cache-Control: public, max-age=14400
+
+[0ms] GET https://pianify.app/apple.svg
+  TTFB=0ms Blocked=-1ms DNS=-1ms Connect=-1ms SSL=-1ms
+  Status: 200 | Size: 0KB | Type: image/svg+xml
+  Cache-Control: public, max-age=14400
+
+[0ms] GET https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516
+  TTFB=0ms Blocked=-1ms DNS=-1ms Connect=-1ms SSL=-1ms
+  Status: 200 | Size: 0KB | Type: text/javascript
+  Cache-Control: public, max-age=86400
+
+[0ms] GET https://pianify.app/_next/static/chunks/0cxwf.6vfvia..js
+  TTFB=0ms Blocked=-1ms DNS=-1ms Connect=-1ms SSL=-1ms
+  Status: 200 | Size: 0KB | Type: application/javascript
+  Cache-Control: public, max-age=31536000, immutable
+
+[0ms] GET https://pianify.app/_next/static/chunks/0ka051yepewro.js
+  TTFB=0ms Blocked=-1ms DNS=-1ms Connect=-1ms SSL=-1ms
+  Status: 200 | Size: 0KB | Type: application/javascript
+  Cache-Control: public, max-age=31536000, immutable
+
+[0ms] GET https://pianify.app/_next/static/chunks/0bogtdbh.dcu1.js
+  TTFB=0ms Blocked=-1ms DNS=-1ms Connect=-1ms SSL=-1ms
+  Status: 200 | Size: 0KB | Type: application/javascript
+  Cache-Control: public, max-age=31536000, immutable
+
+[0ms] GET https://pianify.app/ggplay.svg
+  TTFB=0ms Blocked=-1ms DNS=-1ms Connect=-1ms SSL=-1ms
+  Status: 200 | Size: 0KB | Type: image/svg+xml
+  Cache-Control: public, max-age=14400
+
+[0ms] GET https://pianify.app/_next/static/chunks/026e2aaa4u~bn.css
+  TTFB=0ms Blocked=-1ms DNS=-1ms Connect=-1ms SSL=-1ms
+  Status: 200 | Size: 0KB | Type: text/css
+  Cache-Control: public, max-age=31536000, immutable
+
+[0ms] GET https://pianify.app/_next/static/chunks/0257pdz1-imal.js
+  TTFB=0ms Blocked=-1ms DNS=-1ms Connect=-1ms SSL=-1ms
+  Status: 200 | Size: 0KB | Type: application/javascript
+  Cache-Control: public, max-age=31536000, immutable
+
+[0ms] GET https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2
+  TTFB=0ms Blocked=-1ms DNS=-1ms Connect=-1ms SSL=-1ms
+  Status: 200 | Size: 0KB | Type: font/woff2
+  Cache-Control: public, max-age=31536000
+
+[0ms] GET https://pianify.app/_next/static/chunks/turbopack-03vczdo173pm_.js
+  TTFB=0ms Blocked=-1ms DNS=-1ms Connect=-1ms SSL=-1ms
+  Status: 200 | Size: 0KB | Type: application/javascript
+  Cache-Control: public, max-age=31536000, immutable
+
+[0ms] GET https://pianify.app/_next/static/chunks/00gq-v0e07i1q.js
+  TTFB=0ms Blocked=-1ms DNS=-1ms Connect=-1ms SSL=-1ms
+  Status: 200 | Size: 0KB | Type: application/javascript
+  Cache-Control: public, max-age=31536000, immutable
+
+[0ms] GET https://pianify.app/_next/static/chunks/0pqt~8bl3ukh4.js
+  TTFB=0ms Blocked=-1ms DNS=-1ms Connect=-1ms SSL=-1ms
+  Status: 200 | Size: 0KB | Type: application/javascript
+  Cache-Control: public, max-age=31536000, immutable
+
+[0ms] GET https://pianify.app/_next/static/chunks/0d3shmwh5_nmn.js
+  TTFB=0ms Blocked=-1ms DNS=-1ms Connect=-1ms SSL=-1ms
+  Status: 200 | Size: 0KB | Type: application/javascript
+  Cache-Control: public, max-age=31536000, immutable
+
+[0ms] GET https://pianify.app/_next/static/chunks/01xlw8hd842-c.js
+  TTFB=0ms Blocked=-1ms DNS=-1ms Connect=-1ms SSL=-1ms
+  Status: 200 | Size: 0KB | Type: application/javascript
+  Cache-Control: public, max-age=31536000, immutable
+
+[0ms] GET https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7SUc.woff2
+  TTFB=0ms Blocked=-1ms DNS=-1ms Connect=-1ms SSL=-1ms
+  Status: 200 | Size: 0KB | Type: font/woff2
+  Cache-Control: public, max-age=31536000
+

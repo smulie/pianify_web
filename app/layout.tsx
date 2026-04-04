@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import RoutePrefetcher from "./RoutePrefetcher";
 
 export const metadata: Metadata = {
   title: "Pianify",
@@ -13,7 +14,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="vi">
-      <body>{children}</body>
+      <body>
+        <RoutePrefetcher />
+        {children}
+      </body>
     </html>
   );
 }
