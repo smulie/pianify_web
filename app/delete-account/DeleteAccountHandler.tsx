@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { signInWithEmailAndPassword, deleteUser, signOut, signInWithRedirect, getRedirectResult, GoogleAuthProvider, OAuthProvider, getAdditionalUserInfo } from 'firebase/auth';
+import { signInWithEmailAndPassword, deleteUser, signOut, signInWithPopup, GoogleAuthProvider, OAuthProvider, getAdditionalUserInfo } from 'firebase/auth';
 import { auth } from '../../lib/firebase';
 
 /* ── Piano logo ── */
@@ -34,32 +34,7 @@ export default function DeleteAccountHandler() {
 
   /* ── 0. Handle Redirect Result ── */
   useEffect(() => {
-    setLoadingSocial(true);
-    getRedirectResult(auth).then(async (result) => {
-      if (result && result.user) {
-        const additionalInfo = getAdditionalUserInfo(result);
-        if (additionalInfo?.isNewUser) {
-          try {
-            await deleteUser(result.user);
-          } catch (e) {
-            console.error('Lỗi khi xóa tài khoản tạm:', e);
-          }
-          // Chỉ báo lỗi trên web, không dùng window.alert để tránh "localhost says"
-          setError('Tài khoản này chưa được đăng ký trên hệ thống. Không thể xoá dữ liệu.');
-        } else {
-          if (result.user.email) setEmail(result.user.email);
-          setStage('warning');
-        }
-      }
-      setLoadingSocial(false);
-    }).catch((err) => {
-      setLoadingSocial(false);
-      const code = (err as { code?: string }).code;
-      const message = (err as Error).message || String(err);
-      if (code !== 'auth/redirect-cancelled-by-user') {
-        setError(`Lỗi đăng nhập: ${message}`);
-      }
-    });
+    // Không dùng Redirect nữa do kém ổn định với domain chưa setup kỹ
   }, []);
 
   /* ── 1. Đăng nhập để định danh ── */
@@ -95,9 +70,21 @@ export default function DeleteAccountHandler() {
     try {
       const provider = new GoogleAuthProvider();
       provider.setCustomParameters({ prompt: 'select_account' });
-      await signInWithRedirect(auth, provider);
+      const result = await signInWithPopup(auth, provider);
+      
+      const additionalInfo = getAdditionalUserInfo(result);
+      if (additionalInfo?.isNewUser) {
+        try {
+          await deleteUser(result.user);
+        } catch (e) {
+          console.error('Lỗi khi xóa tài khoản tạm:', e);
+        }
+        setError('Tài khoản này chưa được đăng ký trên hệ thống. Không thể xoá dữ liệu.');
+      } else {
+        if (result.user.email) setEmail(result.user.email);
+        setStage('warning');
+      }
     } catch (err: unknown) {
-      setLoadingSocial(false);
       const code = (err as { code?: string }).code;
       if (code === 'auth/popup-closed-by-user' || code === 'auth/cancelled-popup-request') {
         setError('');
@@ -106,6 +93,8 @@ export default function DeleteAccountHandler() {
       } else {
         setError('Đã xảy ra lỗi đăng nhập Google. Vui lòng thử lại.');
       }
+    } finally {
+      setLoadingSocial(false);
     }
   };
 
@@ -118,9 +107,21 @@ export default function DeleteAccountHandler() {
       const provider = new OAuthProvider('apple.com');
       provider.addScope('email');
       provider.addScope('name');
-      await signInWithRedirect(auth, provider);
+      const result = await signInWithPopup(auth, provider);
+      
+      const additionalInfo = getAdditionalUserInfo(result);
+      if (additionalInfo?.isNewUser) {
+        try {
+          await deleteUser(result.user);
+        } catch (e) {
+          console.error('Lỗi khi xóa tài khoản tạm:', e);
+        }
+        setError('Tài khoản này chưa được đăng ký trên hệ thống. Không thể xoá dữ liệu.');
+      } else {
+        if (result.user.email) setEmail(result.user.email);
+        setStage('warning');
+      }
     } catch (err: unknown) {
-      setLoadingSocial(false);
       const code = (err as { code?: string }).code;
       if (code === 'auth/popup-closed-by-user' || code === 'auth/cancelled-popup-request') {
         setError('');
@@ -129,6 +130,8 @@ export default function DeleteAccountHandler() {
       } else {
         setError('Đã xảy ra lỗi đăng nhập Apple. Vui lòng thử lại.');
       }
+    } finally {
+      setLoadingSocial(false);
     }
   };
 
