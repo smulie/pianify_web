@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { signInWithEmailAndPassword, deleteUser, signOut, signInWithRedirect, getRedirectResult, GoogleAuthProvider, OAuthProvider } from 'firebase/auth';
+import { signInWithEmailAndPassword, deleteUser, signOut, signInWithRedirect, getRedirectResult, GoogleAuthProvider, OAuthProvider, getAdditionalUserInfo } from 'firebase/auth';
 import { auth } from '../../lib/firebase';
 
 /* ── Piano logo ── */
@@ -35,10 +35,21 @@ export default function DeleteAccountHandler() {
   /* ── 0. Handle Redirect Result ── */
   useEffect(() => {
     setLoadingSocial(true);
-    getRedirectResult(auth).then((result) => {
+    getRedirectResult(auth).then(async (result) => {
       if (result && result.user) {
-        if (result.user.email) setEmail(result.user.email);
-        setStage('warning');
+        const additionalInfo = getAdditionalUserInfo(result);
+        if (additionalInfo?.isNewUser) {
+          try {
+            await deleteUser(result.user);
+          } catch (e) {
+            console.error('Lỗi khi xóa tài khoản tạm:', e);
+          }
+          // Chỉ báo lỗi trên web, không dùng window.alert để tránh "localhost says"
+          setError('Tài khoản này chưa được đăng ký trên hệ thống. Không thể xoá dữ liệu.');
+        } else {
+          if (result.user.email) setEmail(result.user.email);
+          setStage('warning');
+        }
       }
       setLoadingSocial(false);
     }).catch((err) => {
