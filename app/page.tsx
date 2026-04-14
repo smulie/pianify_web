@@ -36,10 +36,10 @@ export default function Home() {
 
       {/* Download Buttons */}
       <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap', justifyContent: 'center', marginBottom: 60, alignItems: 'center' }}>
-        <a href="#" className="hover-scale" style={{ display: 'block' }}>
+        <a href="https://apps.apple.com/vn/app/simpia-learn-piano-by-songs/id6444191617" target="_blank" rel="noopener noreferrer" className="hover-scale" style={{ display: 'block' }}>
           <img src="/apple.svg" alt="Download on the App Store" style={{ height: 50, width: 'auto', display: 'block' }} />
         </a>
-        <a href="#" className="hover-scale" style={{ display: 'block' }}>
+        <a href="https://play.google.com/store/apps/details?id=com.smulie.pianify" target="_blank" rel="noopener noreferrer" className="hover-scale" style={{ display: 'block' }}>
           <img src="/ggplay.svg" alt="GET IT ON Google Play" style={{ height: 50, width: 'auto', display: 'block' }} />
         </a>
       </div>
