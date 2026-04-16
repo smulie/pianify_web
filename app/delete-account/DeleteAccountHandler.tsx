@@ -85,13 +85,15 @@ export default function DeleteAccountHandler() {
         setStage('warning');
       }
     } catch (err: unknown) {
+      console.error('Google Auth Error:', err);
       const code = (err as { code?: string }).code;
+      const msg = (err as { message?: string }).message;
       if (code === 'auth/popup-closed-by-user' || code === 'auth/cancelled-popup-request') {
         setError('');
       } else if (code === 'auth/unauthorized-domain') {
         setError('Tên miền chưa được cấp phép trong Firebase Auth.');
       } else {
-        setError('Đã xảy ra lỗi đăng nhập Google. Vui lòng thử lại.');
+        setError(`Đã xảy ra lỗi đăng nhập Google. Vui lòng thử lại. Lỗi: ${code || msg || 'Unknown'}`);
       }
     } finally {
       setLoadingSocial(false);
@@ -122,13 +124,15 @@ export default function DeleteAccountHandler() {
         setStage('warning');
       }
     } catch (err: unknown) {
+      console.error('Apple Auth Error:', err);
       const code = (err as { code?: string }).code;
+      const msg = (err as { message?: string }).message;
       if (code === 'auth/popup-closed-by-user' || code === 'auth/cancelled-popup-request') {
         setError('');
       } else if (code === 'auth/unauthorized-domain') {
         setError('Tên miền chưa được cấp phép trong Firebase Auth.');
       } else {
-        setError('Đã xảy ra lỗi đăng nhập Apple. Vui lòng thử lại.');
+        setError(`Đã xảy ra lỗi đăng nhập Apple. Vui lòng thử lại. Lỗi: ${code || msg || 'Unknown'}`);
       }
     } finally {
       setLoadingSocial(false);
