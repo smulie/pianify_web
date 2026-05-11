@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { sendPasswordResetEmail } from 'firebase/auth';
 import { auth } from '../../lib/firebase';
+import { useI18n } from '../LanguageContext';
 
 /* ── Piano logo ── */
 function PianifyLogo() {
@@ -17,6 +18,7 @@ function PianifyLogo() {
 type Stage = 'form' | 'sent';
 
 export default function ResetPasswordHandler() {
+  const { t } = useI18n();
   const [email, setEmail] = useState('');
   const [stage, setStage] = useState<Stage>('form');
   const [loading, setLoading] = useState(false);
@@ -28,7 +30,6 @@ export default function ResetPasswordHandler() {
     setLoading(true);
     try {
       const actionCodeSettings = {
-        // After setting new password, redirect back to app
         url: `${window.location.origin}/action`,
         handleCodeInApp: false,
       };
@@ -37,11 +38,11 @@ export default function ResetPasswordHandler() {
     } catch (err: unknown) {
       const code = (err as { code?: string }).code;
       if (code === 'auth/user-not-found' || code === 'auth/invalid-email') {
-        setError('Email không tồn tại trong hệ thống.');
+        setError(t('errEmailNotFound'));
       } else if (code === 'auth/too-many-requests') {
-        setError('Quá nhiều yêu cầu. Vui lòng thử lại sau vài phút.');
+        setError(t('errTooManyRequests'));
       } else {
-        setError('Đã xảy ra lỗi. Vui lòng thử lại.');
+        setError(t('errGeneric'));
       }
     } finally {
       setLoading(false);
@@ -59,22 +60,22 @@ export default function ResetPasswordHandler() {
               <polyline points="20 6 9 17 4 12"/>
             </svg>
           </div>
-          <h1 className="card-title">Yêu cầu thành công!</h1>
+          <h1 className="card-title">{t('requestSuccess')}</h1>
           <p className="card-subtitle">
-            Chúng tôi đã gửi email hướng dẫn đặt lại mật khẩu đến<br/>
+            {t('requestSuccessDesc')}<br/>
             <strong style={{ color: 'rgba(249,249,251,0.85)' }}>{email}</strong>
           </p>
           <p className="card-subtitle" style={{ marginTop: -16 }}>
-            Vui lòng kiểm tra hộp thư (cả mục spam/quảng cáo).
+            {t('checkInbox')}
           </p>
           <button
             className="btn-primary"
             onClick={() => { setStage('form'); setEmail(''); }}
             style={{ marginTop: 4 }}
           >
-            Gửi lại email
+            {t('resendEmail')}
           </button>
-          <Link href="/" className="back-link">← Quay lại trang chủ</Link>
+          <Link href="/" className="back-link">{t('backToHome')}</Link>
         </div>
       </div>
     );
@@ -85,9 +86,9 @@ export default function ResetPasswordHandler() {
     <div className="page-wrapper">
       <div className="card">
         <PianifyLogo />
-        <h1 className="card-title">Quên mật khẩu?</h1>
+        <h1 className="card-title">{t('resetPassTitle')}</h1>
         <p className="card-subtitle">
-          Nhập email để nhận hướng dẫn đặt lại mật khẩu.
+          {t('resetPassSubtitle')}
         </p>
 
         {error && (
@@ -101,11 +102,11 @@ export default function ResetPasswordHandler() {
 
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label className="form-label">Email của bạn</label>
+            <label className="form-label">{t('emailLabel')}</label>
             <input
               className="form-input"
               type="email"
-              placeholder="nguoidung@example.com"
+              placeholder={t('emailPlaceholder')}
               value={email}
               onChange={e => setEmail(e.target.value)}
               disabled={loading}
@@ -116,11 +117,11 @@ export default function ResetPasswordHandler() {
           </div>
 
           <button type="submit" className="btn-primary" disabled={loading}>
-            {loading ? <><div className="spinner" />Đang gửi…</> : 'Gửi yêu cầu'}
+            {loading ? <><div className="spinner" />{t('sending')}</> : t('sendRequest')}
           </button>
         </form>
 
-        <Link href="/" className="back-link">← Quay lại trang chủ</Link>
+        <Link href="/" className="back-link">{t('backToHome')}</Link>
       </div>
     </div>
   );

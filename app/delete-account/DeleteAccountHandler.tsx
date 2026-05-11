@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { signInWithEmailAndPassword, deleteUser, signOut, signInWithPopup, GoogleAuthProvider, OAuthProvider, getAdditionalUserInfo } from 'firebase/auth';
 import { auth } from '../../lib/firebase';
+import { useI18n } from '../LanguageContext';
 
 /* ── Piano logo ── */
 function PianifyLogo() {
@@ -17,6 +18,7 @@ function PianifyLogo() {
 type Stage = 'auth' | 'warning' | 'success';
 
 export default function DeleteAccountHandler() {
+  const { t } = useI18n();
   const [stage, setStage] = useState<Stage>('auth');
   
   // Auth Form State
@@ -51,11 +53,11 @@ export default function DeleteAccountHandler() {
     } catch (err: unknown) {
       const code = (err as { code?: string }).code;
       if (code === 'auth/wrong-password' || code === 'auth/user-not-found' || code === 'auth/invalid-credential') {
-        setError('Email hoặc mật khẩu không chính xác.');
+        setError(t('errIncorrectCreds'));
       } else if (code === 'auth/too-many-requests') {
-        setError('Tài khoản tạm thời bị khóa. Hãy thử lại sau.');
+        setError(t('errAccountLocked'));
       } else {
-        setError('Đã xảy ra lỗi đăng nhập. Vui lòng thử lại.');
+        setError(t('errLogin'));
       }
     } finally {
       setLoadingEmail(false);
@@ -79,7 +81,7 @@ export default function DeleteAccountHandler() {
         } catch (e) {
           console.error('Lỗi khi xóa tài khoản tạm:', e);
         }
-        setError('Tài khoản này chưa được đăng ký trên hệ thống. Không thể xoá dữ liệu.');
+        setError(t('errNotRegistered'));
       } else {
         if (result.user.email) setEmail(result.user.email);
         setStage('warning');
@@ -87,13 +89,12 @@ export default function DeleteAccountHandler() {
     } catch (err: unknown) {
       console.error('Google Auth Error:', err);
       const code = (err as { code?: string }).code;
-      const msg = (err as { message?: string }).message;
       if (code === 'auth/popup-closed-by-user' || code === 'auth/cancelled-popup-request') {
         setError('');
       } else if (code === 'auth/unauthorized-domain') {
-        setError('Tên miền chưa được cấp phép trong Firebase Auth.');
+        setError(t('errUnauthorizedDomain'));
       } else {
-        setError(`Đã xảy ra lỗi đăng nhập Google. Vui lòng thử lại. Lỗi: ${code || msg || 'Unknown'}`);
+        setError(t('errGoogleLogin'));
       }
     } finally {
       setLoadingSocial(false);
@@ -118,7 +119,7 @@ export default function DeleteAccountHandler() {
         } catch (e) {
           console.error('Lỗi khi xóa tài khoản tạm:', e);
         }
-        setError('Tài khoản này chưa được đăng ký trên hệ thống. Không thể xoá dữ liệu.');
+        setError(t('errNotRegistered'));
       } else {
         if (result.user.email) setEmail(result.user.email);
         setStage('warning');
@@ -126,13 +127,12 @@ export default function DeleteAccountHandler() {
     } catch (err: unknown) {
       console.error('Apple Auth Error:', err);
       const code = (err as { code?: string }).code;
-      const msg = (err as { message?: string }).message;
       if (code === 'auth/popup-closed-by-user' || code === 'auth/cancelled-popup-request') {
         setError('');
       } else if (code === 'auth/unauthorized-domain') {
-        setError('Tên miền chưa được cấp phép trong Firebase Auth.');
+        setError(t('errUnauthorizedDomain'));
       } else {
-        setError(`Đã xảy ra lỗi đăng nhập Apple. Vui lòng thử lại. Lỗi: ${code || msg || 'Unknown'}`);
+        setError(t('errAppleLogin'));
       }
     } finally {
       setLoadingSocial(false);
@@ -157,9 +157,9 @@ export default function DeleteAccountHandler() {
     } catch (err: unknown) {
       const code = (err as { code?: string }).code;
       if (code === 'auth/requires-recent-login') {
-        setError('Phiên đăng nhập đã hết hạn. Vui lòng tải lại trang và đăng nhập lại.');
+        setError(t('errSessionExpired'));
       } else {
-        setError('Đã xảy ra lỗi khi xóa tài khoản. Vui lòng thử lại.');
+        setError(t('errDeleteAccount'));
       }
     } finally {
       setLoadingDelete(false);
@@ -176,16 +176,15 @@ export default function DeleteAccountHandler() {
     setLoadingDelete(false);
   };
 
-  /* ──────────────────────────────────────────────────────── */
   /* ── BƯỚC 1: XÁC THỰC (AUTH) ── */
   if (stage === 'auth') {
     return (
       <div className="page-wrapper">
         <div className="card">
           <PianifyLogo />
-          <h1 className="card-title">Xóa tài khoản</h1>
+          <h1 className="card-title">{t('deleteAccountTitle')}</h1>
           <p className="card-subtitle">
-            Vui lòng đăng nhập để xác nhận quyền sở hữu tài khoản trước khi yêu cầu xóa dữ liệu.
+            {t('deleteAccountSubtitle')}
           </p>
 
           {error && (
@@ -199,11 +198,11 @@ export default function DeleteAccountHandler() {
 
           <form onSubmit={handleAuth}>
             <div className="form-group">
-              <label className="form-label">Email tài khoản</label>
+              <label className="form-label">{t('accountEmail')}</label>
               <input
                 className="form-input"
                 type="email"
-                placeholder="nguoidung@example.com"
+                placeholder="user@example.com"
                 value={email}
                 onChange={e => setEmail(e.target.value)}
                 disabled={isLoading}
@@ -211,11 +210,11 @@ export default function DeleteAccountHandler() {
               />
             </div>
             <div className="form-group">
-              <label className="form-label">Mật khẩu</label>
+              <label className="form-label">{t('passwordLabel')}</label>
               <input
                 className="form-input"
                 type="password"
-                placeholder="Mật khẩu của bạn"
+                placeholder={t('passwordPlaceholder')}
                 value={password}
                 onChange={e => setPassword(e.target.value)}
                 disabled={isLoading}
@@ -224,11 +223,11 @@ export default function DeleteAccountHandler() {
             </div>
 
             <button type="submit" className="btn-primary" disabled={isLoading}>
-              {loadingEmail ? <><div className="spinner" />Đang xác thực…</> : 'Tiếp tục'}
+              {loadingEmail ? <><div className="spinner" />{t('authenticating')}</> : t('continue')}
             </button>
           </form>
 
-          <div style={{ margin: '16px 0', textAlign: 'center', fontSize: 13, color: 'rgba(249,249,251,0.5)' }}>— HOẶC —</div>
+          <div style={{ margin: '16px 0', textAlign: 'center', fontSize: 13, color: 'rgba(249,249,251,0.5)' }}>{t('or')}</div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 20 }}>
             <button type="button" onClick={handleGoogleAuth} disabled={isLoading} style={{
@@ -238,7 +237,7 @@ export default function DeleteAccountHandler() {
               display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
               opacity: isLoading ? 0.5 : 1
             }}>
-              {loadingSocial ? <><div className="spinner"/>Đang thiết lập…</> : (
+              {loadingSocial ? <><div className="spinner"/>{t('settingUp')}</> : (
                 <>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
@@ -246,7 +245,7 @@ export default function DeleteAccountHandler() {
                     <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
                     <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
                   </svg>
-                  Tiếp tục với Google
+                  {t('continueWithGoogle')}
                 </>
               )}
             </button>
@@ -258,23 +257,22 @@ export default function DeleteAccountHandler() {
               display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
               opacity: isLoading ? 0.5 : 1
             }}>
-              {loadingSocial ? <><div className="spinner" style={{ borderColor: 'rgba(0,0,0,0.2)', borderTopColor: '#000' }}/>Đang thiết lập…</> : (
+              {loadingSocial ? <><div className="spinner" style={{ borderColor: 'rgba(0,0,0,0.2)', borderTopColor: '#000' }}/>{t('settingUp')}</> : (
                 <>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="#000" xmlns="http://www.w3.org/2000/svg">
                     <path d="M16.36 10.99c.02-3.1 2.5-4.57 2.6-4.63-1.44-2.12-3.66-2.43-4.46-2.48-1.9-.19-3.72 1.13-4.7 1.13-.98 0-2.45-1.12-4.04-1.09-2.07.03-3.99 1.2-5.06 3.08-2.16 3.75-.55 9.3 1.54 12.33 1.02 1.48 2.21 3.16 3.8 3.1 1.52-.06 2.1-.98 3.9-.98s2.34.98 3.92.95c1.64-.02 2.67-1.52 3.67-3.01 1.15-1.68 1.63-3.32 1.65-3.4-.04-.01-3.13-1.2-3.15-4.78M14.93 5.4c.84-1.02 1.41-2.43 1.26-3.85-1.22.05-2.69.82-3.55 1.84-.77.91-1.42 2.35-1.24 3.75 1.36.1 2.7-.68 3.53-1.74"/>
                   </svg>
-                  Tiếp tục với Apple
+                  {t('continueWithApple')}
                 </>
               )}
             </button>
           </div>
 
-          <Link href="/" className="back-link">← Quay lại trang chủ</Link>
+          <Link href="/" className="back-link">{t('backToHome')}</Link>
         </div>
       </div>
     );
   }
-
 
   /* ── BƯỚC 2: CẢNH BÁO & FRICTION (WARNING) ── */
   if (stage === 'warning') {
@@ -301,9 +299,9 @@ export default function DeleteAccountHandler() {
               <span>🥺</span>
               <span>🎹</span>
             </div>
-            <h1 className="card-title" style={{ fontSize: 22, marginBottom: 8, fontWeight: 800 }}>Bạn muốn rời đi?</h1>
+            <h1 className="card-title" style={{ fontSize: 22, marginBottom: 8, fontWeight: 800 }}>{t('wantToLeave')}</h1>
             <p className="card-subtitle" style={{ fontSize: 13, marginBottom: 0 }}>
-              Tài khoản và toàn bộ dữ liệu sẽ bị xóa vĩnh viễn.
+              {t('deletePermanentDesc')}
             </p>
           </div>
 
@@ -314,35 +312,34 @@ export default function DeleteAccountHandler() {
           }}>
             <div style={{ flex: 1, textAlign: 'center', borderRight: '1px solid rgba(255,255,255,0.08)' }}>
               <div style={{ fontSize: 22, marginBottom: 4 }}>🔥</div>
-              <div style={{ fontSize: 12, fontWeight: 700, color: 'rgba(249,249,251,0.6)' }}>Streak</div>
+              <div style={{ fontSize: 12, fontWeight: 700, color: 'rgba(249,249,251,0.6)' }}>{t('streak')}</div>
             </div>
             <div style={{ flex: 1, textAlign: 'center', borderRight: '1px solid rgba(255,255,255,0.08)' }}>
               <div style={{ fontSize: 22, marginBottom: 4 }}>🏆</div>
-              <div style={{ fontSize: 12, fontWeight: 700, color: 'rgba(249,249,251,0.6)' }}>Huy hiệu</div>
+              <div style={{ fontSize: 12, fontWeight: 700, color: 'rgba(249,249,251,0.6)' }}>{t('badges')}</div>
             </div>
             <div style={{ flex: 1, textAlign: 'center' }}>
               <div style={{ fontSize: 22, marginBottom: 4 }}>🎵</div>
-              <div style={{ fontSize: 12, fontWeight: 700, color: 'rgba(249,249,251,0.6)' }}>Bài học</div>
+              <div style={{ fontSize: 12, fontWeight: 700, color: 'rgba(249,249,251,0.6)' }}>{t('lessons')}</div>
             </div>
           </div>
 
-          {/* Đoạn text cảnh báo được đẩy lên đây và làm đẹp hơn */}
           <div style={{ fontSize: 14, color: 'rgba(249,249,251,0.85)', lineHeight: 1.6, marginBottom: 32 }}>
             <p style={{ marginBottom: 16 }}>
-              Bạn đang yêu cầu xóa vĩnh viễn tài khoản:<br/>
+              {t('deleteConfirmTitle')}<br/>
               <strong style={{ color: '#fff', fontSize: 15 }}>{auth.currentUser?.email || email}</strong>
             </p>
             <ul style={{ paddingLeft: 20, marginBottom: 20, listStyle: 'disc' }}>
-              <li style={{ marginBottom: 8 }}>Hồ sơ, tiến trình học và các bài tập luyện sẽ bị xóa vĩnh viễn.</li>
-              <li>Thao tác này <strong style={{ color: '#ef4444' }}>KHÔNG THỂ</strong> hoàn tác sau khi thực hiện.</li>
+              <li style={{ marginBottom: 8 }}>{t('deleteConfirmDesc1')}</li>
+              <li>{t('deleteConfirmDesc2')}</li>
             </ul>
             <div style={{ 
               padding: '16px 20px', background: 'rgba(245, 158, 11, 0.08)', 
               border: '1px solid rgba(245, 158, 11, 0.15)', borderRadius: 12, 
               color: '#fcd34d', fontSize: 13.5, lineHeight: 1.5 
             }}>
-              <strong style={{ display: 'block', color: '#fbbf24', marginBottom: 4 }}>Lưu ý quan trọng:</strong> 
-              Xóa tài khoản sẽ KHÔNG tự động hủy các gói dùng thử hoặc đăng ký trả phí (Premium) của bạn. Bạn phải tự quản lý việc hủy gói trên Google Play hoặc App Store.
+              <strong style={{ display: 'block', color: '#fbbf24', marginBottom: 4 }}>{t('importantNote')}</strong> 
+              {t('importantNoteDesc')}
             </div>
           </div>
 
@@ -353,7 +350,7 @@ export default function DeleteAccountHandler() {
           )}
 
           <div className="form-group" style={{ marginBottom: 20, textAlign: 'center' }}>
-            <label className="form-label" style={{ fontWeight: 500, color: 'rgba(249,249,251,0.5)', marginBottom: 12, fontSize: 13 }}>Gõ DELETE để xác nhận</label>
+            <label className="form-label" style={{ fontWeight: 500, color: 'rgba(249,249,251,0.5)', marginBottom: 12, fontSize: 13 }}>{t('typeDelete')}</label>
             <input
               className="form-input"
               type="text"
@@ -387,15 +384,13 @@ export default function DeleteAccountHandler() {
                 display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8
               }}
             >
-              {loadingDelete ? <><div className="spinner" />Đang xử lý…</> : 'Xóa tài khoản'}
+              {loadingDelete ? <><div className="spinner" />{t('processing')}</> : t('deleteBtn')}
             </button>
           </div>
         </div>
       </div>
     );
   }
-
-
 
   /* ── BƯỚC 3: HOÀN TẤT (SUCCESS) ── */
   if (stage === 'success') {
@@ -408,14 +403,14 @@ export default function DeleteAccountHandler() {
               <polyline points="20 6 9 17 4 12"/>
             </svg>
           </div>
-          <h1 className="card-title">Đã xóa tài khoản</h1>
+          <h1 className="card-title">{t('accountDeleted')}</h1>
           <p className="card-subtitle" style={{ marginBottom: 24 }}>
-            Yêu cầu của bạn đã được thực hiện. Tài khoản và quyền truy cập của bạn đã bị gỡ bỏ khỏi hệ thống.
+            {t('accountDeletedDesc')}
           </p>
           <p className="card-subtitle" style={{ fontSize: 13, color: 'rgba(249,249,251,0.45)' }}>
-            Tiến trình xóa dữ liệu trên hệ thống sẽ hoàn tất hoàn toàn trong vài ngày tới theo Chính sách bảo mật. Cảm ơn bạn đã tin tưởng kết nối cùng Pianify.
+            {t('privacyPolicyNotice')}
           </p>
-          <Link href="/" className="btn-primary" style={{ textDecoration: 'none' }}>Về lại trang chủ</Link>
+          <Link href="/" className="btn-primary" style={{ textDecoration: 'none' }}>{t('backToHomeBtn')}</Link>
         </div>
       </div>
     );
