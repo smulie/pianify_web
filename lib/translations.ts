@@ -1,9 +1,9 @@
 export const translations = {
   en: {
     heroTitle: "Pianify",
-    heroSubtitle: "Your companion to awaken musical passion. Effective self-study app for beginners and advanced learners.",
+    heroSubtitle: "Your companion to awaken musical passion. An effective self-study app for beginners and intermediate learners.",
     metaTitle: "Pianify - Learn Piano Easily",
-    metaDescription: "Awaken your musical passion. Self-study a complete set of skills from basic to advanced with Pianify.",
+    metaDescription: "Awaken your musical passion. Self-study a complete set of skills from basic to intermediate with Pianify.",
     supportTitle: "Support",
     resetPassword: "Reset Password",
     deleteAccount: "Data Deletion Request",
@@ -64,9 +64,9 @@ export const translations = {
   },
   vi: {
     heroTitle: "Pianify",
-    heroSubtitle: "Người bạn đồng hành đánh thức đam mê âm nhạc. Ứng dụng tự học hiệu quả dành cho người mới và nâng cao.",
+    heroSubtitle: "Người bạn đồng hành đánh thức đam mê âm nhạc. Ứng dụng tự học hiệu quả dành cho người mới và trung cấp.",
     metaTitle: "Pianify - Học Piano Dễ Dàng",
-    metaDescription: "Đánh thức đam mê âm nhạc. Tự học trọn bộ kỹ năng từ cơ bản đến nâng cao cùng Pianify.",
+    metaDescription: "Đánh thức đam mê âm nhạc. Tự học trọn bộ kỹ năng từ cơ bản đến trung cấp cùng Pianify.",
     supportTitle: "Hỗ trợ người dùng",
     resetPassword: "Lấy lại mật khẩu",
     deleteAccount: "Yêu cầu xóa dữ liệu",
