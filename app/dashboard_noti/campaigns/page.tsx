@@ -15,6 +15,7 @@ interface Campaign {
   };
   scheduledTime: string; // ISO string for datetime-local input
   status: string;
+  testUserId?: string;
 }
 
 const DEFAULT_CAMPAIGN: Campaign = {
@@ -27,7 +28,8 @@ const DEFAULT_CAMPAIGN: Campaign = {
     route: "/(tabs)/learn"
   },
   scheduledTime: "",
-  status: "pending"
+  status: "pending",
+  testUserId: ""
 };
 
 export default function CampaignsPage() {
@@ -232,11 +234,19 @@ export default function CampaignsPage() {
                   <label style={{ display: "block", marginBottom: "8px", fontSize: "14px", color: "#a1a1aa" }}>Đối tượng (Target)</label>
                   <select value={editingCampaign.targetAudience} onChange={e => setEditingCampaign({...editingCampaign, targetAudience: e.target.value})} style={{ width: "100%", padding: "10px", background: "#1e1c31", border: "1px solid #403d5c", borderRadius: "8px", color: "#fff" }}>
                     <option value="all_users">Tất cả người dùng (All)</option>
+                    <option value="test_user">Gửi cho 1 người (Test User)</option>
                     <option value="inactive_3_days">Chưa học 3 ngày (Inactive)</option>
                     <option value="premium_only">Chỉ tài khoản Premium</option>
                   </select>
                 </div>
               </div>
+
+              {editingCampaign.targetAudience === "test_user" && (
+                <div>
+                  <label style={{ display: "block", marginBottom: "8px", fontSize: "14px", color: "#a1a1aa" }}>Nhập UID của người nhận</label>
+                  <input required value={editingCampaign.testUserId || ""} onChange={e => setEditingCampaign({...editingCampaign, testUserId: e.target.value})} style={{ width: "100%", padding: "10px", background: "#1e1c31", border: "1px solid #403d5c", borderRadius: "8px", color: "#fff" }} placeholder="VD: yfkXQjR6nwv2ZlV4igvC" />
+                </div>
+              )}
 
               <div style={{ borderTop: "1px solid #403d5c", margin: "8px 0" }}></div>
               <h3 style={{ fontSize: "16px", fontWeight: "600", color: "#e2e8f0" }}>Nội dung Push</h3>
