@@ -40,6 +40,20 @@ export default function DashboardNotiLayout({ children }: { children: React.Reac
           >
             🚀 Custom Campaigns
           </Link>
+          <Link 
+            href="/dashboard_noti/live_activities" 
+            style={{ 
+              padding: "12px 16px", 
+              borderRadius: "8px", 
+              textDecoration: "none",
+              color: pathname.includes("live_activities") ? "#fff" : "rgba(249, 249, 251, 0.7)",
+              backgroundColor: pathname.includes("live_activities") ? "#C442F0" : "transparent",
+              fontWeight: pathname.includes("live_activities") ? "600" : "500",
+              transition: "all 0.2s"
+            }}
+          >
+            ⚡ Live Activities
+          </Link>
         </nav>
       </div>
 
