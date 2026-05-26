@@ -75,7 +75,7 @@ export default function LiveActivitiesPage() {
     
     setIsSending(true);
     try {
-      const functions = getFunctions();
+      const functions = getFunctions(undefined, "asia-southeast1");
       const sendWakeUp = httpsCallable(functions, "dev_admin_live_activity_action");
       await sendWakeUp({ action: "wakeup", targetUid: uid });
       alert(`Đã gửi Silent Push (Wake Up) tới user ${uid}!`);
@@ -90,7 +90,7 @@ export default function LiveActivitiesPage() {
   const handleManualUpdate = async (uid: string, scenario: string) => {
     setIsSending(true);
     try {
-      const functions = getFunctions();
+      const functions = getFunctions(undefined, "asia-southeast1");
       const sendUpdate = httpsCallable(functions, "dev_admin_live_activity_action");
       await sendUpdate({ action: "update", targetUid: uid, scenario });
       alert(`Đã đẩy data update test tới Live Activity của user ${uid}!`);
