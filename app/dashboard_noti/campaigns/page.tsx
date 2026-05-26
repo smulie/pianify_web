@@ -21,7 +21,7 @@ interface Campaign {
 const DEFAULT_CAMPAIGN: Campaign = {
   id: "",
   name: "",
-  targetAudience: "all_users",
+  targetAudience: "test_user",
   template: {
     title: "",
     body: "",
