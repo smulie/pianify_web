@@ -14,6 +14,8 @@ interface LAAutomation {
   id: string;
   name: string;
   status: string;
+  targetAudience: string;
+  testUserId?: string;
   schedule: {
     type: string;
     hour: number;
@@ -43,6 +45,8 @@ const DEFAULT_AUTOMATION: LAAutomation = {
   id: "",
   name: "",
   status: "active",
+  targetAudience: "test_user",
+  testUserId: "",
   schedule: {
     type: "daily_local_time",
     hour: 20
@@ -80,7 +84,15 @@ export default function LiveActivityAutomationsPage() {
     try {
       const colRef = collection(db, "system/push_config/la_automations");
       const snapshot = await getDocs(colRef);
-      const data = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as LAAutomation));
+      const data = snapshot.docs.map(doc => {
+        const docData = doc.data();
+        return { 
+          id: doc.id, 
+          ...docData,
+          targetAudience: docData.targetAudience || "all_users",
+          testUserId: docData.testUserId || ""
+        } as LAAutomation;
+      });
       setAutomations(data);
     } catch (error) {
       console.error("Error fetching automations:", error);
@@ -274,6 +286,21 @@ export default function LiveActivityAutomationsPage() {
                     <label style={{ display: "block", marginBottom: "8px", fontSize: "14px", color: "#a1a1aa" }}>Giờ chạy (0 - 23)</label>
                     <input type="number" min="0" max="23" required value={editingAuto.schedule.hour} onChange={e => setEditingAuto({...editingAuto, schedule: { ...editingAuto.schedule, hour: parseInt(e.target.value) }})} style={{ width: "100%", padding: "10px", background: "#252239", border: "1px solid #403d5c", borderRadius: "8px", color: "#fff" }} />
                   </div>
+
+                  <div style={{ gridColumn: "1 / -1", marginTop: "8px" }}>
+                    <label style={{ display: "block", marginBottom: "8px", fontSize: "14px", color: "#a1a1aa" }}>Đối tượng (Target)</label>
+                    <select value={editingAuto.targetAudience} onChange={e => setEditingAuto({...editingAuto, targetAudience: e.target.value})} style={{ width: "100%", padding: "10px", background: "#252239", border: "1px solid #403d5c", borderRadius: "8px", color: "#fff" }}>
+                      <option value="test_user">Chỉ 1 người (Test User)</option>
+                      <option value="all_users">Tất cả người dùng (All)</option>
+                    </select>
+                  </div>
+
+                  {editingAuto.targetAudience === "test_user" && (
+                    <div style={{ gridColumn: "1 / -1" }}>
+                      <label style={{ display: "block", marginBottom: "8px", fontSize: "14px", color: "#a1a1aa" }}>Nhập UID của người nhận (Bắt buộc cho Test User)</label>
+                      <input required value={editingAuto.testUserId || ""} onChange={e => setEditingAuto({...editingAuto, testUserId: e.target.value})} style={{ width: "100%", padding: "10px", background: "#252239", border: "1px solid #403d5c", borderRadius: "8px", color: "#fff" }} placeholder="VD: yfkXQjR6nwv2ZlV4igvC" />
+                    </div>
+                  )}
                 </div>
               </div>
 
