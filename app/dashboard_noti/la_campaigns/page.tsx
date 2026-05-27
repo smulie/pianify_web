@@ -24,6 +24,7 @@ interface LACampaign {
       hoursInactive?: number;
       themeColor?: string;
       deadlineMs?: number | null;
+      titleMessage?: string;
     };
     alertTitle: string;
     alertBody: string;
@@ -359,17 +360,25 @@ export default function LiveActivityCampaignsPage() {
                 )}
 
                 {editingCampaign.template.uiType === "onboarding" && (
-                  <div>
-                    <label style={{ display: "block", marginBottom: "8px", fontSize: "12px", color: "#a1a1aa" }}>Theme Color</label>
-                    <select value={editingCampaign.template.contentState.themeColor || "pink"} onChange={e => setEditingCampaign({
-                      ...editingCampaign, template: { ...editingCampaign.template, contentState: { ...editingCampaign.template.contentState, themeColor: e.target.value } }
-                    })} style={{ width: "100%", padding: "8px", background: "#252239", border: "1px solid #403d5c", borderRadius: "6px", color: "#fff" }}>
-                      <option value="pink">Pink</option>
-                      <option value="blue">Blue</option>
-                      <option value="white">White</option>
-                      <option value="dark">Dark</option>
-                    </select>
-                  </div>
+                  <>
+                    <div>
+                      <label style={{ display: "block", marginBottom: "8px", fontSize: "12px", color: "#a1a1aa" }}>Title Message (Tiêu đề chào mừng)</label>
+                      <input value={editingCampaign.template.contentState.titleMessage || ""} onChange={e => setEditingCampaign({
+                        ...editingCampaign, template: { ...editingCampaign.template, contentState: { ...editingCampaign.template.contentState, titleMessage: e.target.value } }
+                      })} style={{ width: "100%", padding: "8px", background: "#252239", border: "1px solid #403d5c", borderRadius: "6px", color: "#fff" }} />
+                    </div>
+                    <div>
+                      <label style={{ display: "block", marginBottom: "8px", fontSize: "12px", color: "#a1a1aa" }}>Theme Color</label>
+                      <select value={editingCampaign.template.contentState.themeColor || "pink"} onChange={e => setEditingCampaign({
+                        ...editingCampaign, template: { ...editingCampaign.template, contentState: { ...editingCampaign.template.contentState, themeColor: e.target.value } }
+                      })} style={{ width: "100%", padding: "8px", background: "#252239", border: "1px solid #403d5c", borderRadius: "6px", color: "#fff" }}>
+                        <option value="pink">Pink</option>
+                        <option value="blue">Blue</option>
+                        <option value="white">White</option>
+                        <option value="dark">Dark</option>
+                      </select>
+                    </div>
+                  </>
                 )}
 
               </div>
