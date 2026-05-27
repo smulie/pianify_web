@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { db, app } from "@/lib/firebase";
+import { db, app, auth } from "@/lib/firebase";
 import { collectionGroup, getDocs, query, where, doc, updateDoc } from "firebase/firestore";
 import { getFunctions, httpsCallable } from "firebase/functions";
 
@@ -73,6 +73,7 @@ export default function LiveActivitiesPage() {
       return;
     }
     
+
     setIsSending(true);
     try {
       const functions = getFunctions(app, "asia-southeast1");

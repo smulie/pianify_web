@@ -54,6 +54,20 @@ export default function DashboardNotiLayout({ children }: { children: React.Reac
           >
             ⚡ Live Activities
           </Link>
+          <Link 
+            href="/dashboard_noti/la_campaigns" 
+            style={{ 
+              padding: "12px 16px", 
+              borderRadius: "8px", 
+              textDecoration: "none",
+              color: pathname.includes("la_campaigns") ? "#fff" : "rgba(249, 249, 251, 0.7)",
+              backgroundColor: pathname.includes("la_campaigns") ? "#f59e0b" : "transparent",
+              fontWeight: pathname.includes("la_campaigns") ? "600" : "500",
+              transition: "all 0.2s"
+            }}
+          >
+            ⏱️ Hẹn giờ Live Activity
+          </Link>
         </nav>
       </div>
 
