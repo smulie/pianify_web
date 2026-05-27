@@ -284,7 +284,7 @@ export default function LiveActivityAutomationsPage() {
 
                   <div>
                     <label style={{ display: "block", marginBottom: "8px", fontSize: "14px", color: "#a1a1aa" }}>Giờ chạy (0 - 23)</label>
-                    <input type="number" min="0" max="23" required value={editingAuto.schedule.hour} onChange={e => setEditingAuto({...editingAuto, schedule: { ...editingAuto.schedule, hour: parseInt(e.target.value) }})} style={{ width: "100%", padding: "10px", background: "#252239", border: "1px solid #403d5c", borderRadius: "8px", color: "#fff" }} />
+                    <input type="number" min="0" max="23" required value={editingAuto.schedule.hour} onChange={e => setEditingAuto({...editingAuto, schedule: { ...editingAuto.schedule, hour: parseInt(e.target.value) || 0 }})} style={{ width: "100%", padding: "10px", background: "#252239", border: "1px solid #403d5c", borderRadius: "8px", color: "#fff" }} />
                   </div>
 
                   <div style={{ gridColumn: "1 / -1", marginTop: "8px" }}>
