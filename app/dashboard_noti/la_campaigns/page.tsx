@@ -316,6 +316,13 @@ export default function LiveActivityCampaignsPage() {
                     <option value="mascot">Bình thường (mascot)</option>
                     <option value="fire">Lửa (fire)</option>
                     <option value="ios_widget_angry">Tức giận (ios_widget_angry)</option>
+                    <option value="ios_widget_danger_crying_hard">Khóc (ios_widget_danger_crying_hard)</option>
+                    <option value="ios_widget_danger_passiveaggressive">Dỗi (ios_widget_danger_passiveaggressive)</option>
+                    <option value="ios_widget_flow_encourage">Động viên (ios_widget_flow_encourage)</option>
+                    <option value="ios_widget_idea">Ý tưởng (ios_widget_idea)</option>
+                    <option value="ios_widget_checklist">Checklist (ios_widget_checklist)</option>
+                    <option value="ios_widget_win_maestro">Chiến thắng (ios_widget_win_maestro)</option>
+                    <option value="ios_widget_win_maestro_ftue">Chiến thắng FTUE (ios_widget_win_maestro_ftue)</option>
                   </select>
                 </div>
 
