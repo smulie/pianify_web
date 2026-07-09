@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { LanguageProvider } from "./LanguageContext";
-import LanguageSwitcher from "./LanguageSwitcher";
 import RoutePrefetcher from "./RoutePrefetcher";
 
 export const metadata: Metadata = {
@@ -18,7 +17,6 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body>
         <LanguageProvider>
-          <LanguageSwitcher />
           <RoutePrefetcher />
           {children}
         </LanguageProvider>

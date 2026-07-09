@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { signInWithEmailAndPassword, deleteUser, signOut, signInWithPopup, GoogleAuthProvider, OAuthProvider, getAdditionalUserInfo } from 'firebase/auth';
 import { auth } from '../../lib/firebase';
 import { useI18n } from '../LanguageContext';
+import LanguageSwitcher from '../LanguageSwitcher';
 
 /* ── Piano logo ── */
 function PianifyLogo() {
@@ -180,6 +181,7 @@ export default function DeleteAccountHandler() {
   if (stage === 'auth') {
     return (
       <div className="page-wrapper">
+        <LanguageSwitcher />
         <div className="card">
           <PianifyLogo />
           <h1 className="card-title">{t('deleteAccountTitle')}</h1>
@@ -280,6 +282,7 @@ export default function DeleteAccountHandler() {
 
     return (
       <div className="page-wrapper" style={{ flexDirection: 'column' }}>
+        <LanguageSwitcher />
         <div className="card" style={{ padding: '40px 24px', position: 'relative', marginBottom: 24, background: '#1c1b29', width: '100%', maxWidth: 440 }}>
           {/* Close button */}
           <button 
@@ -396,6 +399,7 @@ export default function DeleteAccountHandler() {
   if (stage === 'success') {
     return (
       <div className="page-wrapper">
+        <LanguageSwitcher />
         <div className="card">
           <PianifyLogo />
           <div className="success-icon" style={{ marginTop: 20 }}>

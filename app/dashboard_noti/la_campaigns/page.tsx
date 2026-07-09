@@ -392,7 +392,15 @@ export default function LiveActivityCampaignsPage() {
 
               {/* Alert Data */}
               <div style={{ borderTop: "1px solid #403d5c", margin: "8px 0" }}></div>
-              <h3 style={{ fontSize: "16px", fontWeight: "600", color: "#e2e8f0" }}>Thông báo nổi (Push Alert)</h3>
+              <div style={{ marginBottom: "16px", padding: "12px", background: "#3b82f620", border: "1px solid #3b82f640", borderRadius: "8px" }}>
+                <h4 style={{ fontSize: "14px", fontWeight: "bold", color: "#60a5fa", marginBottom: "8px" }}>💡 Mẹo cá nhân hoá & A/B Testing</h4>
+                <ul style={{ fontSize: "13px", color: "#e2e8f0", margin: 0, paddingLeft: "20px" }}>
+                  <li style={{ marginBottom: "4px" }}>Gõ <strong>{`{{userName}}`}</strong> để gọi tên User (VD: Chào {`{{userName}}`}!)</li>
+                  <li style={{ marginBottom: "4px" }}>Gõ <strong>{`{{streakCount}}`}</strong> để hiển thị số ngày học liên tiếp</li>
+                  <li>Gõ <strong>{`{Câu A|Câu B|Câu C}`}</strong> để hệ thống ngẫu nhiên chọn 1 câu (Dùng cho A/B Testing)</li>
+                </ul>
+              </div>
+              <h3 style={{ fontSize: "16px", fontWeight: "600", color: "#e2e8f0", marginBottom: "16px" }}>Thông báo nổi (Push Alert)</h3>
               
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
                 <div>

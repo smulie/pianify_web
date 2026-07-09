@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { sendPasswordResetEmail } from 'firebase/auth';
 import { auth } from '../../lib/firebase';
 import { useI18n } from '../LanguageContext';
+import LanguageSwitcher from '../LanguageSwitcher';
 
 /* ── Piano logo ── */
 function PianifyLogo() {
@@ -53,6 +54,7 @@ export default function ResetPasswordHandler() {
   if (stage === 'sent') {
     return (
       <div className="page-wrapper">
+        <LanguageSwitcher />
         <div className="card">
           <PianifyLogo />
           <div className="success-icon">
@@ -84,6 +86,7 @@ export default function ResetPasswordHandler() {
   /* ── Form state ── */
   return (
     <div className="page-wrapper">
+      <LanguageSwitcher />
       <div className="card">
         <PianifyLogo />
         <h1 className="card-title">{t('resetPassTitle')}</h1>

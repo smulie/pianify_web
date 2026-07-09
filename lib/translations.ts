@@ -1,13 +1,12 @@
 export const translations = {
   en: {
-    heroTitle: "Pianify",
-    heroSubtitle: "Your companion to awaken musical passion. An effective self-study app for beginners and intermediate learners.",
-    metaTitle: "Pianify - Learn Piano Easily",
-    metaDescription: "Awaken your musical passion. Self-study a complete set of skills from basic to intermediate with Pianify.",
-    supportTitle: "Support",
+    metaTitle: "Orbit - AI Coding Agent for game and product teams",
+    metaDescription: "Orbit plans, edits, tests, reviews, and documents work across React Native, Godot, and complex native modules. Built from the way Pianify ships real features.",
+    
+    // Support keys (retained)
+    supportTitle: "Support Portal",
     resetPassword: "Reset Password",
     deleteAccount: "Data Deletion Request",
-    // Reset Password
     resetPassTitle: "Forgot Password?",
     resetPassSubtitle: "Enter your email to receive password reset instructions.",
     emailLabel: "Your Email",
@@ -19,7 +18,6 @@ export const translations = {
     requestSuccessDesc: "We have sent password reset instructions to",
     checkInbox: "Please check your inbox (including spam/promotions).",
     resendEmail: "Resend Email",
-    // Delete Account
     deleteAccountTitle: "Delete Account",
     deleteAccountSubtitle: "Please log in to confirm account ownership before requesting data deletion.",
     accountEmail: "Account Email",
@@ -48,7 +46,144 @@ export const translations = {
     accountDeletedDesc: "Your request has been fulfilled. Your account and access have been removed from the system.",
     privacyPolicyNotice: "Data deletion will be complete in a few days according to our Privacy Policy. Thank you for using Pianify.",
     backToHomeBtn: "Back to Home",
-    // Errors
+    
+    // Navbar
+    navProduct: "Product",
+    navSolutions: "Solutions",
+    navShowcase: "Showcase",
+    navResources: "Resources",
+    navPricing: "Pricing",
+    navSecurity: "Security",
+    navDownload: "Download",
+    navSignIn: "Sign In",
+    navRequestDemo: "Request Demo",
+
+    // Homepage Hero
+    heroTitle: "Build games and apps with an agent that understands the whole codebase.",
+    heroSubtitle: "Orbit plans, edits, tests, reviews, and documents work across React Native, Godot, native modules, and product backlogs. Built from the way Pianify ships real features.",
+    ctaDownload: "Download Orbit",
+    ctaDemo: "Request a Demo",
+    ctaShowcase: "View Showcase",
+    
+    // Trust
+    trustLabel: "Built from Pianify's real production loops:",
+    trustReact: "React Native App",
+    trustGodot: "Godot Game Engine",
+    trustAudio: "Native Audio / AI Note Detection",
+    trustQA: "Smoke Test & QA Automation",
+
+    // Pianify Proof Section
+    proofTitle: "Real-World Production Proof: Pianify",
+    proofSubtitle: "Pianify is a feature-rich music education app with rhythm games, haptics, low-latency audio pipelines, and AI note detection. Orbit built these features from backlog to verification.",
+    proofCard1Title: "Rhythm Games & Godot",
+    proofCard1Desc: "Orbit planned, implemented, and verified Godot embedded game files, haptic signals, and React Native bridges.",
+    proofCard2Title: "AI Note Detection",
+    proofCard2Desc: "Orbit documented the native C++/Java audio lifecycle pipelines, auto-updated developer documentation, and debugged latency bottlenecks.",
+    proofCard3Title: "Course Crawler QA",
+    proofCard3Desc: "Orbit built automated smoke tests and course crawler workflows that parse JSON lesson tracks to verify sheet note accuracy.",
+
+    // Orbit USPs
+    uspsTitle: "Autonomous Agent. Human Control.",
+    uspsSubtitle: "Orbit is not just a coding chat interface. It acts as an autonomous engineer with rigorous validation gates.",
+    usp1Title: "Codebase Context",
+    usp1Desc: "Indexes files, assets, engine bridges, and configs to understand exactly how changes impact the entire software architecture.",
+    usp2Title: "Agent Planning",
+    usp2Desc: "Creates, executes, and revises implementation plans step-by-step. Re-runs plans if intermediate checks fail.",
+    usp3Title: "Parallel Tasks",
+    usp3Desc: "Handles background tasks in parallel. Build, test, and write logs asynchronously while keeping you in the loop.",
+    usp4Title: "Game Dev Workflows",
+    usp4Desc: "Engine-aware capabilities to compile, test, and package Godot, Unity, or mobile game modules.",
+    usp5Title: "Review & Test Automation",
+    usp5Desc: "Drafts pull request reviews, designs automation scripts, and validates codebase compilation gates before merge.",
+    usp6Title: "Docs Generation",
+    usp6Desc: "Synchronizes documentation, sprint backlogs, and walkthroughs automatically with code changes.",
+
+    // Autonomy Section
+    autonomyTitle: "Autonomy with guardrails",
+    autonomySubtitle: "You control the execution loop. Orbit plans and edits, but commands and modifications only run after your explicit approval.",
+    autonomyCard1Title: "Interactive Plans",
+    autonomyCard1Desc: "Approve, edit, or reject the agent's implementation strategy before it writes code.",
+    autonomyCard2Title: "Approval Terminals",
+    autonomyCard2Desc: "Commands are proposed and paused. Command lines only run with user permissions.",
+    autonomyCard3Title: "Verification Gates",
+    autonomyCard3Desc: "Tests run automatically. Failed compiles trigger corrective loops before delivery.",
+
+    // Download Page
+    downloadTitle: "Get Orbit IDE",
+    downloadSubtitle: "Download the agentic coding environment built for game and product developers.",
+    downloadDetectedOS: "Detected Platform:",
+    downloadMac: "macOS Intel & Apple Silicon",
+    downloadWindows: "Windows 64-bit Installer",
+    downloadLinux: "Linux .AppImage / .deb",
+    downloadStable: "Stable Release",
+    downloadBeta: "Beta Preview",
+    downloadStableDesc: "Tested, reliable, updated bi-weekly.",
+    downloadBetaDesc: "Cutting-edge agent models, updated daily.",
+    downloadInstallInstructions: "Installation Instructions",
+    downloadMacInstructions: "Drag Orbit to Applications folder. Run 'xattr -cr /Applications/Orbit.app' in terminal if gatekeeper warning appears.",
+    downloadWinInstructions: "Run OrbitSetup.exe. Follow the setup wizard. Orbit updates automatically in the background.",
+    downloadLinInstructions: "Run 'chmod +x Orbit.AppImage' followed by './Orbit.AppImage' to launch.",
+    downloadPrivateWaitlist: "Orbit is currently in private beta. Download links require active credentials. Join waitlist to get your access key.",
+
+    // Pricing Page
+    pricingTitle: "Simple, honest plans",
+    pricingSubtitle: "Whether you're an indie developer or scaling a game studio, choose the right fit.",
+    pricingBetaBanner: "Private Beta Invite-Only. Plans below outline packaging availability.",
+    planFreeTitle: "Individual / Indie",
+    planFreePrice: "$0",
+    planFreeSub: "Free forever",
+    planFreeDesc: "For solo developers building projects.",
+    planTeamTitle: "Team Plan",
+    planTeamPrice: "$29",
+    planTeamSub: "per user / month",
+    planTeamDesc: "For software and game studios scaling up.",
+    planEntTitle: "Enterprise",
+    planEntPrice: "Custom",
+    planEntSub: "Contact sales",
+    planEntDesc: "For companies needing security controls.",
+    pricingMatrixTitle: "Compare Features",
+    pricingCompareAgentTasks: "Parallel agent tasks",
+    pricingCompareCodebase: "Codebase indexing",
+    pricingCompareModel: "Advanced LLM access",
+    pricingCompareTelemetry: "Private data controls",
+    pricingCompareSupport: "Dedicated support",
+
+    // Request Demo Page
+    demoTitle: "Request an Orbit Demo",
+    demoSubtitle: "Scale your development loop. Get a personalized walkthrough of Orbit integrating with your game or product codebase.",
+    demoFormName: "Full Name",
+    demoFormEmail: "Work Email",
+    demoFormCompany: "Company Name",
+    demoFormRole: "Your Role",
+    demoFormTeamSize: "Team Size",
+    demoFormUseCase: "Use Case / Stacks",
+    demoFormMessage: "How can Orbit help your team?",
+    demoFormSubmit: "Submit Demo Request",
+    demoFormSuccess: "Thank you! Our engineering team will contact you within 24 hours to schedule the demo.",
+    demoFormFallback: "If you encounter any issues, contact us directly at: sales@pianify.co",
+
+    // Showcase Page
+    showcaseTitle: "Codebase Showcase",
+    showcaseSubtitle: "Deep-dives into real features built and shipped by Orbit on Pianify.",
+    showcaseFilterAll: "All Use Cases",
+    showcaseFilterGames: "Games & Godot",
+    showcaseFilterMobile: "Mobile Stacks",
+    showcaseFilterAI: "AI / Audio",
+    showcaseFilterQA: "QA / Automation",
+
+    // Solutions Pages
+    solutionsGameTitle: "Orbit for Game Studios",
+    solutionsGameSub: "Generic AI tools fail in game code. Orbit understands game assets, engines, scenes, and complex cross-language compilation bridges.",
+    solutionsMobileTitle: "Orbit for Mobile Teams",
+    solutionsMobileSub: "Accelerate native bridges, low-latency audio modules, state updates, and App Store verification flows.",
+    solutionsQATitle: "Orbit for QA & Automation",
+    solutionsQASub: "Write crawler bots, schedule smoke test scenarios, capture verification evidence, and generate sprint backlog reviews autonomously.",
+
+    // Trust / Legal placeholders
+    legalDraftMarker: "Draft Pending Legal Review",
+    legalLastUpdated: "Last Updated: July 2026",
+
+    // Errors (retained)
     errEmailNotFound: "Email does not exist in the system.",
     errTooManyRequests: "Too many requests. Please try again in a few minutes.",
     errGeneric: "An error occurred. Please try again.",
@@ -63,14 +198,13 @@ export const translations = {
     errDeleteAccount: "Error deleting account. Please try again."
   },
   vi: {
-    heroTitle: "Pianify",
-    heroSubtitle: "Người bạn đồng hành đánh thức đam mê âm nhạc. Ứng dụng tự học hiệu quả dành cho người mới và trung cấp.",
-    metaTitle: "Pianify - Học Piano Dễ Dàng",
-    metaDescription: "Đánh thức đam mê âm nhạc. Tự học trọn bộ kỹ năng từ cơ bản đến trung cấp cùng Pianify.",
-    supportTitle: "Hỗ trợ người dùng",
+    metaTitle: "Orbit - AI Coding Agent cho nhóm làm game và sản phẩm",
+    metaDescription: "Orbit lập kế hoạch, chỉnh sửa code, chạy test, review và ghi tài liệu cho React Native, Godot, module gốc. Đúc kết từ quy trình phát triển thực tế của Pianify.",
+    
+    // Support keys (retained)
+    supportTitle: "Cổng hỗ trợ người dùng",
     resetPassword: "Lấy lại mật khẩu",
     deleteAccount: "Yêu cầu xóa dữ liệu",
-    // Reset Password
     resetPassTitle: "Quên mật khẩu?",
     resetPassSubtitle: "Nhập email để nhận hướng dẫn đặt lại mật khẩu.",
     emailLabel: "Email của bạn",
@@ -82,7 +216,6 @@ export const translations = {
     requestSuccessDesc: "Chúng tôi đã gửi email hướng dẫn đặt lại mật khẩu đến",
     checkInbox: "Vui lòng kiểm tra hộp thư (cả mục spam/quảng cáo).",
     resendEmail: "Gửi lại email",
-    // Delete Account
     deleteAccountTitle: "Xóa tài khoản",
     deleteAccountSubtitle: "Vui lòng đăng nhập để xác nhận quyền sở hữu tài khoản trước khi yêu cầu xóa dữ liệu.",
     accountEmail: "Email tài khoản",
@@ -111,7 +244,144 @@ export const translations = {
     accountDeletedDesc: "Yêu cầu của bạn đã được thực hiện. Tài khoản và quyền truy cập của bạn đã bị gỡ bỏ khỏi hệ thống.",
     privacyPolicyNotice: "Tiến trình xóa dữ liệu trên hệ thống sẽ hoàn tất hoàn toàn trong vài ngày tới theo Chính sách bảo mật. Cảm ơn bạn đã tin tưởng kết nối cùng Pianify.",
     backToHomeBtn: "Về lại trang chủ",
-    // Errors
+
+    // Navbar
+    navProduct: "Sản phẩm",
+    navSolutions: "Giải pháp",
+    navShowcase: "Dự án thực tế",
+    navResources: "Tài nguyên",
+    navPricing: "Bảng giá",
+    navSecurity: "Bảo mật",
+    navDownload: "Tải về",
+    navSignIn: "Đăng nhập",
+    navRequestDemo: "Yêu cầu Demo",
+
+    // Homepage Hero
+    heroTitle: "Xây dựng game và ứng dụng cùng AI Agent thấu hiểu toàn bộ codebase.",
+    heroSubtitle: "Orbit lập kế hoạch, viết code, chạy test, review và tự viết tài liệu trên React Native, Godot, module native và backlog sản phẩm. Đúc kết từ cách Pianify phát triển thực tế.",
+    ctaDownload: "Tải về Orbit",
+    ctaDemo: "Yêu cầu Demo",
+    ctaShowcase: "Xem Showcase",
+
+    // Trust
+    trustLabel: "Đúc kết từ quy trình phát triển thực tế của Pianify:",
+    trustReact: "Ứng dụng React Native",
+    trustGodot: "Game Engine Godot",
+    trustAudio: "Xử lý âm thanh / Nhận diện nốt AI",
+    trustQA: "Tự động hóa kiểm thử & QA",
+
+    // Pianify Proof Section
+    proofTitle: "Bằng chứng thực tế: Pianify",
+    proofSubtitle: "Pianify là ứng dụng học nhạc chuyên sâu với rhythm game, phản hồi rung (haptic), luồng âm thanh độ trễ thấp và nhận diện nốt nhạc AI. Orbit đã tự tay xây dựng các tính năng này từ khâu lập kế hoạch đến kiểm thử.",
+    proofCard1Title: "Rhythm Games & Godot",
+    proofCard1Desc: "Orbit lập kế hoạch, cài đặt và kiểm thử tích hợp game Godot, xử lý tín hiệu phản hồi rung haptic và cầu kết nối React Native.",
+    proofCard2Title: "Nhận diện nốt nhạc AI",
+    proofCard2Desc: "Orbit biên soạn tài liệu kỹ thuật cho luồng âm thanh native C++/Java, tự động cập nhật tài liệu phát triển và dò lỗi trễ âm.",
+    proofCard3Title: "QA Crawler bài học",
+    proofCard3Desc: "Orbit lập trình kịch bản chạy test khói tự động và crawler bài học, phân tích cấu trúc dữ liệu JSON để xác thực nốt nhạc trên khuông.",
+
+    // Orbit USPs
+    uspsTitle: "Agent tự trị. Con người làm chủ.",
+    uspsSubtitle: "Orbit không chỉ là ô chat gõ code thông thường. Hệ thống đóng vai trò một kỹ sư tự động có quy trình xác thực chặt chẽ.",
+    usp1Title: "Thấu hiểu Codebase",
+    usp1Desc: "Lập chỉ mục toàn bộ file, asset, cầu nối engine và file cấu hình để hiểu chính xác thay đổi tác động thế nào tới toàn bộ kiến trúc.",
+    usp2Title: "Kế hoạch Agent",
+    usp2Desc: "Tạo lập, thực thi và chỉnh sửa kế hoạch triển khai từng bước một. Tự động chạy lại kế hoạch nếu các bước trung gian bị lỗi.",
+    usp3Title: "Tác vụ Song song",
+    usp3Desc: "Xử lý chạy build, chạy test và ghi log dưới nền một cách song song mà vẫn giữ cho bạn liên tục nắm bắt tiến độ.",
+    usp4Title: "Tối ưu hóa Game Dev",
+    usp4Desc: "Am hiểu sâu cấu trúc engine để tự chạy biên dịch, chạy thử và đóng gói các module game Godot, Unity hoặc mobile game.",
+    usp5Title: "Tự động hóa Review & Test",
+    usp5Desc: "Tự soạn thảo review Pull Request, thiết kế kịch bản tự động hóa và xác thực khả năng build thành công trước khi merge code.",
+    usp6Title: "Tự viết Tài liệu",
+    usp6Desc: "Tự động đồng bộ hóa tài liệu kỹ thuật, backlog công việc và walkthrough hệ thống tương ứng với các thay đổi code thực tế.",
+
+    // Autonomy Section
+    autonomyTitle: "Tự trị có kiểm soát",
+    autonomySubtitle: "Bạn là người điều khiển luồng thực thi. Orbit đề xuất kế hoạch và sửa code, nhưng các lệnh terminal và việc lưu file chỉ chạy khi bạn cho phép.",
+    autonomyCard1Title: "Kế hoạch tương tác",
+    autonomyCard1Desc: "Duyệt qua, sửa đổi hoặc bác bỏ chiến lược thực thi của Agent trước khi hệ thống bắt đầu viết code.",
+    autonomyCard2Title: "Terminal xác thực",
+    autonomyCard2Desc: "Các dòng lệnh terminal được đề xuất và tạm dừng. Lệnh chỉ chạy khi có sự phê duyệt trực tiếp của người dùng.",
+    autonomyCard3Title: "Cổng kiểm thử tự động",
+    autonomyCard3Desc: "Các bài test chạy tự động. Biên dịch lỗi sẽ kích hoạt chu kỳ sửa đổi của Agent trước khi bàn giao.",
+
+    // Download Page
+    downloadTitle: "Tải về Orbit IDE",
+    downloadSubtitle: "Tải môi trường lập trình AI thế hệ mới được thiết kế riêng cho nhóm làm game và sản phẩm.",
+    downloadDetectedOS: "Nền tảng phát hiện:",
+    downloadMac: "macOS Intel & Apple Silicon",
+    downloadWindows: "Windows 64-bit Installer",
+    downloadLinux: "Linux .AppImage / .deb",
+    downloadStable: "Phiên bản Ổn định (Stable)",
+    downloadBeta: "Phiên bản Thử nghiệm (Beta)",
+    downloadStableDesc: "Đã qua kiểm thử, hoạt động tin cậy, cập nhật mỗi 2 tuần.",
+    downloadBetaDesc: "Tích hợp mô hình AI mới nhất, cập nhật hàng ngày.",
+    downloadInstallInstructions: "Hướng dẫn cài đặt",
+    downloadMacInstructions: "Kéo Orbit vào thư mục Applications. Chạy lệnh 'xattr -cr /Applications/Orbit.app' nếu gặp cảnh báo Gatekeeper bảo mật.",
+    downloadWinInstructions: "Chạy file OrbitSetup.exe và làm theo hướng dẫn. Ứng dụng tự động cập nhật dưới nền.",
+    downloadLinInstructions: "Chạy lệnh 'chmod +x Orbit.AppImage' sau đó gõ './Orbit.AppImage' để mở ứng dụng.",
+    downloadPrivateWaitlist: "Orbit đang trong giai đoạn thử nghiệm giới hạn. Link tải yêu cầu tài khoản được cấp quyền. Đăng ký waitlist để nhận khóa kích hoạt.",
+
+    // Pricing Page
+    pricingTitle: "Gói dịch vụ rõ ràng",
+    pricingSubtitle: "Cho dù bạn là nhà phát triển độc lập hay đang vận hành một game studio lớn, hãy chọn gói phù hợp.",
+    pricingBetaBanner: "Thử nghiệm Private Beta. Các thông tin dưới đây mô tả cấu trúc gói dịch vụ dự kiến.",
+    planFreeTitle: "Cá nhân / Indie",
+    planFreePrice: "$0",
+    planFreeSub: "Miễn phí mãi mãi",
+    planFreeDesc: "Dành cho nhà phát triển cá nhân xây dựng dự án nhỏ.",
+    planTeamTitle: "Gói Nhóm (Team)",
+    planTeamPrice: "$29",
+    planTeamSub: "mỗi thành viên / tháng",
+    planTeamDesc: "Dành cho các studio phần mềm và game đang tăng tốc sản xuất.",
+    planEntTitle: "Doanh nghiệp (Enterprise)",
+    planEntPrice: "Liên hệ",
+    planEntSub: "Trao đổi với bộ phận sales",
+    planEntDesc: "Dành cho các doanh nghiệp cần kiểm soát an ninh và dữ liệu nghiêm ngặt.",
+    pricingMatrixTitle: "So sánh chi tiết",
+    pricingCompareAgentTasks: "Số tác vụ chạy song song",
+    pricingCompareCodebase: "Lập chỉ mục Codebase",
+    pricingCompareModel: "Sử dụng LLM nâng cao",
+    pricingCompareTelemetry: "Bảo mật dữ liệu riêng tư",
+    pricingCompareSupport: "Hỗ trợ kỹ thuật riêng",
+
+    // Request Demo Page
+    demoTitle: "Yêu cầu Demo Orbit",
+    demoSubtitle: "Tối ưu hóa quy trình phát triển. Nhận buổi hướng dẫn trực tiếp từ đội ngũ Orbit trên chính codebase game hoặc ứng dụng của bạn.",
+    demoFormName: "Họ và Tên",
+    demoFormEmail: "Email công việc",
+    demoFormCompany: "Tên công ty",
+    demoFormRole: "Chức vụ của bạn",
+    demoFormTeamSize: "Quy mô đội ngũ",
+    demoFormUseCase: "Lĩnh vực / Công nghệ sử dụng",
+    demoFormMessage: "Orbit có thể giúp gì cho đội ngũ của bạn?",
+    demoFormSubmit: "Gửi yêu cầu Demo",
+    demoFormSuccess: "Cảm ơn bạn! Đội ngũ kỹ sư của chúng tôi sẽ liên hệ với bạn trong vòng 24 giờ để lên lịch demo.",
+    demoFormFallback: "If you encounter any issues, contact us directly at: sales@pianify.co",
+
+    // Showcase Page
+    showcaseTitle: "Thư viện Codebase Showcase",
+    showcaseSubtitle: "Phân tích chi tiết các tính năng thực tế được xây dựng và phát hành bởi Orbit trên ứng dụng Pianify.",
+    showcaseFilterAll: "Tất cả lĩnh vực",
+    showcaseFilterGames: "Games & Godot",
+    showcaseFilterMobile: "Mobile Stacks",
+    showcaseFilterAI: "AI / Audio",
+    showcaseFilterQA: "QA / Tự động hóa",
+
+    // Solutions Pages
+    solutionsGameTitle: "Orbit cho Game Studios",
+    solutionsGameSub: "Các công cụ AI thông thường gặp khó khăn với code game. Orbit hiểu rõ các asset game, engine, scene và các cầu nối biên dịch chéo ngôn ngữ phức tạp.",
+    solutionsMobileTitle: "Orbit cho Mobile Teams",
+    solutionsMobileSub: "Tăng tốc viết native bridge, module âm thanh độ trễ thấp, cập nhật trạng thái state và quy trình kiểm duyệt App Store.",
+    solutionsQATitle: "Orbit cho QA & Tự động hóa",
+    solutionsQASub: "Tự viết crawler bot, lên lịch chạy smoke test, tự động chụp bằng chứng xác thực và tạo báo cáo backlog công việc.",
+
+    // Trust / Legal placeholders
+    legalDraftMarker: "Bản thảo đang chờ phê duyệt pháp lý",
+    legalLastUpdated: "Cập nhật lần cuối: Tháng 7/2026",
+
+    // Errors (retained)
     errEmailNotFound: "Email không tồn tại trong hệ thống.",
     errTooManyRequests: "Quá nhiều yêu cầu. Vui lòng thử lại sau vài phút.",
     errGeneric: "Đã xảy ra lỗi. Vui lòng thử lại.",
