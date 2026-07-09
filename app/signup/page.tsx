@@ -30,7 +30,7 @@ export default function SignupPage() {
   };
 
   const handleOAuth = (provider: string) => {
-    alert(`${language === 'vi' ? 'Đang khởi động liên kết' : 'Initializing oauth flow for'} ${provider}...`);
+    alert(`${language === 'vi' ? 'Đang kết nối liên kết' : 'Initializing oauth flow for'} ${provider}...`);
   };
 
   const currentYear = new Date().getFullYear();
@@ -43,7 +43,7 @@ export default function SignupPage() {
         <div className="navbar-container" style={{ justifyContent: 'center' }}>
           <Link href="/" className="nav-brand">
             <img src="/logo.png" alt="Pianify Logo" className="nav-logo" />
-            <span className="nav-logo-text">Orbit</span>
+            <span className="nav-logo-text">Pianify</span>
           </Link>
         </div>
       </header>
@@ -61,7 +61,7 @@ export default function SignupPage() {
                 {language === 'vi' ? 'Đăng ký tài khoản thành công!' : 'Account Created Successfully!'}
               </h3>
               <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)', lineHeight: 1.5, marginBottom: 24 }}>
-                {language === 'vi' ? 'Vui lòng kiểm tra email để xác thực tài khoản trước khi đăng nhập.' : 'Please check your email inbox to verify your account details.'}
+                {language === 'vi' ? 'Vui lòng kiểm tra email để xác thực tài khoản học viên trước khi đăng nhập.' : 'Please check your email inbox to verify your student account before logging in.'}
               </p>
               <Link href="/login" className="btn-primary" style={{ textDecoration: 'none', display: 'inline-block', width: 'auto', padding: '10px 24px', borderRadius: 30 }}>
                 {t('navSignIn')}
@@ -70,10 +70,10 @@ export default function SignupPage() {
           ) : (
             <>
               <h2 style={{ fontSize: 22, fontWeight: 800, textAlign: 'center', marginBottom: 8, color: '#fff' }}>
-                {language === 'vi' ? 'Tạo tài khoản Orbit' : 'Create Orbit Account'}
+                {t('authSignupTitle')}
               </h2>
               <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', textAlign: 'center', marginBottom: 24 }}>
-                {language === 'vi' ? 'Bắt đầu sử dụng Orbit Agent miễn phí ngay hôm nay' : 'Start leveraging Orbit Agent tools for free today'}
+                {t('authSignupSub')}
               </p>
 
               {error && (
@@ -89,7 +89,7 @@ export default function SignupPage() {
                     type="email" 
                     required 
                     className="form-input" 
-                    placeholder="user@example.com"
+                    placeholder="student@example.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     disabled={loading}
@@ -171,7 +171,7 @@ export default function SignupPage() {
       <footer className="footer-wrap">
         <div className="footer-inner" style={{ justifyContent: 'center' }}>
           <div className="footer-copy">
-            © {currentYear} Orbit Coding Agent (Smulie Studio). All rights reserved.
+            © {currentYear} Pianify (Smulie Studio). All rights reserved.
           </div>
         </div>
       </footer>

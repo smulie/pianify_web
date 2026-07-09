@@ -1,12 +1,144 @@
 export const translations = {
   en: {
-    metaTitle: "Orbit - AI Coding Agent for game and product teams",
-    metaDescription: "Orbit plans, edits, tests, reviews, and documents work across React Native, Godot, and complex native modules. Built from the way Pianify ships real features.",
-    
-    // Support keys (retained)
+    heroTitle: "Learn Piano Easily",
+    heroSubtitle: "Pianify is your intelligent companion to awaken musical passion. Self-study from basic to intermediate with interactive, step-by-step lessons.",
+    metaTitle: "Pianify - Learn Piano Easily",
+    metaDescription: "Awaken your musical passion. Self-study a complete set of skills from basic to intermediate with Pianify.",
     supportTitle: "Support Portal",
     resetPassword: "Reset Password",
     deleteAccount: "Data Deletion Request",
+    
+    // Navigation
+    navFeatures: "Features",
+    navCourses: "Courses",
+    navReviews: "Reviews",
+    navFAQ: "FAQ",
+    navDownload: "Download App",
+    navAbout: "About Us",
+    navPricing: "Pricing",
+    navLessons: "1-to-1 Lessons",
+    navSignIn: "Sign In",
+    navSignUp: "Sign Up",
+
+    // Stats
+    statsDownloads: "1M+",
+    statsDownloadsLabel: "Downloads",
+    statsRating: "4.8★",
+    statsRatingLabel: "App Store Rating",
+    statsSongs: "200+",
+    statsSongsLabel: "Popular Songs",
+    statsLessons: "100+",
+    statsLessonsLabel: "Lessons",
+
+    // Features Section
+    featuresTitle: "Why Choose Pianify?",
+    featuresSubtitle: "Everything you need to master the piano, right in your pocket.",
+    featureFeedbackTitle: "Real-Time Feedback",
+    featureFeedbackDesc: "Our intelligent audio engine listens to your playing via microphone or MIDI and shows you correct or incorrect notes instantly.",
+    featurePathTitle: "Structured Learning Paths",
+    featurePathDesc: "Curriculum tailored for all levels. Start from naming notes and posture, then advance to playing with both hands.",
+    featureSongsTitle: "Curated Song Library",
+    featureSongsDesc: "Practice with songs you love! From classical pieces like Beethoven to pop hits and movie soundtracks.",
+
+    // How It Works
+    howItWorksTitle: "How It Works",
+    howItWorksSubtitle: "Three simple steps to start playing your favorite tunes.",
+    step1Title: "1. Connect",
+    step1Desc: "Place your phone or tablet on your piano or keyboard. It works with acoustic pianos, digital pianos, or MIDI keyboards.",
+    step2Title: "2. Play & Feedback",
+    step2Desc: "Follow the interactive guide. As you play, the app provides real-time green/red highlights to guide your timing and notes.",
+    step3Title: "3. Improve Daily",
+    step3Desc: "Track your practice streaks, unlock badges, and practice with custom workouts to master the chords.",
+
+    // Courses Section
+    coursesTitle: "Popular Courses",
+    coursesSubtitle: "Start your musical journey with step-by-step guidance.",
+    course1Title: "Piano Basics",
+    course1Desc: "Learn key names, basic posture, and simple hand movements.",
+    course2Title: "Classical Journey",
+    course2Desc: "Dive into legendary pieces by Bach, Beethoven, Mozart, and more.",
+    course3Title: "Pop & Hits",
+    course3Desc: "Play popular songs with simplified and advanced arrangements.",
+    course4Title: "Chord Masterclass",
+    course4Desc: "Learn how to read sheet music chords and accompany singers.",
+
+    // Reviews Section
+    reviewsTitle: "Loved by Piano Students",
+    reviewsSubtitle: "See how Pianify helps thousands of students around the world.",
+    review1Name: "Emily Robinson",
+    review1Role: "Adult Beginner",
+    review1Text: "Pianify made learning piano so much fun! The feedback is incredibly fast, and I learned my first classical song in just a few days.",
+    review2Name: "Minh Tu",
+    review2Role: "Returning Player",
+    review2Text: "I stopped playing piano for years and wanted to pick it up again. The structured paths and popular songs were exactly what I needed.",
+    review3Name: "Daniel K.",
+    review3Role: "Music Student",
+    review3Text: "The sight-reading exercises are brilliant. The visual engine guides your left and right hands separately, which is extremely helpful.",
+
+    // FAQ Section
+    faqTitle: "Frequently Asked Questions",
+    faqSubtitle: "Got questions? We've got answers.",
+    faqQ1: "Do I need a piano or keyboard to use the app?",
+    faqA1: "Yes, you need some form of keyboard instrument. It can be a grand piano, upright acoustic piano, digital piano, or a MIDI/USB controller keyboard.",
+    faqQ2: "How does the app hear what I play?",
+    faqA2: "Pianify uses your device's built-in microphone to listen to acoustic sounds, or you can connect a digital piano/keyboard using a MIDI cable for 100% accurate note recognition.",
+    faqQ3: "Can I try the app for free?",
+    faqA3: "Yes! You can download the app for free on iOS or Android and access several beginner lessons and songs without paying.",
+    faqQ4: "How do I manage my account and data?",
+    faqA4: "You can use this support portal to request password resets or account deletion. Subscriptions must be cancelled via App Store or Google Play settings.",
+    
+    // CTA Section
+    ctaTitle: "Start Your Piano Journey Today",
+    ctaSubtitle: "Download Pianify and play your first song in 10 minutes.",
+
+    // About Us Page
+    aboutTitle: "About Pianify",
+    aboutSubtitle: "Making music self-study intuitive and joyful for everyone.",
+    aboutMission: "Our Mission",
+    aboutMissionDesc: "We believe that everyone has a musical spark. Our goal is to leverage advanced technology, haptic feedback, and real-time AI audio analysis to guide piano students from their very first key press to fluent two-handed play. Built by musicians and developers at Smulie Studio, Pianify represents the future of accessible music education.",
+    aboutTeam: "Meet the Team",
+    aboutTeamDesc: "Smulie Studio is a group of passionate developers, educators, and concert pianists based in Hanoi, dedicated to creating premium digital learning experiences.",
+
+    // Premium Pricing Page
+    pricingHeader: "Pianify Premium Subscription Plans",
+    pricingSub: "Choose the package that fits your learning schedule. Cancel anytime.",
+    planMonthly: "Monthly Plan",
+    planMonthlyPrice: "$14.99",
+    planMonthlySub: "/ month",
+    planMonthlyDesc: "Flexible monthly piano self-study subscription.",
+    planQuarterly: "3-Month Plan",
+    planQuarterlyPrice: "$35.99",
+    planQuarterlySub: "/ 3 months",
+    planQuarterlyDesc: "Popular value option. Save 20% compared to monthly plan.",
+    planYearly: "Annual Plan",
+    planYearlyPrice: "$89.99",
+    planYearlySub: "/ year",
+    planYearlyDesc: "Best Value! Save 50% on piano self-study yearly package.",
+    pricingCompareTitle: "Pianify Premium Features",
+    pricingFeatureAllSongs: "Access to all 200+ songs",
+    pricingFeatureAllLessons: "100+ structured course chapters",
+    pricingFeatureFeedback: "Real-time microphone & MIDI note detection",
+    pricingFeatureAnalytics: "Practice time & streak tracking dashboards",
+    pricingFeatureSupport: "Priority student support channels",
+
+    // 1-to-1 Lessons Page
+    lessonsTitle: "1-to-1 Piano Lessons",
+    lessonsSubtitle: "Book live video lessons with professional piano tutors to accelerate your learning.",
+    lessonsDesc: "Pianify pairs the self-study app with experienced tutors. Get immediate answers to hand posture, expression, or music theory challenges. Sessions are conducted via Zoom/Google Meet right inside the app ecosystem.",
+    bookTutor: "Book a Session",
+    tutorsListTitle: "Our Featured Tutors",
+    tutor1Name: "Elena V.",
+    tutor1Bio: "Graduate of Hanoi Academy of Music. 8+ years teaching piano to kids and adult beginners.",
+    tutor2Name: "Kenji S.",
+    tutor2Bio: "Specializes in jazz piano, improvisation, and chord progressions. Loves simplified modern pop hits.",
+
+    // Student Auth
+    authLoginTitle: "Student Login",
+    authSignupTitle: "Student Sign Up",
+    authLoginSub: "Log in to check your learning profile, badges, and streaks.",
+    authSignupSub: "Create a student profile to save your piano self-study progress.",
+
+    // Reset Password (retained)
     resetPassTitle: "Forgot Password?",
     resetPassSubtitle: "Enter your email to receive password reset instructions.",
     emailLabel: "Your Email",
@@ -18,6 +150,8 @@ export const translations = {
     requestSuccessDesc: "We have sent password reset instructions to",
     checkInbox: "Please check your inbox (including spam/promotions).",
     resendEmail: "Resend Email",
+
+    // Delete Account (retained)
     deleteAccountTitle: "Delete Account",
     deleteAccountSubtitle: "Please log in to confirm account ownership before requesting data deletion.",
     accountEmail: "Account Email",
@@ -46,142 +180,6 @@ export const translations = {
     accountDeletedDesc: "Your request has been fulfilled. Your account and access have been removed from the system.",
     privacyPolicyNotice: "Data deletion will be complete in a few days according to our Privacy Policy. Thank you for using Pianify.",
     backToHomeBtn: "Back to Home",
-    
-    // Navbar
-    navProduct: "Product",
-    navSolutions: "Solutions",
-    navShowcase: "Showcase",
-    navResources: "Resources",
-    navPricing: "Pricing",
-    navSecurity: "Security",
-    navDownload: "Download",
-    navSignIn: "Sign In",
-    navRequestDemo: "Request Demo",
-
-    // Homepage Hero
-    heroTitle: "Build games and apps with an agent that understands the whole codebase.",
-    heroSubtitle: "Orbit plans, edits, tests, reviews, and documents work across React Native, Godot, native modules, and product backlogs. Built from the way Pianify ships real features.",
-    ctaDownload: "Download Orbit",
-    ctaDemo: "Request a Demo",
-    ctaShowcase: "View Showcase",
-    
-    // Trust
-    trustLabel: "Built from Pianify's real production loops:",
-    trustReact: "React Native App",
-    trustGodot: "Godot Game Engine",
-    trustAudio: "Native Audio / AI Note Detection",
-    trustQA: "Smoke Test & QA Automation",
-
-    // Pianify Proof Section
-    proofTitle: "Real-World Production Proof: Pianify",
-    proofSubtitle: "Pianify is a feature-rich music education app with rhythm games, haptics, low-latency audio pipelines, and AI note detection. Orbit built these features from backlog to verification.",
-    proofCard1Title: "Rhythm Games & Godot",
-    proofCard1Desc: "Orbit planned, implemented, and verified Godot embedded game files, haptic signals, and React Native bridges.",
-    proofCard2Title: "AI Note Detection",
-    proofCard2Desc: "Orbit documented the native C++/Java audio lifecycle pipelines, auto-updated developer documentation, and debugged latency bottlenecks.",
-    proofCard3Title: "Course Crawler QA",
-    proofCard3Desc: "Orbit built automated smoke tests and course crawler workflows that parse JSON lesson tracks to verify sheet note accuracy.",
-
-    // Orbit USPs
-    uspsTitle: "Autonomous Agent. Human Control.",
-    uspsSubtitle: "Orbit is not just a coding chat interface. It acts as an autonomous engineer with rigorous validation gates.",
-    usp1Title: "Codebase Context",
-    usp1Desc: "Indexes files, assets, engine bridges, and configs to understand exactly how changes impact the entire software architecture.",
-    usp2Title: "Agent Planning",
-    usp2Desc: "Creates, executes, and revises implementation plans step-by-step. Re-runs plans if intermediate checks fail.",
-    usp3Title: "Parallel Tasks",
-    usp3Desc: "Handles background tasks in parallel. Build, test, and write logs asynchronously while keeping you in the loop.",
-    usp4Title: "Game Dev Workflows",
-    usp4Desc: "Engine-aware capabilities to compile, test, and package Godot, Unity, or mobile game modules.",
-    usp5Title: "Review & Test Automation",
-    usp5Desc: "Drafts pull request reviews, designs automation scripts, and validates codebase compilation gates before merge.",
-    usp6Title: "Docs Generation",
-    usp6Desc: "Synchronizes documentation, sprint backlogs, and walkthroughs automatically with code changes.",
-
-    // Autonomy Section
-    autonomyTitle: "Autonomy with guardrails",
-    autonomySubtitle: "You control the execution loop. Orbit plans and edits, but commands and modifications only run after your explicit approval.",
-    autonomyCard1Title: "Interactive Plans",
-    autonomyCard1Desc: "Approve, edit, or reject the agent's implementation strategy before it writes code.",
-    autonomyCard2Title: "Approval Terminals",
-    autonomyCard2Desc: "Commands are proposed and paused. Command lines only run with user permissions.",
-    autonomyCard3Title: "Verification Gates",
-    autonomyCard3Desc: "Tests run automatically. Failed compiles trigger corrective loops before delivery.",
-
-    // Download Page
-    downloadTitle: "Get Orbit IDE",
-    downloadSubtitle: "Download the agentic coding environment built for game and product developers.",
-    downloadDetectedOS: "Detected Platform:",
-    downloadMac: "macOS Intel & Apple Silicon",
-    downloadWindows: "Windows 64-bit Installer",
-    downloadLinux: "Linux .AppImage / .deb",
-    downloadStable: "Stable Release",
-    downloadBeta: "Beta Preview",
-    downloadStableDesc: "Tested, reliable, updated bi-weekly.",
-    downloadBetaDesc: "Cutting-edge agent models, updated daily.",
-    downloadInstallInstructions: "Installation Instructions",
-    downloadMacInstructions: "Drag Orbit to Applications folder. Run 'xattr -cr /Applications/Orbit.app' in terminal if gatekeeper warning appears.",
-    downloadWinInstructions: "Run OrbitSetup.exe. Follow the setup wizard. Orbit updates automatically in the background.",
-    downloadLinInstructions: "Run 'chmod +x Orbit.AppImage' followed by './Orbit.AppImage' to launch.",
-    downloadPrivateWaitlist: "Orbit is currently in private beta. Download links require active credentials. Join waitlist to get your access key.",
-
-    // Pricing Page
-    pricingTitle: "Simple, honest plans",
-    pricingSubtitle: "Whether you're an indie developer or scaling a game studio, choose the right fit.",
-    pricingBetaBanner: "Private Beta Invite-Only. Plans below outline packaging availability.",
-    planFreeTitle: "Individual / Indie",
-    planFreePrice: "$0",
-    planFreeSub: "Free forever",
-    planFreeDesc: "For solo developers building projects.",
-    planTeamTitle: "Team Plan",
-    planTeamPrice: "$29",
-    planTeamSub: "per user / month",
-    planTeamDesc: "For software and game studios scaling up.",
-    planEntTitle: "Enterprise",
-    planEntPrice: "Custom",
-    planEntSub: "Contact sales",
-    planEntDesc: "For companies needing security controls.",
-    pricingMatrixTitle: "Compare Features",
-    pricingCompareAgentTasks: "Parallel agent tasks",
-    pricingCompareCodebase: "Codebase indexing",
-    pricingCompareModel: "Advanced LLM access",
-    pricingCompareTelemetry: "Private data controls",
-    pricingCompareSupport: "Dedicated support",
-
-    // Request Demo Page
-    demoTitle: "Request an Orbit Demo",
-    demoSubtitle: "Scale your development loop. Get a personalized walkthrough of Orbit integrating with your game or product codebase.",
-    demoFormName: "Full Name",
-    demoFormEmail: "Work Email",
-    demoFormCompany: "Company Name",
-    demoFormRole: "Your Role",
-    demoFormTeamSize: "Team Size",
-    demoFormUseCase: "Use Case / Stacks",
-    demoFormMessage: "How can Orbit help your team?",
-    demoFormSubmit: "Submit Demo Request",
-    demoFormSuccess: "Thank you! Our engineering team will contact you within 24 hours to schedule the demo.",
-    demoFormFallback: "If you encounter any issues, contact us directly at: sales@pianify.co",
-
-    // Showcase Page
-    showcaseTitle: "Codebase Showcase",
-    showcaseSubtitle: "Deep-dives into real features built and shipped by Orbit on Pianify.",
-    showcaseFilterAll: "All Use Cases",
-    showcaseFilterGames: "Games & Godot",
-    showcaseFilterMobile: "Mobile Stacks",
-    showcaseFilterAI: "AI / Audio",
-    showcaseFilterQA: "QA / Automation",
-
-    // Solutions Pages
-    solutionsGameTitle: "Orbit for Game Studios",
-    solutionsGameSub: "Generic AI tools fail in game code. Orbit understands game assets, engines, scenes, and complex cross-language compilation bridges.",
-    solutionsMobileTitle: "Orbit for Mobile Teams",
-    solutionsMobileSub: "Accelerate native bridges, low-latency audio modules, state updates, and App Store verification flows.",
-    solutionsQATitle: "Orbit for QA & Automation",
-    solutionsQASub: "Write crawler bots, schedule smoke test scenarios, capture verification evidence, and generate sprint backlog reviews autonomously.",
-
-    // Trust / Legal placeholders
-    legalDraftMarker: "Draft Pending Legal Review",
-    legalLastUpdated: "Last Updated: July 2026",
 
     // Errors (retained)
     errEmailNotFound: "Email does not exist in the system.",
@@ -198,13 +196,145 @@ export const translations = {
     errDeleteAccount: "Error deleting account. Please try again."
   },
   vi: {
-    metaTitle: "Orbit - AI Coding Agent cho nhóm làm game và sản phẩm",
-    metaDescription: "Orbit lập kế hoạch, chỉnh sửa code, chạy test, review và ghi tài liệu cho React Native, Godot, module gốc. Đúc kết từ quy trình phát triển thực tế của Pianify.",
-    
-    // Support keys (retained)
-    supportTitle: "Cổng hỗ trợ người dùng",
+    heroTitle: "Học Piano Dễ Dàng",
+    heroSubtitle: "Pianify là người bạn đồng hành thông minh đánh thức đam mê âm nhạc. Tự học trọn bộ kỹ năng từ cơ bản đến trung cấp cùng các bài học tương tác chi tiết.",
+    metaTitle: "Pianify - Học Piano Dễ Dàng",
+    metaDescription: "Đánh thức đam mê âm nhạc. Tự học trọn bộ kỹ năng từ cơ bản đến trung cấp cùng Pianify.",
+    supportTitle: "Hỗ trợ người dùng",
     resetPassword: "Lấy lại mật khẩu",
     deleteAccount: "Yêu cầu xóa dữ liệu",
+    
+    // Navigation
+    navFeatures: "Tính năng",
+    navCourses: "Khóa học",
+    navReviews: "Đánh giá",
+    navFAQ: "Hỏi đáp",
+    navDownload: "Tải ứng dụng",
+    navAbout: "Giới thiệu",
+    navPricing: "Bảng giá",
+    navLessons: "Học 1 kèm 1",
+    navSignIn: "Đăng nhập",
+    navSignUp: "Đăng ký",
+
+    // Stats
+    statsDownloads: "1M+",
+    statsDownloadsLabel: "Lượt tải xuống",
+    statsRating: "4.8★",
+    statsRatingLabel: "Đánh giá cửa hàng",
+    statsSongs: "200+",
+    statsSongsLabel: "Bài hát phổ biến",
+    statsLessons: "100+",
+    statsLessonsLabel: "Bài học trực quan",
+
+    // Features Section
+    featuresTitle: "Tại sao chọn Pianify?",
+    featuresSubtitle: "Tất cả những gì bạn cần để làm chủ cây đàn piano, ngay trong túi của bạn.",
+    featureFeedbackTitle: "Phản hồi thời gian thực",
+    featureFeedbackDesc: "Bộ xử lý âm thanh thông minh của chúng tôi lắng nghe bạn chơi qua micro hoặc MIDI và hiển thị nốt đúng/sai ngay lập tức.",
+    featurePathTitle: "Lộ trình học bài bản",
+    featurePathDesc: "Giáo trình được thiết kế cho mọi cấp độ. Bắt đầu từ cách đọc nốt, tư thế ngồi cho tới khi chơi thành thạo bằng cả hai tay.",
+    featureSongsTitle: "Thư viện nhạc phong phú",
+    featureSongsDesc: "Tập luyện với những ca khúc bạn yêu thích! Từ nhạc cổ điển Beethoven đến các bản hit Pop và nhạc phim đương đại.",
+
+    // How It Works
+    howItWorksTitle: "Cách thức hoạt động",
+    howItWorksSubtitle: "Ba bước đơn giản để bắt đầu chơi bản nhạc yêu thích của bạn.",
+    step1Title: "1. Kết nối",
+    step1Desc: "Đặt điện thoại hoặc máy tính bảng lên đàn piano. Ứng dụng hoạt động với cả đàn cơ, đàn điện tử hoặc keyboard MIDI.",
+    step2Title: "2. Chơi & Nhận phản hồi",
+    step2Desc: "Theo dõi hướng dẫn trực quan. Khi bạn chơi, ứng dụng sẽ highlight xanh/đỏ thời gian thực để hướng dẫn nhịp điệu và nốt nhạc.",
+    step3Title: "3. Tiến bộ mỗi ngày",
+    step3Desc: "Theo dõi chuỗi học tập (streak), mở khóa huy hiệu thành tích và luyện tập các bài tập riêng biệt để làm chủ hợp âm.",
+
+    // Courses Section
+    coursesTitle: "Khóa học nổi bật",
+    coursesSubtitle: "Bắt đầu hành trình âm nhạc của bạn với sự hướng dẫn từng bước một.",
+    course1Title: "Piano cơ bản",
+    course1Desc: "Học tên các phím đàn, tư thế ngồi chuẩn và các chuyển động ngón tay cơ bản.",
+    course2Title: "Nhạc cổ điển",
+    course2Desc: "Đắm chìm vào các tác phẩm huyền thoại của Bach, Beethoven, Mozart và nhiều tác giả khác.",
+    course3Title: "Nhạc Trẻ & Pop Hits",
+    course3Desc: "Chơi các bài hát phổ biến với các bản chuyển soạn từ đơn giản đến nâng cao.",
+    course4Title: "Luyện hợp âm & Đệm hát",
+    course4Desc: "Học cách đọc hợp âm trên bản nhạc và đệm hát tự do cho ca sĩ.",
+
+    // Reviews Section
+    reviewsTitle: "Học viên Pianify nói gì?",
+    reviewsSubtitle: "Khám phá cách Pianify đồng hành cùng hàng ngàn học viên trên toàn thế giới.",
+    review1Name: "Emily Robinson",
+    review1Role: "Học viên mới bắt đầu",
+    review1Text: "Pianify giúp việc học piano trở nên thú vị hơn rất nhiều! Phản hồi nhận diện nốt cực kỳ nhanh, tôi đã chơi được bản nhạc đầu tiên sau vài ngày.",
+    review2Name: "Minh Tú",
+    review2Role: "Người chơi lại",
+    review2Text: "Tôi đã ngừng chơi piano nhiều năm và muốn bắt đầu lại. Lộ trình bài bản và kho nhạc phong phú chính là những gì tôi cần.",
+    review3Name: "Daniel K.",
+    review3Role: "Học sinh âm nhạc",
+    review3Text: "Các bài tập thị tấu nhạc rất tuyệt vời. Bộ nhận diện hướng dẫn tay trái và tay phải riêng biệt, cực kỳ hữu ích cho việc luyện tập.",
+
+    // FAQ Section
+    faqTitle: "Câu hỏi thường gặp",
+    faqSubtitle: "Bạn có câu hỏi? Chúng tôi có câu trả lời.",
+    faqQ1: "Tôi có cần sở hữu đàn piano hay keyboard để dùng ứng dụng không?",
+    faqA1: "Có, bạn cần một nhạc cụ phím. Đó có thể là đàn đại cầm (grand), piano cơ đứng, piano điện tử hoặc keyboard điều khiển qua cổng MIDI/USB.",
+    faqQ2: "Làm thế nào ứng dụng nghe được những gì tôi chơi?",
+    faqA2: "Pianify sử dụng micro tích hợp của thiết bị để nghe âm thanh từ đàn cơ, hoặc bạn có thể kết nối đàn điện qua cáp MIDI để nhận diện nốt chính xác 100%.",
+    faqQ3: "Tôi có thể thử dùng ứng dụng miễn phí không?",
+    faqA3: "Có! Bạn có thể tải ứng dụng miễn phí trên iOS hoặc Android và truy cập một số bài học cơ bản cũng như bài hát miễn phí mà không cần trả tiền.",
+    faqQ4: "Làm thế nào để tôi quản lý tài khoản và dữ liệu cá nhân?",
+    faqA4: "Bạn có thể dùng chính cổng hỗ trợ này để yêu cầu đặt lại mật khẩu hoặc xóa tài khoản. Các gói đăng ký (Premium) cần được quản lý và hủy trong App Store hoặc Google Play.",
+    
+    // CTA Section
+    ctaTitle: "Bắt đầu hành trình Piano của bạn ngay hôm nay",
+    ctaSubtitle: "Tải xuống Pianify và chơi bản nhạc đầu tiên của bạn trong vòng 10 phút.",
+
+    // About Us Page
+    aboutTitle: "Về Pianify",
+    aboutSubtitle: "Giúp việc tự học nhạc trở nên trực quan và tràn ngập niềm vui cho mọi người.",
+    aboutMission: "Sứ mệnh của chúng tôi",
+    aboutMissionDesc: "Chúng tôi tin rằng trong mỗi người đều có một tia lửa âm nhạc. Mục tiêu của chúng tôi là ứng dụng công nghệ tiên tiến, phản hồi rung haptic và phân tích âm thanh AI thời gian thực để dẫn dắt học viên piano từ những phím đàn đầu tiên đến khi chơi thành thạo hai tay. Được xây dựng bởi các nhạc sĩ và kỹ sư tại Smulie Studio, Pianify đại diện cho tương lai của học nhạc dễ tiếp cận.",
+    aboutTeam: "Đội ngũ Smulie Studio",
+    aboutTeamDesc: "Smulie Studio bao gồm các kỹ sư, nhà giáo dục và nghệ sĩ piano tại Hà Nội, cam kết tạo ra những trải nghiệm học tập kỹ thuật số cao cấp nhất.",
+
+    // Premium Pricing Page
+    pricingHeader: "Gói Thuê Bao Pianify Premium",
+    pricingSub: "Chọn gói học tập phù hợp nhất với thời gian biểu của bạn. Hủy bất kỳ lúc nào.",
+    planMonthly: "Gói Hàng Tháng",
+    planMonthlyPrice: "$14.99",
+    planMonthlySub: "/ tháng",
+    planMonthlyDesc: "Gói tự học piano linh hoạt, tự động gia hạn hàng tháng.",
+    planQuarterly: "Gói 3 Tháng",
+    planQuarterlyPrice: "$35.99",
+    planQuarterlySub: "/ 3 tháng",
+    planQuarterlyDesc: "Gói tiết kiệm phổ biến. Tiết kiệm 20% so với gói lẻ từng tháng.",
+    planYearly: "Gói Năm (12 Tháng)",
+    planYearlyPrice: "$89.99",
+    planYearlySub: "/ năm",
+    planYearlyDesc: "Giá tốt nhất! Tiết kiệm tới 50% chi phí tự học trong 1 năm.",
+    pricingCompareTitle: "Quyền lợi gói Pianify Premium",
+    pricingFeatureAllSongs: "Mở khóa toàn bộ 200+ bài hát",
+    pricingFeatureAllLessons: "100+ chương học bài bản theo lộ trình",
+    pricingFeatureFeedback: "Nhận diện nốt qua micro & cáp MIDI thời gian thực",
+    pricingFeatureAnalytics: "Bảng theo dõi tiến trình và chuỗi luyện tập",
+    pricingFeatureSupport: "Kênh hỗ trợ kỹ thuật ưu tiên cho học viên",
+
+    // 1-to-1 Lessons Page
+    lessonsTitle: "Học Piano 1 kèm 1",
+    lessonsSubtitle: "Đặt lịch học trực tiếp video với giảng viên chuyên nghiệp để tăng tốc hiệu quả học đàn.",
+    lessonsDesc: "Pianify kết hợp ứng dụng tự học với đội ngũ giảng viên giàu kinh nghiệm. Nhận câu trả lời trực tiếp về tư thế tay, biểu cảm chơi nhạc hay kiến thức nhạc lý. Buổi học diễn ra qua Zoom/Google Meet ngay trong hệ sinh thái ứng dụng.",
+    bookTutor: "Đặt lịch giảng viên",
+    tutorsListTitle: "Đội ngũ Giảng viên Nổi bật",
+    tutor1Name: "Elena V.",
+    tutor1Bio: "Tốt nghiệp Học viện Âm nhạc. Hơn 8 năm kinh nghiệm dạy piano cho trẻ nhỏ và người lớn mới bắt đầu.",
+    tutor2Name: "Kenji S.",
+    tutor2Bio: "Chuyên sâu về piano jazz, ngẫu hứng và đệm hát. Thích chuyển soạn các bản hit nhạc Pop hiện đại.",
+
+    // Student Auth
+    authLoginTitle: "Học viên Đăng nhập",
+    authSignupTitle: "Học viên Đăng ký",
+    authLoginSub: "Đăng nhập để xem hồ sơ học tập, huy hiệu và tiến trình luyện tập.",
+    authSignupSub: "Tạo tài khoản học viên để lưu giữ tiến trình tự học piano.",
+
+    // Reset Password (retained)
     resetPassTitle: "Quên mật khẩu?",
     resetPassSubtitle: "Nhập email để nhận hướng dẫn đặt lại mật khẩu.",
     emailLabel: "Email của bạn",
@@ -216,6 +346,8 @@ export const translations = {
     requestSuccessDesc: "Chúng tôi đã gửi email hướng dẫn đặt lại mật khẩu đến",
     checkInbox: "Vui lòng kiểm tra hộp thư (cả mục spam/quảng cáo).",
     resendEmail: "Gửi lại email",
+
+    // Delete Account (retained)
     deleteAccountTitle: "Xóa tài khoản",
     deleteAccountSubtitle: "Vui lòng đăng nhập để xác nhận quyền sở hữu tài khoản trước khi yêu cầu xóa dữ liệu.",
     accountEmail: "Email tài khoản",
@@ -223,7 +355,7 @@ export const translations = {
     passwordPlaceholder: "Mật khẩu của bạn",
     authenticating: "Đang xác thực...",
     continue: "Tiếp tục",
-    or: "— HOẶC —",
+    or: "— OR —",
     settingUp: "Đang thiết lập...",
     continueWithGoogle: "Tiếp tục với Google",
     continueWithApple: "Tiếp tục với Apple",
@@ -244,142 +376,6 @@ export const translations = {
     accountDeletedDesc: "Yêu cầu của bạn đã được thực hiện. Tài khoản và quyền truy cập của bạn đã bị gỡ bỏ khỏi hệ thống.",
     privacyPolicyNotice: "Tiến trình xóa dữ liệu trên hệ thống sẽ hoàn tất hoàn toàn trong vài ngày tới theo Chính sách bảo mật. Cảm ơn bạn đã tin tưởng kết nối cùng Pianify.",
     backToHomeBtn: "Về lại trang chủ",
-
-    // Navbar
-    navProduct: "Sản phẩm",
-    navSolutions: "Giải pháp",
-    navShowcase: "Dự án thực tế",
-    navResources: "Tài nguyên",
-    navPricing: "Bảng giá",
-    navSecurity: "Bảo mật",
-    navDownload: "Tải về",
-    navSignIn: "Đăng nhập",
-    navRequestDemo: "Yêu cầu Demo",
-
-    // Homepage Hero
-    heroTitle: "Xây dựng game và ứng dụng cùng AI Agent thấu hiểu toàn bộ codebase.",
-    heroSubtitle: "Orbit lập kế hoạch, viết code, chạy test, review và tự viết tài liệu trên React Native, Godot, module native và backlog sản phẩm. Đúc kết từ cách Pianify phát triển thực tế.",
-    ctaDownload: "Tải về Orbit",
-    ctaDemo: "Yêu cầu Demo",
-    ctaShowcase: "Xem Showcase",
-
-    // Trust
-    trustLabel: "Đúc kết từ quy trình phát triển thực tế của Pianify:",
-    trustReact: "Ứng dụng React Native",
-    trustGodot: "Game Engine Godot",
-    trustAudio: "Xử lý âm thanh / Nhận diện nốt AI",
-    trustQA: "Tự động hóa kiểm thử & QA",
-
-    // Pianify Proof Section
-    proofTitle: "Bằng chứng thực tế: Pianify",
-    proofSubtitle: "Pianify là ứng dụng học nhạc chuyên sâu với rhythm game, phản hồi rung (haptic), luồng âm thanh độ trễ thấp và nhận diện nốt nhạc AI. Orbit đã tự tay xây dựng các tính năng này từ khâu lập kế hoạch đến kiểm thử.",
-    proofCard1Title: "Rhythm Games & Godot",
-    proofCard1Desc: "Orbit lập kế hoạch, cài đặt và kiểm thử tích hợp game Godot, xử lý tín hiệu phản hồi rung haptic và cầu kết nối React Native.",
-    proofCard2Title: "Nhận diện nốt nhạc AI",
-    proofCard2Desc: "Orbit biên soạn tài liệu kỹ thuật cho luồng âm thanh native C++/Java, tự động cập nhật tài liệu phát triển và dò lỗi trễ âm.",
-    proofCard3Title: "QA Crawler bài học",
-    proofCard3Desc: "Orbit lập trình kịch bản chạy test khói tự động và crawler bài học, phân tích cấu trúc dữ liệu JSON để xác thực nốt nhạc trên khuông.",
-
-    // Orbit USPs
-    uspsTitle: "Agent tự trị. Con người làm chủ.",
-    uspsSubtitle: "Orbit không chỉ là ô chat gõ code thông thường. Hệ thống đóng vai trò một kỹ sư tự động có quy trình xác thực chặt chẽ.",
-    usp1Title: "Thấu hiểu Codebase",
-    usp1Desc: "Lập chỉ mục toàn bộ file, asset, cầu nối engine và file cấu hình để hiểu chính xác thay đổi tác động thế nào tới toàn bộ kiến trúc.",
-    usp2Title: "Kế hoạch Agent",
-    usp2Desc: "Tạo lập, thực thi và chỉnh sửa kế hoạch triển khai từng bước một. Tự động chạy lại kế hoạch nếu các bước trung gian bị lỗi.",
-    usp3Title: "Tác vụ Song song",
-    usp3Desc: "Xử lý chạy build, chạy test và ghi log dưới nền một cách song song mà vẫn giữ cho bạn liên tục nắm bắt tiến độ.",
-    usp4Title: "Tối ưu hóa Game Dev",
-    usp4Desc: "Am hiểu sâu cấu trúc engine để tự chạy biên dịch, chạy thử và đóng gói các module game Godot, Unity hoặc mobile game.",
-    usp5Title: "Tự động hóa Review & Test",
-    usp5Desc: "Tự soạn thảo review Pull Request, thiết kế kịch bản tự động hóa và xác thực khả năng build thành công trước khi merge code.",
-    usp6Title: "Tự viết Tài liệu",
-    usp6Desc: "Tự động đồng bộ hóa tài liệu kỹ thuật, backlog công việc và walkthrough hệ thống tương ứng với các thay đổi code thực tế.",
-
-    // Autonomy Section
-    autonomyTitle: "Tự trị có kiểm soát",
-    autonomySubtitle: "Bạn là người điều khiển luồng thực thi. Orbit đề xuất kế hoạch và sửa code, nhưng các lệnh terminal và việc lưu file chỉ chạy khi bạn cho phép.",
-    autonomyCard1Title: "Kế hoạch tương tác",
-    autonomyCard1Desc: "Duyệt qua, sửa đổi hoặc bác bỏ chiến lược thực thi của Agent trước khi hệ thống bắt đầu viết code.",
-    autonomyCard2Title: "Terminal xác thực",
-    autonomyCard2Desc: "Các dòng lệnh terminal được đề xuất và tạm dừng. Lệnh chỉ chạy khi có sự phê duyệt trực tiếp của người dùng.",
-    autonomyCard3Title: "Cổng kiểm thử tự động",
-    autonomyCard3Desc: "Các bài test chạy tự động. Biên dịch lỗi sẽ kích hoạt chu kỳ sửa đổi của Agent trước khi bàn giao.",
-
-    // Download Page
-    downloadTitle: "Tải về Orbit IDE",
-    downloadSubtitle: "Tải môi trường lập trình AI thế hệ mới được thiết kế riêng cho nhóm làm game và sản phẩm.",
-    downloadDetectedOS: "Nền tảng phát hiện:",
-    downloadMac: "macOS Intel & Apple Silicon",
-    downloadWindows: "Windows 64-bit Installer",
-    downloadLinux: "Linux .AppImage / .deb",
-    downloadStable: "Phiên bản Ổn định (Stable)",
-    downloadBeta: "Phiên bản Thử nghiệm (Beta)",
-    downloadStableDesc: "Đã qua kiểm thử, hoạt động tin cậy, cập nhật mỗi 2 tuần.",
-    downloadBetaDesc: "Tích hợp mô hình AI mới nhất, cập nhật hàng ngày.",
-    downloadInstallInstructions: "Hướng dẫn cài đặt",
-    downloadMacInstructions: "Kéo Orbit vào thư mục Applications. Chạy lệnh 'xattr -cr /Applications/Orbit.app' nếu gặp cảnh báo Gatekeeper bảo mật.",
-    downloadWinInstructions: "Chạy file OrbitSetup.exe và làm theo hướng dẫn. Ứng dụng tự động cập nhật dưới nền.",
-    downloadLinInstructions: "Chạy lệnh 'chmod +x Orbit.AppImage' sau đó gõ './Orbit.AppImage' để mở ứng dụng.",
-    downloadPrivateWaitlist: "Orbit đang trong giai đoạn thử nghiệm giới hạn. Link tải yêu cầu tài khoản được cấp quyền. Đăng ký waitlist để nhận khóa kích hoạt.",
-
-    // Pricing Page
-    pricingTitle: "Gói dịch vụ rõ ràng",
-    pricingSubtitle: "Cho dù bạn là nhà phát triển độc lập hay đang vận hành một game studio lớn, hãy chọn gói phù hợp.",
-    pricingBetaBanner: "Thử nghiệm Private Beta. Các thông tin dưới đây mô tả cấu trúc gói dịch vụ dự kiến.",
-    planFreeTitle: "Cá nhân / Indie",
-    planFreePrice: "$0",
-    planFreeSub: "Miễn phí mãi mãi",
-    planFreeDesc: "Dành cho nhà phát triển cá nhân xây dựng dự án nhỏ.",
-    planTeamTitle: "Gói Nhóm (Team)",
-    planTeamPrice: "$29",
-    planTeamSub: "mỗi thành viên / tháng",
-    planTeamDesc: "Dành cho các studio phần mềm và game đang tăng tốc sản xuất.",
-    planEntTitle: "Doanh nghiệp (Enterprise)",
-    planEntPrice: "Liên hệ",
-    planEntSub: "Trao đổi với bộ phận sales",
-    planEntDesc: "Dành cho các doanh nghiệp cần kiểm soát an ninh và dữ liệu nghiêm ngặt.",
-    pricingMatrixTitle: "So sánh chi tiết",
-    pricingCompareAgentTasks: "Số tác vụ chạy song song",
-    pricingCompareCodebase: "Lập chỉ mục Codebase",
-    pricingCompareModel: "Sử dụng LLM nâng cao",
-    pricingCompareTelemetry: "Bảo mật dữ liệu riêng tư",
-    pricingCompareSupport: "Hỗ trợ kỹ thuật riêng",
-
-    // Request Demo Page
-    demoTitle: "Yêu cầu Demo Orbit",
-    demoSubtitle: "Tối ưu hóa quy trình phát triển. Nhận buổi hướng dẫn trực tiếp từ đội ngũ Orbit trên chính codebase game hoặc ứng dụng của bạn.",
-    demoFormName: "Họ và Tên",
-    demoFormEmail: "Email công việc",
-    demoFormCompany: "Tên công ty",
-    demoFormRole: "Chức vụ của bạn",
-    demoFormTeamSize: "Quy mô đội ngũ",
-    demoFormUseCase: "Lĩnh vực / Công nghệ sử dụng",
-    demoFormMessage: "Orbit có thể giúp gì cho đội ngũ của bạn?",
-    demoFormSubmit: "Gửi yêu cầu Demo",
-    demoFormSuccess: "Cảm ơn bạn! Đội ngũ kỹ sư của chúng tôi sẽ liên hệ với bạn trong vòng 24 giờ để lên lịch demo.",
-    demoFormFallback: "If you encounter any issues, contact us directly at: sales@pianify.co",
-
-    // Showcase Page
-    showcaseTitle: "Thư viện Codebase Showcase",
-    showcaseSubtitle: "Phân tích chi tiết các tính năng thực tế được xây dựng và phát hành bởi Orbit trên ứng dụng Pianify.",
-    showcaseFilterAll: "Tất cả lĩnh vực",
-    showcaseFilterGames: "Games & Godot",
-    showcaseFilterMobile: "Mobile Stacks",
-    showcaseFilterAI: "AI / Audio",
-    showcaseFilterQA: "QA / Tự động hóa",
-
-    // Solutions Pages
-    solutionsGameTitle: "Orbit cho Game Studios",
-    solutionsGameSub: "Các công cụ AI thông thường gặp khó khăn với code game. Orbit hiểu rõ các asset game, engine, scene và các cầu nối biên dịch chéo ngôn ngữ phức tạp.",
-    solutionsMobileTitle: "Orbit cho Mobile Teams",
-    solutionsMobileSub: "Tăng tốc viết native bridge, module âm thanh độ trễ thấp, cập nhật trạng thái state và quy trình kiểm duyệt App Store.",
-    solutionsQATitle: "Orbit cho QA & Tự động hóa",
-    solutionsQASub: "Tự viết crawler bot, lên lịch chạy smoke test, tự động chụp bằng chứng xác thực và tạo báo cáo backlog công việc.",
-
-    // Trust / Legal placeholders
-    legalDraftMarker: "Bản thảo đang chờ phê duyệt pháp lý",
-    legalLastUpdated: "Cập nhật lần cuối: Tháng 7/2026",
 
     // Errors (retained)
     errEmailNotFound: "Email không tồn tại trong hệ thống.",

@@ -23,7 +23,7 @@ export default function LoginPage() {
   };
 
   const handleOAuth = (provider: string) => {
-    alert(`${language === 'vi' ? 'Đang khởi động liên kết' : 'Initializing oauth flow for'} ${provider}...`);
+    alert(`${language === 'vi' ? 'Đang kết nối' : 'Initializing login for'} ${provider}...`);
   };
 
   const currentYear = new Date().getFullYear();
@@ -36,7 +36,7 @@ export default function LoginPage() {
         <div className="navbar-container" style={{ justifyContent: 'center' }}>
           <Link href="/" className="nav-brand">
             <img src="/logo.png" alt="Pianify Logo" className="nav-logo" />
-            <span className="nav-logo-text">Orbit</span>
+            <span className="nav-logo-text">Pianify</span>
           </Link>
         </div>
       </header>
@@ -46,10 +46,10 @@ export default function LoginPage() {
         <div className="card" style={{ width: '100%', maxWidth: 400, background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.05)', padding: 36, borderRadius: 20 }}>
           
           <h2 style={{ fontSize: 22, fontWeight: 800, textAlign: 'center', marginBottom: 8, color: '#fff' }}>
-            {language === 'vi' ? 'Đăng nhập vào Orbit' : 'Sign in to Orbit'}
+            {t('authLoginTitle')}
           </h2>
           <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', textAlign: 'center', marginBottom: 28 }}>
-            {language === 'vi' ? 'Nhập thông tin tài khoản hoặc dùng tài khoản liên kết' : 'Enter your credentials or use federated sign-in'}
+            {t('authLoginSub')}
           </p>
 
           {error && (
@@ -65,7 +65,7 @@ export default function LoginPage() {
                 type="email" 
                 required 
                 className="form-input" 
-                placeholder="user@example.com"
+                placeholder="student@example.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 disabled={loading}
@@ -158,7 +158,7 @@ export default function LoginPage() {
       <footer className="footer-wrap">
         <div className="footer-inner" style={{ justifyContent: 'center' }}>
           <div className="footer-copy">
-            © {currentYear} Orbit Coding Agent (Smulie Studio). All rights reserved.
+            © {currentYear} Pianify (Smulie Studio). All rights reserved.
           </div>
         </div>
       </footer>
