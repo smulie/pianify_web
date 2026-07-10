@@ -36,7 +36,6 @@ export default function LoginPage() {
         <div className="navbar-container" style={{ justifyContent: 'center' }}>
           <Link href="/" className="nav-brand">
             <img src="/logo.png" alt="Pianify Logo" className="nav-logo" />
-            <span className="nav-logo-text">Pianify</span>
           </Link>
         </div>
       </header>
@@ -45,6 +44,9 @@ export default function LoginPage() {
       <main style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '100px 24px 40px 24px' }}>
         <div className="card" style={{ width: '100%', maxWidth: 400, background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.05)', padding: 36, borderRadius: 20 }}>
           
+          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 16 }}>
+            <img src="/mascot_flow_encourage.webp" alt="Welcome Mascot" style={{ width: 80, height: 'auto', objectFit: 'contain' }} />
+          </div>
           <h2 style={{ fontSize: 22, fontWeight: 800, textAlign: 'center', marginBottom: 8, color: '#fff' }}>
             {t('authLoginTitle')}
           </h2>

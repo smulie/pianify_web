@@ -14,40 +14,32 @@ export default function FAQPage() {
 
   const faqItems = [
     {
-      q: language === 'vi' ? 'Tôi có cần sở hữu đàn piano hay keyboard để dùng ứng dụng không?' : 'Do I need a piano or keyboard to use the app?',
-      a: language === 'vi' 
-        ? 'Có, bạn cần một nhạc cụ phím. Đó có thể là đàn đại cầm (grand), piano cơ đứng (upright), piano điện tử hoặc keyboard điều khiển qua cổng MIDI/USB.'
-        : 'Yes, you need some form of keyboard instrument. It can be a grand piano, upright acoustic piano, digital piano, or a MIDI/USB controller keyboard.'
+      q: t('faqQ1'),
+      a: t('faqA1')
     },
     {
-      q: language === 'vi' ? 'Làm thế nào ứng dụng nghe được những gì tôi chơi?' : 'How does the app hear what I play?',
-      a: language === 'vi'
-        ? 'Pianify sử dụng micro tích hợp của thiết bị để lắng nghe âm thanh từ đàn cơ, hoặc bạn có thể kết nối đàn điện qua cáp MIDI/USB để nhận diện nốt chính xác 100% không bị lẫn tạp âm.'
-        : 'Pianify uses your device\'s built-in microphone to listen to acoustic piano sounds, or you can connect a digital piano/keyboard using a USB/MIDI cable for 100% accurate note recognition.'
+      q: t('faqQ2'),
+      a: t('faqA2')
+    },
+    {
+      q: t('faqQ3'),
+      a: t('faqA3')
     },
     {
       q: language === 'vi' ? 'Trẻ em hoặc người lớn tuổi có thể học bằng Pianify không?' : 'Can children or older adults learn with Pianify?',
       a: language === 'vi'
-        ? 'Tất nhiên! Giáo trình của chúng tôi được thiết kế trực quan sinh động bằng hình ảnh, trò chơi nhịp điệu dễ tiếp cận cho trẻ nhỏ và lộ trình đệm hát rõ ràng cho người lớn.'
-        : 'Absolutely! Our curriculum features visual guides, rhythm games for children, and clear pop/chords paths for adults. Learning piano is simplified for all age groups.'
+        ? 'Tất nhiên! Giáo trình của chúng tôi được thiết kế trực quan sinh động bằng hình ảnh, mini-game nhịp điệu dễ tiếp cận cho trẻ nhỏ và lộ trình đệm hát rõ ràng cho người lớn. Thích hợp cho mọi lứa tuổi bắt đầu học piano.'
+        : 'Absolutely! Our curriculum features visual guides, mini-games for children, and clear pop/chords paths for adults. Learning piano is simplified for all age groups.'
     },
     {
-      q: language === 'vi' ? 'Tôi có thể thử dùng ứng dụng miễn phí không?' : 'Can I try the app for free?',
+      q: language === 'vi' ? 'Luyện tập 10 phút hàng ngày hoạt động thế nào?' : 'How does the 10-minute daily habit work?',
       a: language === 'vi'
-        ? 'Có! Bạn có thể tải ứng dụng miễn phí trên iOS hoặc Android và truy cập một số bài học cơ bản cũng như ca khúc phổ thông hoàn toàn miễn phí.'
-        : 'Yes! You can download the app for free on iOS or Android and access several beginner lessons and popular songs without paying anything.'
+        ? 'Pianify vay mượn các yếu tố game di động. Mỗi ngày, bạn chỉ cần hoàn thành các nhiệm vụ ngắn (Quests) để nhận XP điểm kinh nghiệm, nâng cấp tài khoản, và duy trì chuỗi Streak học tập không bị đứt đoạn.'
+        : 'Pianify borrows mobile game designs. Every day, you complete quick Quests to earn XP, level up your account, and maintain your practice Streak.'
     },
     {
-      q: language === 'vi' ? 'Có hỗ trợ học cùng giáo viên không?' : 'Is there support for learning with live teachers?',
-      a: language === 'vi'
-        ? 'Có, ngoài chế độ tự học trên app, Pianify hỗ trợ đặt lịch học trực tuyến 1 kèm 1 với giảng viên piano chuyên nghiệp tại trang /lessons.'
-        : 'Yes! In addition to app self-study, Pianify offers booking options for online 1-to-1 video tutor sessions with professional pianists at /lessons.'
-    },
-    {
-      q: language === 'vi' ? 'Cách quản lý gói Premium và hủy gia hạn?' : 'How do I manage my Premium plan and cancellation?',
-      a: language === 'vi'
-        ? 'Gói đăng ký được thanh toán và quản lý bảo mật trực tiếp thông qua App Store hoặc Google Play Store. Bạn có thể hủy gia hạn bất kỳ lúc nào trong cài đặt tài khoản của hệ điều hành tương ứng.'
-        : 'Subscriptions are billed and managed securely through the App Store or Google Play Store. You can cancel auto-renewal at any time via your device\'s account subscription settings.'
+      q: t('faqQ4'),
+      a: t('faqA4')
     }
   ];
 
@@ -61,7 +53,6 @@ export default function FAQPage() {
         <div className="navbar-container">
           <Link href="/" className="nav-brand">
             <img src="/logo.png" alt="Pianify Logo" className="nav-logo" />
-            <span className="nav-logo-text">Pianify</span>
           </Link>
 
           <ul className="nav-menu">
@@ -69,7 +60,6 @@ export default function FAQPage() {
             <li><Link href="/#courses" className="nav-link">{t('navCourses')}</Link></li>
             <li><Link href="/about" className="nav-link">{t('navAbout')}</Link></li>
             <li><Link href="/pricing" className="nav-link">{t('navPricing')}</Link></li>
-            <li><Link href="/lessons" className="nav-link">{t('navLessons')}</Link></li>
             <li><Link href="/faq" className="nav-link">{t('navFAQ')}</Link></li>
           </ul>
 
@@ -88,9 +78,14 @@ export default function FAQPage() {
       <main className="section" style={{ paddingTop: 140 }}>
         <div className="container" style={{ maxWidth: 780 }}>
           
-          <div className="section-header" style={{ marginBottom: 50 }}>
-            <h1 className="section-title">{t('faqTitle')}</h1>
-            <p className="section-subtitle">{t('faqSubtitle')}</p>
+          <div className="section-header" style={{ marginBottom: 50, display: 'flex', alignItems: 'center', gap: 24, justifyContent: 'space-between', flexWrap: 'wrap' }}>
+            <div style={{ flex: '1 1 500px', textAlign: 'left' }}>
+              <h1 className="section-title" style={{ margin: 0 }}>{t('faqTitle')}</h1>
+              <p className="section-subtitle" style={{ margin: '8px 0 0 0' }}>{t('faqSubtitle')}</p>
+            </div>
+            <div style={{ flex: '0 0 100px', display: 'flex', justifyContent: 'center' }}>
+              <img src="/mascot_status_sleepy.webp" alt="FAQ Mascot" style={{ width: 100, height: 'auto', objectFit: 'contain' }} />
+            </div>
           </div>
 
           <div className="faq-box" style={{ background: 'transparent', padding: 0 }}>

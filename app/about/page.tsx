@@ -15,7 +15,6 @@ export default function AboutPage() {
         <div className="navbar-container">
           <Link href="/" className="nav-brand">
             <img src="/logo.png" alt="Pianify Logo" className="nav-logo" />
-            <span className="nav-logo-text">Pianify</span>
           </Link>
 
           <ul className="nav-menu">
@@ -23,7 +22,6 @@ export default function AboutPage() {
             <li><Link href="/#courses" className="nav-link">{t('navCourses')}</Link></li>
             <li><Link href="/about" className="nav-link">{t('navAbout')}</Link></li>
             <li><Link href="/pricing" className="nav-link">{t('navPricing')}</Link></li>
-            <li><Link href="/lessons" className="nav-link">{t('navLessons')}</Link></li>
             <li><Link href="/faq" className="nav-link">{t('navFAQ')}</Link></li>
           </ul>
 
@@ -50,32 +48,13 @@ export default function AboutPage() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 40, fontSize: 15.5, color: 'rgba(255,255,255,0.75)', lineHeight: 1.7 }}>
             
             {/* Mission */}
-            <div className="card" style={{ padding: 36, background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.04)', borderRadius: 16 }}>
-              <h2 style={{ fontSize: 20, fontWeight: 700, color: '#fff', marginBottom: 16 }}>🌟 {t('aboutMission')}</h2>
-              <p>{t('aboutMissionDesc')}</p>
-            </div>
-
-            {/* Team */}
-            <div className="card" style={{ padding: 36, background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.04)', borderRadius: 16 }}>
-              <h2 style={{ fontSize: 20, fontWeight: 700, color: '#fff', marginBottom: 16 }}>🎹 {t('aboutTeam')}</h2>
-              <p style={{ marginBottom: 28 }}>{t('aboutTeamDesc')}</p>
-              
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 20 }}>
-                <div style={{ padding: 20, background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.05)', borderRadius: 12, textAlign: 'center' }}>
-                  <div style={{ fontSize: 32, marginBottom: 8 }}>🧑‍💻</div>
-                  <strong style={{ display: 'block', color: '#fff', fontSize: 14 }}>Anh Tuan</strong>
-                  <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)' }}>Lead Engineer</span>
-                </div>
-                <div style={{ padding: 20, background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.05)', borderRadius: 12, textAlign: 'center' }}>
-                  <div style={{ fontSize: 32, marginBottom: 8 }}>👩‍🏫</div>
-                  <strong style={{ display: 'block', color: '#fff', fontSize: 14 }}>Thu Huong</strong>
-                  <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)' }}>Head of Education</span>
-                </div>
-                <div style={{ padding: 20, background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.05)', borderRadius: 12, textAlign: 'center' }}>
-                  <div style={{ fontSize: 32, marginBottom: 8 }}>🎼</div>
-                  <strong style={{ display: 'block', color: '#fff', fontSize: 14 }}>Minh Tri</strong>
-                  <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)' }}>Curator & Composer</span>
-                </div>
+            <div className="card" style={{ padding: 36, background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.04)', borderRadius: 16, display: 'flex', gap: 24, alignItems: 'center', flexWrap: 'wrap', maxWidth: 'none' }}>
+              <div style={{ flex: '1 1 450px' }}>
+                <h2 style={{ fontSize: 20, fontWeight: 700, color: '#fff', marginBottom: 16 }}>🌟 {t('aboutMission')}</h2>
+                <p>{t('aboutMissionDesc')}</p>
+              </div>
+              <div style={{ flex: '0 0 120px', display: 'flex', justifyContent: 'center' }}>
+                <img src="/mascot_flow_book.webp" alt="Mascot Book" style={{ width: 120, height: 'auto', objectFit: 'contain' }} />
               </div>
             </div>
 

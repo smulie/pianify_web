@@ -14,10 +14,6 @@ export default function PricingClient() {
 
   const currentYear = new Date().getFullYear();
 
-  const handleCheckoutAlert = (plan: string) => {
-    alert(`${language === 'vi' ? 'Đang mở liên kết thanh toán gói' : 'Opening secure checkout for'} ${plan}.\n\n${language === 'vi' ? 'Đăng ký sẽ được thực hiện trực tiếp trên App Store hoặc Google Play Store.' : 'Subscriptions are managed through App Store or Google Play Store.'}`);
-  };
-
   return (
     <div style={{ background: '#0b0912', color: '#F9F9FB', minHeight: '100vh', fontFamily: "'Inter', sans-serif" }}>
       
@@ -26,7 +22,6 @@ export default function PricingClient() {
         <div className="navbar-container">
           <Link href="/" className="nav-brand">
             <img src="/logo.png" alt="Pianify Logo" className="nav-logo" />
-            <span className="nav-logo-text">Pianify</span>
           </Link>
 
           <ul className="nav-menu">
@@ -34,7 +29,6 @@ export default function PricingClient() {
             <li><Link href="/#courses" className="nav-link">{t('navCourses')}</Link></li>
             <li><Link href="/about" className="nav-link">{t('navAbout')}</Link></li>
             <li><Link href="/pricing" className="nav-link">{t('navPricing')}</Link></li>
-            <li><Link href="/lessons" className="nav-link">{t('navLessons')}</Link></li>
             <li><Link href="/faq" className="nav-link">{t('navFAQ')}</Link></li>
           </ul>
 
@@ -53,122 +47,217 @@ export default function PricingClient() {
       <main className="section" style={{ paddingTop: 140 }}>
         <div className="container">
           
-          <div className="section-header" style={{ marginBottom: 50 }}>
-            <h1 className="section-title">{t('pricingHeader')}</h1>
-            <p className="section-subtitle">{t('pricingSub')}</p>
+          <div className="section-header" style={{ marginBottom: 50, display: 'flex', alignItems: 'center', gap: 24, justifyContent: 'space-between', flexWrap: 'wrap' }}>
+            <div style={{ flex: '1 1 500px', textAlign: 'left' }}>
+              <div style={{ display: 'inline-block', background: 'rgba(196, 66, 240, 0.12)', color: '#e879f9', fontSize: 12, fontWeight: 700, padding: '4px 14px', borderRadius: 20, marginBottom: 18, textTransform: 'uppercase', letterSpacing: 0.5 }}>
+                ⚡ {language === 'vi' ? 'Luyện tập không giới hạn' : 'Unlimited Practice'}
+              </div>
+              <h1 className="section-title" style={{ margin: 0 }}>{t('pricingHeader')}</h1>
+              <p className="section-subtitle" style={{ margin: '8px 0 0 0' }}>{t('pricingSub')}</p>
+            </div>
+            <div style={{ flex: '0 0 110px', display: 'flex', justifyContent: 'center' }}>
+              <img src="/mascot_monetization_openchest.webp" alt="Free value chest mascot" style={{ width: 110, height: 'auto', objectFit: 'contain' }} />
+            </div>
           </div>
 
-          {/* Subscriptions Grid */}
-          <div className="support-cards-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 24, marginBottom: 80, alignItems: 'stretch' }}>
+          {/* Pricing Grid */}
+          <div className="support-cards-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 24, marginBottom: 80, alignItems: 'stretch' }}>
             
-            {/* Monthly */}
-            <div className="card" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: '36px 30px', background: 'rgba(255,255,255,0.01)', border: '1px solid rgba(255,255,255,0.03)', borderRadius: 16 }}>
+            {/* Super 1 Month */}
+            <div className="card" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: '36px 30px', background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.04)', borderRadius: 16, maxWidth: 'none' }}>
               <div>
-                <h3 style={{ fontSize: 18, fontWeight: 700, color: 'rgba(255,255,255,0.6)', marginBottom: 8 }}>{t('planMonthly')}</h3>
+                <h3 style={{ fontSize: 18, fontWeight: 700, color: '#fff', marginBottom: 8 }}>Super 1 Month</h3>
                 <div style={{ display: 'flex', alignItems: 'baseline', gap: 4, marginBottom: 12 }}>
-                  <span style={{ fontSize: 40, fontWeight: 800, color: '#fff' }}>{t('planMonthlyPrice')}</span>
-                  <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)' }}>{t('planMonthlySub')}</span>
+                  <span style={{ fontSize: 40, fontWeight: 800, color: '#fff' }}>$5.99</span>
+                  <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)' }}>/ {language === 'vi' ? 'tháng' : 'month'}</span>
                 </div>
-                <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)', lineHeight: 1.5, marginBottom: 24 }}>{t('planMonthlyDesc')}</p>
+                <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)', lineHeight: 1.5, marginBottom: 24 }}>
+                  {language === 'vi' ? 'Năng lượng không giới hạn và hoàn toàn không quảng cáo.' : 'Unlimited energy and completely ad-free.'}
+                </p>
+                <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 24px 0', display: 'flex', flexDirection: 'column', gap: 8, fontSize: 13.5, color: 'rgba(255,255,255,0.7)' }}>
+                  <li>✓ {language === 'vi' ? 'Năng lượng không giới hạn' : 'Unlimited energy'}</li>
+                  <li>✓ {language === 'vi' ? 'Không quảng cáo' : 'No Ads'}</li>
+                </ul>
               </div>
-              <button 
-                onClick={() => handleCheckoutAlert(t('planMonthly'))}
-                className="btn-primary" 
-                style={{ width: '100%', padding: '12px', borderRadius: 10, background: 'rgba(255,255,255,0.05)', color: '#fff', border: '1px solid rgba(255,255,255,0.15)', boxShadow: 'none', cursor: 'pointer' }}
-              >
-                {language === 'vi' ? 'Đăng ký ngay' : 'Subscribe Now'}
-              </button>
+              <div>
+                <a 
+                  href="https://pianify.onelink.me/eBlV/zwsurowk" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="btn-primary" 
+                  style={{ width: '100%', padding: '12px', borderRadius: 10, cursor: 'pointer', textAlign: 'center', textDecoration: 'none', display: 'block', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.15)', color: '#fff', boxShadow: 'none', marginBottom: 16 }}
+                >
+                  {language === 'vi' ? 'Đăng ký ngay' : 'Subscribe Now'}
+                </a>
+                <div style={{ borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: 16, fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
+                  {language === 'vi' ? 'Tự động gia hạn $5.99 / tháng' : 'Auto-renews at $5.99 / month'}
+                </div>
+              </div>
             </div>
 
-            {/* Quarterly */}
-            <div className="card" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: '36px 30px', background: 'rgba(255,255,255,0.01)', border: '1px solid rgba(255,255,255,0.03)', borderRadius: 16 }}>
-              <div>
-                <h3 style={{ fontSize: 18, fontWeight: 700, color: 'rgba(255,255,255,0.6)', marginBottom: 8 }}>{t('planQuarterly')}</h3>
-                <div style={{ display: 'flex', alignItems: 'baseline', gap: 4, marginBottom: 12 }}>
-                  <span style={{ fontSize: 40, fontWeight: 800, color: '#fff' }}>{t('planQuarterlyPrice')}</span>
-                  <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)' }}>{t('planQuarterlySub')}</span>
-                </div>
-                <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)', lineHeight: 1.5, marginBottom: 24 }}>{t('planQuarterlyDesc')}</p>
+            {/* Super 1 Year - Recommended */}
+            <div className="card" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: '44px 30px 36px 30px', background: 'linear-gradient(135deg, rgba(196, 66, 240, 0.05) 0%, rgba(15, 12, 30, 0.4) 100%)', border: '2px solid rgba(196, 66, 240, 0.4)', borderRadius: 16, position: 'relative', boxShadow: '0 20px 40px rgba(196, 66, 240, 0.12)', maxWidth: 'none', overflow: 'visible' }}>
+              <div style={{ position: 'absolute', top: -12, left: '50%', transform: 'translateX(-50%)', background: 'linear-gradient(90deg, #e879f9 0%, #C442F0 100%)', color: '#fff', padding: '4px 16px', borderRadius: 20, fontSize: 10, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 0.5, whiteSpace: 'nowrap' }}>
+                {language === 'vi' ? 'KHUYÊN DÙNG' : 'RECOMMENDED'}
               </div>
-              <button 
-                onClick={() => handleCheckoutAlert(t('planQuarterly'))}
-                className="btn-primary" 
-                style={{ width: '100%', padding: '12px', borderRadius: 10, background: 'rgba(255,255,255,0.05)', color: '#fff', border: '1px solid rgba(255,255,255,0.15)', boxShadow: 'none', cursor: 'pointer' }}
-              >
-                {language === 'vi' ? 'Đăng ký ngay' : 'Subscribe Now'}
-              </button>
+              <div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
+                  <h3 style={{ fontSize: 20, fontWeight: 800, color: '#e879f9' }}>Super 1 Year</h3>
+                  <span style={{ background: 'rgba(34, 197, 94, 0.15)', color: '#4ade80', fontSize: 11, fontWeight: 700, padding: '2px 8px', borderRadius: 10 }}>
+                    {language === 'vi' ? 'Tiết kiệm 44%' : 'Save 44%'}
+                  </span>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: 4, marginBottom: 12 }}>
+                  <span style={{ fontSize: 40, fontWeight: 800, color: '#fff' }}>$0.00</span>
+                  <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)' }}>/ {language === 'vi' ? 'Dùng thử miễn phí' : 'Free Trial'}</span>
+                </div>
+                <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.7)', lineHeight: 1.5, marginBottom: 24 }}>
+                  {language === 'vi' ? 'Bắt đầu dùng thử miễn phí 1 năm! Trải nghiệm toàn bộ tính năng cao cấp không giới hạn.' : 'Try 1 Year for free! Experience all premium features without limits.'}
+                </p>
+                <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 24px 0', display: 'flex', flexDirection: 'column', gap: 8, fontSize: 13.5, color: 'rgba(255,255,255,0.8)' }}>
+                  <li>✓ <strong>{language === 'vi' ? 'Dùng thử miễn phí' : 'Free trial included'}</strong></li>
+                  <li>✓ {language === 'vi' ? 'Năng lượng không giới hạn' : 'Unlimited energy'}</li>
+                  <li>✓ {language === 'vi' ? 'Không quảng cáo' : 'No Ads'}</li>
+                  <li>✓ {language === 'vi' ? 'Tiết kiệm 44%' : 'Save 44% compared to monthly'}</li>
+                </ul>
+              </div>
+              <div>
+                <a 
+                  href="https://pianify.onelink.me/eBlV/zwsurowk" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="btn-primary" 
+                  style={{ width: '100%', padding: '14px', borderRadius: 10, cursor: 'pointer', textAlign: 'center', textDecoration: 'none', display: 'block', marginBottom: 16 }}
+                >
+                  {language === 'vi' ? 'DÙNG THỬ MIỄN PHÍ' : 'TRY FREE TRIAL'}
+                </a>
+                <div style={{ borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: 16, fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
+                  {language === 'vi' ? 'Tự động gia hạn $39.99 / 12 tháng' : 'Auto-renews at $39.99 / 12 months'}
+                </div>
+              </div>
             </div>
 
-            {/* Yearly - Best Value */}
-            <div className="card" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: '36px 30px', background: 'rgba(196, 66, 240, 0.02)', border: '1px solid rgba(196, 66, 240, 0.3)', borderRadius: 16, position: 'relative' }}>
-              <div style={{ position: 'absolute', top: -12, right: 24, background: 'linear-gradient(135deg, #C442F0 0%, #7B2FBE 100%)', color: '#fff', padding: '4px 12px', borderRadius: 20, fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: 0.5 }}>
-                Best Value
+            {/* Super 3 Months */}
+            <div className="card" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: '36px 30px', background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.04)', borderRadius: 16, maxWidth: 'none' }}>
+              <div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
+                  <h3 style={{ fontSize: 18, fontWeight: 700, color: '#fff' }}>Super 3 Months</h3>
+                  <span style={{ background: 'rgba(34, 197, 94, 0.15)', color: '#4ade80', fontSize: 11, fontWeight: 700, padding: '2px 8px', borderRadius: 10 }}>
+                    {language === 'vi' ? 'Tiết kiệm 17%' : 'Save 17%'}
+                  </span>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: 4, marginBottom: 12 }}>
+                  <span style={{ fontSize: 40, fontWeight: 800, color: '#fff' }}>$5.00</span>
+                  <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)' }}>/ {language === 'vi' ? 'tháng' : 'month'}</span>
+                </div>
+                <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)', lineHeight: 1.5, marginBottom: 24 }}>
+                  {language === 'vi' ? 'Giải pháp trung hạn cân bằng cho việc tập luyện.' : 'Mid-term plan. Balance price and commitment.'}
+                </p>
+                <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 24px 0', display: 'flex', flexDirection: 'column', gap: 8, fontSize: 13.5, color: 'rgba(255,255,255,0.7)' }}>
+                  <li>✓ {language === 'vi' ? 'Năng lượng không giới hạn' : 'Unlimited energy'}</li>
+                  <li>✓ {language === 'vi' ? 'Không quảng cáo' : 'No Ads'}</li>
+                  <li>✓ {language === 'vi' ? 'Tiết kiệm 17%' : 'Save 17%'}</li>
+                </ul>
               </div>
               <div>
-                <h3 style={{ fontSize: 18, fontWeight: 700, color: '#e879f9', marginBottom: 8 }}>{t('planYearly')}</h3>
-                <div style={{ display: 'flex', alignItems: 'baseline', gap: 4, marginBottom: 12 }}>
-                  <span style={{ fontSize: 40, fontWeight: 800, color: '#fff' }}>{t('planYearlyPrice')}</span>
-                  <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)' }}>{t('planYearlySub')}</span>
+                <a 
+                  href="https://pianify.onelink.me/eBlV/zwsurowk" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="btn-primary" 
+                  style={{ width: '100%', padding: '12px', borderRadius: 10, cursor: 'pointer', textAlign: 'center', textDecoration: 'none', display: 'block', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.15)', color: '#fff', boxShadow: 'none', marginBottom: 16 }}
+                >
+                  {language === 'vi' ? 'Đăng ký ngay' : 'Subscribe Now'}
+                </a>
+                <div style={{ borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: 16, fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
+                  {language === 'vi' ? 'Tự động gia hạn $14.99 / 3 tháng' : 'Auto-renews at $14.99 / 3 months'}
                 </div>
-                <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)', lineHeight: 1.5, marginBottom: 24 }}>{t('planYearlyDesc')}</p>
               </div>
-              <button 
-                onClick={() => handleCheckoutAlert(t('planYearly'))}
-                className="btn-primary" 
-                style={{ width: '100%', padding: '12px', borderRadius: 10, cursor: 'pointer' }}
-              >
-                {language === 'vi' ? 'Đăng ký ngay' : 'Subscribe Now'}
-              </button>
             </div>
 
           </div>
 
-          {/* Compare Table */}
+          {/* Comparison Table */}
           <div style={{ maxWidth: 800, margin: '0 auto 80px auto' }}>
             <h2 style={{ fontSize: 24, fontWeight: 800, textAlign: 'center', marginBottom: 32, color: '#fff' }}>
-              💎 {t('pricingCompareTitle')}
+              📊 {language === 'vi' ? 'Bảng So sánh Gói Học' : 'Plan Comparison Grid'}
             </h2>
-            <div className="card" style={{ padding: 36, background: 'rgba(255,255,255,0.01)', border: '1px solid rgba(255,255,255,0.03)', borderRadius: 16 }}>
-              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 16, fontSize: 15, color: 'rgba(255,255,255,0.8)', padding: 0 }}>
-                <li style={{ display: 'flex', alignItems: 'center', gap: 12 }}>✨ {t('pricingFeatureAllSongs')}</li>
-                <li style={{ display: 'flex', alignItems: 'center', gap: 12 }}>✨ {t('pricingFeatureAllLessons')}</li>
-                <li style={{ display: 'flex', alignItems: 'center', gap: 12 }}>✨ {t('pricingFeatureFeedback')}</li>
-                <li style={{ display: 'flex', alignItems: 'center', gap: 12 }}>✨ {t('pricingFeatureAnalytics')}</li>
-                <li style={{ display: 'flex', alignItems: 'center', gap: 12 }}>✨ {t('pricingFeatureSupport')}</li>
-              </ul>
+            <div className="card" style={{ padding: '0', background: 'rgba(255,255,255,0.01)', border: '1px solid rgba(255,255,255,0.03)', borderRadius: 16, overflow: 'hidden', maxWidth: 'none' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14, textAlign: 'left', color: 'rgba(255,255,255,0.8)' }}>
+                <thead>
+                  <tr style={{ background: 'rgba(255,255,255,0.02)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+                    <th style={{ padding: '18px 24px', fontWeight: 700, color: '#fff' }}>{language === 'vi' ? 'Tính năng' : 'Feature'}</th>
+                    <th style={{ padding: '18px 24px', fontWeight: 700, color: '#e879f9' }}>Pianify Super</th>
+                    <th style={{ padding: '18px 24px', fontWeight: 700, color: 'rgba(255,255,255,0.6)' }}>Pianify Free</th>
+                    <th style={{ padding: '18px 24px', fontWeight: 700, color: 'rgba(255,255,255,0.4)' }}>{language === 'vi' ? 'App Khác' : 'Other Apps'}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
+                    <td style={{ padding: '16px 24px', fontWeight: 600 }}>{language === 'vi' ? 'Chi phí hàng tháng' : 'Monthly Cost'}</td>
+                    <td style={{ padding: '16px 24px', color: '#e879f9', fontWeight: 700 }}>{language === 'vi' ? 'Từ $3.33/tháng' : 'From $3.33/mo'}</td>
+                    <td style={{ padding: '16px 24px', color: '#4ade80' }}>$0 (Free)</td>
+                    <td style={{ padding: '16px 24px', color: 'rgba(255,255,255,0.4)' }}>$15+ / mo</td>
+                  </tr>
+                  <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
+                    <td style={{ padding: '16px 24px', fontWeight: 600 }}>{language === 'vi' ? 'Năng lượng luyện tập' : 'Practice Energy'}</td>
+                    <td style={{ padding: '16px 24px', color: '#e879f9', fontWeight: 700 }}>⚡ {language === 'vi' ? 'Không giới hạn' : 'Unlimited'}</td>
+                    <td style={{ padding: '16px 24px' }}>{language === 'vi' ? 'Giới hạn tim năng lượng' : 'Limited energy hearts'}</td>
+                    <td style={{ padding: '16px 24px', color: 'rgba(255,255,255,0.4)' }}>{language === 'vi' ? 'Bị khóa bài học' : 'Locked lessons'}</td>
+                  </tr>
+                  <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
+                    <td style={{ padding: '16px 24px', fontWeight: 600 }}>{language === 'vi' ? 'Quảng cáo' : 'Ads'}</td>
+                    <td style={{ padding: '16px 24px', color: '#e879f9', fontWeight: 700 }}>❌ {language === 'vi' ? 'Không quảng cáo' : 'No Ads'}</td>
+                    <td style={{ padding: '16px 24px' }}>{language === 'vi' ? 'Có quảng cáo' : 'Ad-supported'}</td>
+                    <td style={{ padding: '16px 24px', color: 'rgba(255,255,255,0.4)' }}>No Ads (Paid only)</td>
+                  </tr>
+                  <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
+                    <td style={{ padding: '16px 24px', fontWeight: 600 }}>{language === 'vi' ? 'Kho bài học & Bài hát' : 'Lessons & Song Library'}</td>
+                    <td style={{ padding: '16px 24px', color: '#e879f9' }}>⚡ {language === 'vi' ? 'Truy cập đầy đủ' : 'Full Access'}</td>
+                    <td style={{ padding: '16px 24px', color: '#4ade80' }}>⚡ {language === 'vi' ? 'Truy cập đầy đủ' : 'Full Access'}</td>
+                    <td style={{ padding: '16px 24px', color: 'rgba(255,255,255,0.4)' }}>{language === 'vi' ? 'Bị giới hạn' : 'Limited'}</td>
+                  </tr>
+                  <tr>
+                    <td style={{ padding: '16px 24px', fontWeight: 600 }}>{language === 'vi' ? 'Phản hồi nốt nhạc AI' : 'AI Sound Feedback'}</td>
+                    <td style={{ padding: '16px 24px', color: '#e879f9' }}>⚡ {language === 'vi' ? 'Hoạt động 100%' : '100% Active'}</td>
+                    <td style={{ padding: '16px 24px', color: '#4ade80' }}>⚡ {language === 'vi' ? 'Hoạt động 100%' : '100% Active'}</td>
+                    <td style={{ padding: '16px 24px', color: 'rgba(255,255,255,0.4)' }}>{language === 'vi' ? 'Yêu cầu trả phí' : 'Requires premium'}</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
 
           {/* Pricing FAQ */}
           <div style={{ maxWidth: 780, margin: '0 auto' }}>
             <h2 style={{ fontSize: 24, fontWeight: 800, textAlign: 'center', marginBottom: 32, color: '#fff' }}>
-              ❓ Pricing FAQs
+              ❓ Pricing & Value FAQs
             </h2>
             <div className="faq-box">
               <div className={`faq-item ${activeFaq === 0 ? 'active' : ''}`}>
                 <button className="faq-question-btn" onClick={() => toggleFaq(0)}>
-                  <span>{language === 'vi' ? 'Gói đăng ký hoạt động thế nào?' : 'How does the subscription work?'}</span>
+                  <span>{language === 'vi' ? 'Sự khác biệt giữa gói Pianify Free và gói Pianify Super là gì?' : 'What is the difference between Pianify Free and Pianify Super?'}</span>
                   <span className="faq-icon-arrow">▼</span>
                 </button>
                 <div className="faq-answer-panel" style={{ maxHeight: activeFaq === 0 ? '200px' : '0px', overflow: 'hidden', transition: 'max-height 0.2s ease-out' }}>
                   <div className="faq-answer-text" style={{ padding: '0 24px 20px 24px', fontSize: 14, color: 'rgba(255,255,255,0.7)', lineHeight: 1.6 }}>
                     {language === 'vi' 
-                      ? 'Sau khi đăng ký thành công qua Google Play hoặc App Store, tài khoản học viên của bạn sẽ được kích hoạt chế độ Premium ngay lập tức, tự động gia hạn vào cuối chu kỳ thanh toán.'
-                      : 'After subscribing via Google Play or App Store, your student profile gains instant access to all premium lessons, automatically renewing at the end of each billing cycle.'}
+                      ? 'Gói Pianify Free cho phép bạn học đầy đủ bài giảng và thư viện bài hát bằng việc sử dụng tim năng lượng hàng ngày (kèm quảng cáo). Gói Pianify Super mở khóa năng lượng vô hạn (Unlimited Energy), gỡ bỏ hoàn toàn quảng cáo để quá trình tập đàn không bị gián đoạn.'
+                      : 'The Pianify Free plan allows you to study all lessons and songs using daily energy hearts (with ads). The Pianify Super plan unlocks unlimited energy and removes all ads for an uninterrupted learning experience.'}
                   </div>
                 </div>
               </div>
 
               <div className={`faq-item ${activeFaq === 1 ? 'active' : ''}`}>
                 <button className="faq-question-btn" onClick={() => toggleFaq(1)}>
-                  <span>{language === 'vi' ? 'Tôi có thể hủy gói đăng ký bất kỳ lúc nào không?' : 'Can I cancel my subscription anytime?'}</span>
+                  <span>{language === 'vi' ? 'Làm thế nào để đăng ký gói Pianify Super?' : 'How do I subscribe to the Pianify Super plan?'}</span>
                   <span className="faq-icon-arrow">▼</span>
                 </button>
                 <div className="faq-answer-panel" style={{ maxHeight: activeFaq === 1 ? '200px' : '0px', overflow: 'hidden', transition: 'max-height 0.2s ease-out' }}>
                   <div className="faq-answer-text" style={{ padding: '0 24px 20px 24px', fontSize: 14, color: 'rgba(255,255,255,0.7)', lineHeight: 1.6 }}>
                     {language === 'vi'
-                      ? 'Có. Bạn có thể dễ dàng quản lý hoặc hủy đăng ký bất kỳ lúc nào thông qua phần quản lý đăng ký của App Store (iOS) hoặc Google Play (Android).'
-                      : 'Yes. You can manage or cancel your subscription at any time via your App Store or Google Play account subscription management panel.'}
+                      ? 'Bạn có thể dễ dàng đăng ký ngay trong ứng dụng Pianify trên điện thoại hoặc máy tính bảng. Chúng tôi cung cấp các gói linh hoạt theo tháng, theo quý, hoặc gói 1 năm đi kèm dùng thử miễn phí để bạn trải nghiệm trước khi thanh toán.'
+                      : 'You can subscribe directly inside the Pianify app on your mobile phone or tablet. We offer flexible monthly, quarterly, and annual packages, including a free trial so you can experience it before subscribing.'}
                   </div>
                 </div>
               </div>

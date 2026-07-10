@@ -43,7 +43,6 @@ export default function SignupPage() {
         <div className="navbar-container" style={{ justifyContent: 'center' }}>
           <Link href="/" className="nav-brand">
             <img src="/logo.png" alt="Pianify Logo" className="nav-logo" />
-            <span className="nav-logo-text">Pianify</span>
           </Link>
         </div>
       </header>
@@ -69,6 +68,9 @@ export default function SignupPage() {
             </div>
           ) : (
             <>
+              <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 16 }}>
+                <img src="/mascot_win_cool.webp" alt="Signup Mascot" style={{ width: 80, height: 'auto', objectFit: 'contain' }} />
+              </div>
               <h2 style={{ fontSize: 22, fontWeight: 800, textAlign: 'center', marginBottom: 8, color: '#fff' }}>
                 {t('authSignupTitle')}
               </h2>

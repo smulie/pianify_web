@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { LanguageProvider } from "./LanguageContext";
 import RoutePrefetcher from "./RoutePrefetcher";
+import MascotAmbience from "./MascotAmbience";
 
 export const metadata: Metadata = {
   title: "Pianify",
@@ -18,6 +19,7 @@ export default function RootLayout({
       <body>
         <LanguageProvider>
           <RoutePrefetcher />
+          <MascotAmbience />
           {children}
         </LanguageProvider>
       </body>
