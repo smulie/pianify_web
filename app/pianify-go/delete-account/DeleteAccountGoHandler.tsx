@@ -3,26 +3,37 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { signInWithEmailAndPassword, deleteUser, signOut, signInWithPopup, GoogleAuthProvider, OAuthProvider, getAdditionalUserInfo } from 'firebase/auth';
-import { auth, app } from '../../lib/firebase';
+import { auth, app } from '../../../lib/firebase';
 import { getFunctions, httpsCallable } from 'firebase/functions';
-import { useI18n } from '../LanguageContext';
-import LanguageSwitcher from '../LanguageSwitcher';
+import { useI18n } from '../../LanguageContext';
+import LanguageSwitcher from '../../LanguageSwitcher';
 
-/* ── Piano logo ── */
-function PianifyLogo() {
+/* ── Pianify Go logo ── */
+function PianifyGoLogo() {
   return (
     <div className="logo-wrapper" style={{ marginBottom: 24 }}>
-      <img src="/logo.png" alt="Pianify" style={{ width: 140, height: 'auto' }} />
+      <div style={{
+        display: 'flex', alignItems: 'center', gap: 12,
+        fontSize: 24, fontWeight: 800, letterSpacing: -0.5,
+        background: 'linear-gradient(90deg, #34d399 0%, #06b6d4 100%)',
+        WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+        backgroundClip: 'text',
+      }}>
+        🎹 Pianify Go
+      </div>
+      <div style={{ fontSize: 11, color: 'rgba(249,249,251,0.4)', fontWeight: 500, letterSpacing: 0.5 }}>
+        by Amanotes
+      </div>
     </div>
   );
 }
 
 type Stage = 'auth' | 'warning' | 'success';
 
-export default function DeleteAccountHandler() {
+export default function DeleteAccountGoHandler() {
   const { t } = useI18n();
   const [stage, setStage] = useState<Stage>('auth');
-  
+
   // Auth Form State
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -47,10 +58,9 @@ export default function DeleteAccountHandler() {
     if (isLoading) return;
     setError('');
     setLoadingEmail(true);
-    
+
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      // Đăng nhập thành công, chuyển sang bước cảnh báo
       setStage('warning');
     } catch (err: unknown) {
       const code = (err as { code?: string }).code;
@@ -75,14 +85,10 @@ export default function DeleteAccountHandler() {
       const provider = new GoogleAuthProvider();
       provider.setCustomParameters({ prompt: 'select_account' });
       const result = await signInWithPopup(auth, provider);
-      
+
       const additionalInfo = getAdditionalUserInfo(result);
       if (additionalInfo?.isNewUser) {
-        try {
-          await deleteUser(result.user);
-        } catch (e) {
-          console.error('Lỗi khi xóa tài khoản tạm:', e);
-        }
+        try { await deleteUser(result.user); } catch (e) { console.error('Error deleting temp account:', e); }
         setError(t('errNotRegistered'));
       } else {
         if (result.user.email) setEmail(result.user.email);
@@ -113,14 +119,10 @@ export default function DeleteAccountHandler() {
       provider.addScope('email');
       provider.addScope('name');
       const result = await signInWithPopup(auth, provider);
-      
+
       const additionalInfo = getAdditionalUserInfo(result);
       if (additionalInfo?.isNewUser) {
-        try {
-          await deleteUser(result.user);
-        } catch (e) {
-          console.error('Lỗi khi xóa tài khoản tạm:', e);
-        }
+        try { await deleteUser(result.user); } catch (e) { console.error('Error deleting temp account:', e); }
         setError(t('errNotRegistered'));
       } else {
         if (result.user.email) setEmail(result.user.email);
@@ -144,22 +146,18 @@ export default function DeleteAccountHandler() {
   /* ── 2. Thực hiện Xóa tài khoản ── */
   const handleDelete = async () => {
     if (confirmText.trim().toUpperCase() !== 'DELETE') return;
-    
+
     setError('');
     setLoadingDelete(true);
 
     try {
       const user = auth.currentUser;
-      if (!user) {
-        throw new Error('User not authenticated');
-      }
+      if (!user) throw new Error('User not authenticated');
 
-      // Gọi Cloud Function để đánh dấu soft-delete và lên lịch dọn dẹp GDPR ở backend
       const functions = getFunctions(app, 'asia-southeast1');
       const deleteAccountFn = httpsCallable(functions, 'user_delete_account');
       await deleteAccountFn({});
 
-      // Đăng xuất client sau khi gọi Cloud Function thành công
       await signOut(auth);
       setStage('success');
     } catch (err: unknown) {
@@ -186,11 +184,9 @@ export default function DeleteAccountHandler() {
       <div className="page-wrapper">
         <LanguageSwitcher />
         <div className="card">
-          <PianifyLogo />
-          <h1 className="card-title">{t('deleteAccountTitle')}</h1>
-          <p className="card-subtitle">
-            {t('deleteAccountSubtitle')}
-          </p>
+          <PianifyGoLogo />
+          <h1 className="card-title">{t('goDeleteTitle')}</h1>
+          <p className="card-subtitle">{t('goDeleteSubtitle')}</p>
 
           {error && (
             <div className="alert alert-error">
@@ -204,29 +200,14 @@ export default function DeleteAccountHandler() {
           <form onSubmit={handleAuth}>
             <div className="form-group">
               <label className="form-label">{t('accountEmail')}</label>
-              <input
-                className="form-input"
-                type="email"
-                placeholder="user@example.com"
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-                disabled={isLoading}
-                required
-              />
+              <input className="form-input" type="email" placeholder="user@example.com"
+                value={email} onChange={e => setEmail(e.target.value)} disabled={isLoading} required />
             </div>
             <div className="form-group">
               <label className="form-label">{t('passwordLabel')}</label>
-              <input
-                className="form-input"
-                type="password"
-                placeholder={t('passwordPlaceholder')}
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-                disabled={isLoading}
-                required
-              />
+              <input className="form-input" type="password" placeholder={t('passwordPlaceholder')}
+                value={password} onChange={e => setPassword(e.target.value)} disabled={isLoading} required />
             </div>
-
             <button type="submit" className="btn-primary" disabled={isLoading}>
               {loadingEmail ? <><div className="spinner" />{t('authenticating')}</> : t('continue')}
             </button>
@@ -288,31 +269,21 @@ export default function DeleteAccountHandler() {
         <LanguageSwitcher />
         <div className="card" style={{ padding: '40px 24px', position: 'relative', marginBottom: 24, background: '#1c1b29', width: '100%', maxWidth: 440 }}>
           {/* Close button */}
-          <button 
-            type="button"
-            onClick={handleCancel}
-            style={{ 
-              position: 'absolute', top: 16, right: 16, 
-              background: 'transparent', border: 'none', color: 'rgba(255,255,255,0.4)', 
-              cursor: 'pointer', fontSize: 20, padding: 8
-            }}
-          >
+          <button type="button" onClick={handleCancel}
+            style={{ position: 'absolute', top: 16, right: 16, background: 'transparent', border: 'none', color: 'rgba(255,255,255,0.4)', cursor: 'pointer', fontSize: 20, padding: 8 }}>
             ✕
           </button>
-          
+
           <div style={{ textAlign: 'center', marginBottom: 24 }}>
             <div style={{ fontSize: 44, marginBottom: 12, display: 'flex', justifyContent: 'center', gap: 12, alignItems: 'center' }}>
-              <span>🥺</span>
-              <span>🎹</span>
+              <span>🥺</span><span>🎹</span>
             </div>
-            <h1 className="card-title" style={{ fontSize: 22, marginBottom: 8, fontWeight: 800 }}>{t('wantToLeave')}</h1>
-            <p className="card-subtitle" style={{ fontSize: 13, marginBottom: 0 }}>
-              {t('deletePermanentDesc')}
-            </p>
+            <h1 className="card-title" style={{ fontSize: 22, marginBottom: 8, fontWeight: 800 }}>{t('goDeleteWarnTitle')}</h1>
+            <p className="card-subtitle" style={{ fontSize: 13, marginBottom: 0 }}>{t('goDeleteWarnDesc')}</p>
           </div>
 
-          <div style={{ 
-            display: 'flex', justifyContent: 'space-between', 
+          <div style={{
+            display: 'flex', justifyContent: 'space-between',
             background: 'transparent', border: '1px solid rgba(255,255,255,0.08)',
             borderRadius: 12, padding: '16px 0', marginBottom: 28
           }}>
@@ -332,42 +303,35 @@ export default function DeleteAccountHandler() {
 
           <div style={{ fontSize: 14, color: 'rgba(249,249,251,0.85)', lineHeight: 1.6, marginBottom: 32 }}>
             <p style={{ marginBottom: 16 }}>
-              {t('deleteConfirmTitle')}<br/>
+              {t('goDeleteConfirmTitle')}<br/>
               <strong style={{ color: '#fff', fontSize: 15 }}>{auth.currentUser?.email || email}</strong>
             </p>
             <ul style={{ paddingLeft: 20, marginBottom: 20, listStyle: 'disc' }}>
-              <li style={{ marginBottom: 8 }}>{t('deleteConfirmDesc1')}</li>
-              <li>{t('deleteConfirmDesc2')}</li>
+              <li style={{ marginBottom: 8 }}>{t('goDeleteConfirmDesc1')}</li>
+              <li>{t('goDeleteConfirmDesc2')}</li>
             </ul>
-            <div style={{ 
-              padding: '16px 20px', background: 'rgba(245, 158, 11, 0.08)', 
-              border: '1px solid rgba(245, 158, 11, 0.15)', borderRadius: 12, 
-              color: '#fcd34d', fontSize: 13.5, lineHeight: 1.5 
+            <div style={{
+              padding: '16px 20px', background: 'rgba(245, 158, 11, 0.08)',
+              border: '1px solid rgba(245, 158, 11, 0.15)', borderRadius: 12,
+              color: '#fcd34d', fontSize: 13.5, lineHeight: 1.5
             }}>
-              <strong style={{ display: 'block', color: '#fbbf24', marginBottom: 4 }}>{t('importantNote')}</strong> 
-              {t('importantNoteDesc')}
+              <strong style={{ display: 'block', color: '#fbbf24', marginBottom: 4 }}>{t('goDeleteImportant')}</strong>
+              {t('goDeleteImportantDesc')}
             </div>
           </div>
 
           {error && (
-            <div className="alert alert-error" style={{ marginBottom: 20 }}>
-              {error}
-            </div>
+            <div className="alert alert-error" style={{ marginBottom: 20 }}>{error}</div>
           )}
 
           <div className="form-group" style={{ marginBottom: 20, textAlign: 'center' }}>
             <label className="form-label" style={{ fontWeight: 500, color: 'rgba(249,249,251,0.5)', marginBottom: 12, fontSize: 13 }}>{t('typeDelete')}</label>
-            <input
-              className="form-input"
-              type="text"
-              placeholder="D E L E T E"
-              value={confirmText}
-              onChange={e => setConfirmText(e.target.value)}
-              disabled={loadingEmail}
-              autoComplete="off"
-              style={{ 
-                textAlign: 'center', fontWeight: '800', 
-                letterSpacing: confirmText ? 6 : 2, 
+            <input className="form-input" type="text" placeholder="D E L E T E"
+              value={confirmText} onChange={e => setConfirmText(e.target.value)}
+              disabled={loadingEmail} autoComplete="off"
+              style={{
+                textAlign: 'center', fontWeight: '800',
+                letterSpacing: confirmText ? 6 : 2,
                 fontSize: 18, textTransform: 'uppercase',
                 background: '#13111c', border: '1px solid rgba(255,255,255,0.05)',
                 padding: '16px', borderRadius: 10, outline: 'none', color: '#fff'
@@ -376,10 +340,7 @@ export default function DeleteAccountHandler() {
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10, alignItems: 'center' }}>
-            <button 
-              type="button" 
-              disabled={!canDelete || loadingDelete}
-              onClick={handleDelete}
+            <button type="button" disabled={!canDelete || loadingDelete} onClick={handleDelete}
               style={{
                 width: '100%', maxWidth: 280, padding: '14px', borderRadius: 10,
                 fontSize: 15, fontWeight: 700, cursor: canDelete ? 'pointer' : 'not-allowed',
@@ -388,8 +349,7 @@ export default function DeleteAccountHandler() {
                 border: canDelete ? 'none' : '1px solid rgba(255,255,255,0.1)',
                 transition: 'all 0.2s',
                 display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8
-              }}
-            >
+              }}>
               {loadingDelete ? <><div className="spinner" />{t('processing')}</> : t('deleteBtn')}
             </button>
           </div>
@@ -404,19 +364,15 @@ export default function DeleteAccountHandler() {
       <div className="page-wrapper">
         <LanguageSwitcher />
         <div className="card">
-          <PianifyLogo />
+          <PianifyGoLogo />
           <div className="success-icon" style={{ marginTop: 20 }}>
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#86efac" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <polyline points="20 6 9 17 4 12"/>
             </svg>
           </div>
-          <h1 className="card-title">{t('accountDeleted')}</h1>
-          <p className="card-subtitle" style={{ marginBottom: 24 }}>
-            {t('accountDeletedDesc')}
-          </p>
-          <p className="card-subtitle" style={{ fontSize: 13, color: 'rgba(249,249,251,0.45)' }}>
-            {t('privacyPolicyNotice')}
-          </p>
+          <h1 className="card-title">{t('goDeleteSuccess')}</h1>
+          <p className="card-subtitle" style={{ marginBottom: 24 }}>{t('goDeleteSuccessDesc')}</p>
+          <p className="card-subtitle" style={{ fontSize: 13, color: 'rgba(249,249,251,0.45)' }}>{t('goDeletePrivacyNotice')}</p>
           <Link href="/" className="btn-primary" style={{ textDecoration: 'none' }}>{t('backToHomeBtn')}</Link>
         </div>
       </div>
