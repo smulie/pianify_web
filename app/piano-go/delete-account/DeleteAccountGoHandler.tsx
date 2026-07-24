@@ -8,8 +8,8 @@ import { getFunctions, httpsCallable } from 'firebase/functions';
 import { useI18n } from '../../LanguageContext';
 import LanguageSwitcher from '../../LanguageSwitcher';
 
-/* ── Pianify Go logo ── */
-function PianifyGoLogo() {
+/* ── PianoGo logo ── */
+function PianoGoLogo() {
   return (
     <div className="logo-wrapper" style={{ marginBottom: 24 }}>
       <div style={{
@@ -19,7 +19,7 @@ function PianifyGoLogo() {
         WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
         backgroundClip: 'text',
       }}>
-        🎹 Pianify Go
+        🎹 PianoGo
       </div>
       <div style={{ fontSize: 11, color: 'rgba(249,249,251,0.4)', fontWeight: 500, letterSpacing: 0.5 }}>
         by Amanotes
@@ -184,7 +184,7 @@ export default function DeleteAccountGoHandler() {
       <div className="page-wrapper">
         <LanguageSwitcher />
         <div className="card">
-          <PianifyGoLogo />
+          <PianoGoLogo />
           <h1 className="card-title">{t('goDeleteTitle')}</h1>
           <p className="card-subtitle">{t('goDeleteSubtitle')}</p>
 
@@ -364,7 +364,7 @@ export default function DeleteAccountGoHandler() {
       <div className="page-wrapper">
         <LanguageSwitcher />
         <div className="card">
-          <PianifyGoLogo />
+          <PianoGoLogo />
           <div className="success-icon" style={{ marginTop: 20 }}>
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#86efac" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <polyline points="20 6 9 17 4 12"/>

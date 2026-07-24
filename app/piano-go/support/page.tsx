@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useI18n } from '../../LanguageContext';
 import LanguageSwitcher from '../../LanguageSwitcher';
 
-export default function PianifyGoSupportPage() {
+export default function PianoGoSupportPage() {
   const { t } = useI18n();
 
   const faqs = [
@@ -30,7 +30,7 @@ export default function PianifyGoSupportPage() {
             background: 'linear-gradient(90deg, #34d399 0%, #06b6d4 100%)',
             WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
           }}>
-            🎹 Pianify Go
+            🎹 PianoGo
           </div>
           <h1 style={{ fontSize: 28, fontWeight: 800, marginTop: 16, marginBottom: 8, letterSpacing: -0.5, color: '#F9F9FB' }}>
             {t('goSupportTitle')}
@@ -83,7 +83,7 @@ export default function PianifyGoSupportPage() {
               {t('goSupportDeleteWeb')}
             </div>
           </div>
-          <Link href="/pianify-go/delete-account" style={{
+          <Link href="/piano-go/delete-account" style={{
             display: 'inline-block', padding: '12px 24px', borderRadius: 10,
             background: 'rgba(239, 68, 68, 0.12)', border: '1px solid rgba(239, 68, 68, 0.25)',
             color: '#fca5a5', fontWeight: 600, fontSize: 14, textDecoration: 'none',
@@ -124,10 +124,10 @@ export default function PianifyGoSupportPage() {
             {t('goSupportLinksTitle')}
           </h3>
           <div style={{ display: 'flex', justifyContent: 'center', gap: 24 }}>
-            <Link href="/pianify-go/privacy" style={{ color: '#06b6d4', textDecoration: 'none', fontSize: 14 }}>
+            <Link href="/piano-go/privacy" style={{ color: '#06b6d4', textDecoration: 'none', fontSize: 14 }}>
               {t('goSupportPrivacy')}
             </Link>
-            <Link href="/pianify-go/terms" style={{ color: '#06b6d4', textDecoration: 'none', fontSize: 14 }}>
+            <Link href="/piano-go/terms" style={{ color: '#06b6d4', textDecoration: 'none', fontSize: 14 }}>
               {t('goSupportTerms')}
             </Link>
           </div>

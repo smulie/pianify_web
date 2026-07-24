@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useI18n } from '../../LanguageContext';
 import LanguageSwitcher from '../../LanguageSwitcher';
 
-export default function PianifyGoTermsPage() {
+export default function PianoGoTermsPage() {
   const { t } = useI18n();
 
   const sections = [
@@ -37,7 +37,7 @@ export default function PianifyGoTermsPage() {
             background: 'linear-gradient(90deg, #34d399 0%, #06b6d4 100%)',
             WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
           }}>
-            🎹 Pianify Go
+            🎹 PianoGo
           </div>
           <h1 style={{ fontSize: 28, fontWeight: 800, marginTop: 16, marginBottom: 8, letterSpacing: -0.5 }}>
             {t('goTermsTitle')}
@@ -77,10 +77,10 @@ export default function PianifyGoTermsPage() {
 
         {/* Footer */}
         <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: 24, marginTop: 40, textAlign: 'center' }}>
-          <Link href="/pianify-go/privacy" style={{ color: '#06b6d4', textDecoration: 'none', marginRight: 24, fontSize: 14 }}>
+          <Link href="/piano-go/privacy" style={{ color: '#06b6d4', textDecoration: 'none', marginRight: 24, fontSize: 14 }}>
             {t('goSupportPrivacy')}
           </Link>
-          <Link href="/pianify-go/support" style={{ color: '#06b6d4', textDecoration: 'none', fontSize: 14 }}>
+          <Link href="/piano-go/support" style={{ color: '#06b6d4', textDecoration: 'none', fontSize: 14 }}>
             {t('goSupportTitle')}
           </Link>
         </div>

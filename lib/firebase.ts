@@ -15,6 +15,7 @@ export const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getA
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 
-if (process.env.NODE_ENV === "development") {
+if (process.env.NODE_ENV === "development" && process.env.NEXT_PUBLIC_USE_EMULATOR === "true") {
   connectFirestoreEmulator(db, '127.0.0.1', 8080);
 }
+
