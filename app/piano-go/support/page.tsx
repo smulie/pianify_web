@@ -124,12 +124,12 @@ export default function PianoGoSupportPage() {
             {t('goSupportLinksTitle')}
           </h3>
           <div style={{ display: 'flex', justifyContent: 'center', gap: 24 }}>
-            <Link href="/piano-go/privacy" style={{ color: '#06b6d4', textDecoration: 'none', fontSize: 14 }}>
+            <a href="https://amanotes.com/privacy-policy/" target="_blank" rel="noopener noreferrer" style={{ color: '#06b6d4', textDecoration: 'none', fontSize: 14 }}>
               {t('goSupportPrivacy')}
-            </Link>
-            <Link href="/piano-go/terms" style={{ color: '#06b6d4', textDecoration: 'none', fontSize: 14 }}>
+            </a>
+            <a href="https://amanotes.com/terms-of-service/" target="_blank" rel="noopener noreferrer" style={{ color: '#06b6d4', textDecoration: 'none', fontSize: 14 }}>
               {t('goSupportTerms')}
-            </Link>
+            </a>
           </div>
         </div>
 
