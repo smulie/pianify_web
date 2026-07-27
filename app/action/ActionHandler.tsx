@@ -42,12 +42,75 @@ function PianifyLogo() {
   );
 }
 
+/* ── PianoGo Brand Palette Tokens ── */
+const PIANOGO_PALETTE = {
+  primaryPurple: '#6C41EA',
+  deepPurple: '#4E2CB3',
+  primaryMid: '#8559EA',
+  primaryLight: '#A377F5',
+  lavender: '#EEE6FB',
+  appBackground: '#F6F1FC',
+  surfaceWhite: '#FDFCFE',
+  borderLavender: '#DED3F3',
+  textPrimary: '#2D1F50',
+  textSecondary: '#6E628E',
+  textMuted: '#9B8EB8',
+  productGradient: 'linear-gradient(135deg, #8559EA 0%, #6C41EA 48%, #4E2CB3 100%)',
+  bgGradient: 'linear-gradient(135deg, #FDFCFE 0%, #F6F1FC 48%, #EEE6FB 100%)',
+};
+
+/* ── PianoGo Logo ── */
+function PianoGoLogo() {
+  return (
+    <div className="logo-wrapper" style={{ marginBottom: 24, display: 'flex', justifyContent: 'center' }}>
+      <img src="/pianogo.png" alt="PianoGo" style={{ height: 140, maxWidth: 360, width: '100%', objectFit: 'contain' }} />
+    </div>
+  );
+}
+
 type Stage = 'loading' | 'form' | 'success' | 'invalid';
 
 export default function ActionHandler() {
   const params = useSearchParams();
   const mode = params.get('mode');
   const oobCode = params.get('oobCode');
+  const brandParam = params.get('brand');
+  const continueUrl = params.get('continueUrl');
+
+  const isPianoGo = brandParam === 'pianogo' || 
+                    brandParam === 'piano-go' || 
+                    (continueUrl !== null && (continueUrl.includes('piano-go') || continueUrl.includes('pianogo')));
+
+  const wrapperStyle: React.CSSProperties = isPianoGo ? {
+    minHeight: '100vh',
+    background: PIANOGO_PALETTE.bgGradient,
+    color: PIANOGO_PALETTE.textPrimary,
+  } : {};
+
+  const getCardStyle = (extra?: React.CSSProperties) => {
+    if (!isPianoGo) return extra;
+    return {
+      background: PIANOGO_PALETTE.surfaceWhite,
+      borderRadius: 24,
+      boxShadow: `0 20px 48px -12px rgba(108, 65, 234, 0.12), 0 0 0 1px ${PIANOGO_PALETTE.borderLavender}`,
+      color: PIANOGO_PALETTE.textPrimary,
+      padding: '40px 32px',
+      ...extra,
+    };
+  };
+
+  const getInputStyle = (hasError: boolean) => {
+    if (!isPianoGo) return hasError ? { borderColor: '#ef4444' } : undefined;
+    return {
+      background: '#FFFFFF',
+      borderColor: hasError ? '#ef4444' : PIANOGO_PALETTE.borderLavender,
+      color: PIANOGO_PALETTE.textPrimary,
+      padding: '13px 16px',
+      borderRadius: 12,
+      borderWidth: 1.5,
+      borderStyle: 'solid',
+    };
+  };
 
   const [stage, setStage] = useState<Stage>('loading');
   const [email, setEmail] = useState('');
@@ -109,11 +172,18 @@ export default function ActionHandler() {
   /* ── Loading ── */
   if (stage === 'loading') {
     return (
-      <div className="page-wrapper">
-        <div className="card" style={{ textAlign: 'center' }}>
-          <PianifyLogo />
-          <div className="spinner" style={{ margin: '24px auto 0' }} />
-          <p style={{ marginTop: 14, fontSize: 14, color: 'rgba(249,249,251,0.45)' }}>
+      <div className="page-wrapper" style={wrapperStyle}>
+        <div className="card" style={getCardStyle({ textAlign: 'center' })}>
+          {isPianoGo ? <PianoGoLogo /> : <PianifyLogo />}
+          <div className="spinner" style={{
+            margin: '24px auto 0',
+            ...(isPianoGo ? { border: '2px solid rgba(108, 65, 234, 0.2)', borderTopColor: PIANOGO_PALETTE.primaryPurple } : {})
+          }} />
+          <p style={{
+            marginTop: 14,
+            fontSize: 14,
+            color: isPianoGo ? PIANOGO_PALETTE.textSecondary : 'rgba(249,249,251,0.45)'
+          }}>
             Đang xác minh link…
           </p>
         </div>
@@ -124,9 +194,9 @@ export default function ActionHandler() {
   /* ── Invalid / expired ── */
   if (stage === 'invalid') {
     return (
-      <div className="page-wrapper">
-        <div className="card">
-          <PianifyLogo />
+      <div className="page-wrapper" style={wrapperStyle}>
+        <div className="card" style={getCardStyle()}>
+          {isPianoGo ? <PianoGoLogo /> : <PianifyLogo />}
           <div style={{ textAlign: 'center', marginBottom: 12 }}>
             <div style={{
               width: 56, height: 56,
@@ -136,15 +206,22 @@ export default function ActionHandler() {
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               margin: '0 auto 16px',
             }}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fca5a5" strokeWidth="2.5" strokeLinecap="round">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fca5a5" strokeWidth="2.5" strokeLinecap="round" style={isPianoGo ? { stroke: '#ef4444' } : undefined}>
                 <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
               </svg>
             </div>
-            <h1 className="card-title">Link không hợp lệ</h1>
-            <p className="card-subtitle">
+            <h1 className="card-title" style={isPianoGo ? { color: PIANOGO_PALETTE.textPrimary, fontWeight: 800 } : undefined}>Link không hợp lệ</h1>
+            <p className="card-subtitle" style={isPianoGo ? { color: PIANOGO_PALETTE.textSecondary, lineHeight: 1.55 } : undefined}>
               Link đặt lại mật khẩu đã hết hạn hoặc đã được sử dụng.
-              Vui lòng mở ứng dụng Pianify và yêu cầu gửi lại.
+              Vui lòng mở ứng dụng {isPianoGo ? 'PianoGo' : 'Pianify'} và yêu cầu gửi lại.
             </p>
+            {isPianoGo && (
+              <div style={{ textAlign: 'center', marginTop: 24 }}>
+                <Link href="/piano-go/reset-password" style={{ color: PIANOGO_PALETTE.primaryPurple, fontSize: 13.5, textDecoration: 'none', fontWeight: 600 }}>
+                  ← Quay lại
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -154,19 +231,29 @@ export default function ActionHandler() {
   /* ── Success ── */
   if (stage === 'success') {
     return (
-      <div className="page-wrapper">
-        <div className="card">
-          <PianifyLogo />
-          <div className="success-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#86efac" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      <div className="page-wrapper" style={wrapperStyle}>
+        <div className="card" style={getCardStyle()}>
+          {isPianoGo ? <PianoGoLogo /> : <PianifyLogo />}
+          <div className="success-icon" style={isPianoGo ? {
+            background: PIANOGO_PALETTE.lavender,
+            border: `1px solid ${PIANOGO_PALETTE.borderLavender}`,
+          } : undefined}>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke={isPianoGo ? PIANOGO_PALETTE.primaryPurple : '#86efac'} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <polyline points="20 6 9 17 4 12"/>
             </svg>
           </div>
-          <h1 className="card-title">Đặt lại thành công!</h1>
-          <p className="card-subtitle" style={{ marginBottom: 0 }}>
+          <h1 className="card-title" style={isPianoGo ? { color: PIANOGO_PALETTE.textPrimary, fontWeight: 800 } : undefined}>Đặt lại thành công!</h1>
+          <p className="card-subtitle" style={isPianoGo ? { color: PIANOGO_PALETTE.textSecondary, marginBottom: 24, lineHeight: 1.55 } : { marginBottom: 0 }}>
             Mật khẩu của bạn đã được cập nhật.<br />
-            Hãy quay lại ứng dụng Pianify và đăng nhập.
+            Hãy quay lại ứng dụng {isPianoGo ? 'PianoGo' : 'Pianify'} và đăng nhập.
           </p>
+          {isPianoGo && (
+            <div style={{ textAlign: 'center', marginTop: 12 }}>
+              <Link href="/piano-go/reset-password" style={{ color: PIANOGO_PALETTE.primaryPurple, fontSize: 13.5, textDecoration: 'none', fontWeight: 600 }}>
+                ← Quay lại
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     );
@@ -174,17 +261,21 @@ export default function ActionHandler() {
 
   /* ── Form ── */
   return (
-    <div className="page-wrapper">
-      <div className="card">
-        <PianifyLogo />
-        <h1 className="card-title">Đặt lại mật khẩu</h1>
-        <p className="card-subtitle">
+    <div className="page-wrapper" style={wrapperStyle}>
+      <div className="card" style={getCardStyle()}>
+        {isPianoGo ? <PianoGoLogo /> : <PianifyLogo />}
+        <h1 className="card-title" style={isPianoGo ? { color: PIANOGO_PALETTE.textPrimary, fontWeight: 800, letterSpacing: '-0.4px' } : undefined}>Đặt lại mật khẩu</h1>
+        <p className="card-subtitle" style={isPianoGo ? { color: PIANOGO_PALETTE.textSecondary } : undefined}>
           Tạo mật khẩu mới cho tài khoản<br />
-          <strong style={{ color: 'rgba(249,249,251,0.75)' }}>{email}</strong>
+          <strong style={{ color: isPianoGo ? PIANOGO_PALETTE.deepPurple : 'rgba(249,249,251,0.75)' }}>{email}</strong>
         </p>
 
         {error && (
-          <div className="alert alert-error">
+          <div className="alert alert-error" style={isPianoGo ? {
+            background: '#FEF2F2',
+            border: '1px solid #FCA5A5',
+            color: '#DC2626',
+          } : undefined}>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" style={{ flexShrink: 0, marginTop: 1 }}>
               <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
             </svg>
@@ -195,7 +286,7 @@ export default function ActionHandler() {
         <form onSubmit={handleSubmit}>
           {/* New password */}
           <div className="form-group">
-            <label className="form-label">Mật khẩu mới</label>
+            <label className="form-label" style={isPianoGo ? { color: PIANOGO_PALETTE.deepPurple, fontWeight: 600 } : undefined}>Mật khẩu mới</label>
             <div className="input-wrapper">
               <input
                 className="form-input"
@@ -206,8 +297,9 @@ export default function ActionHandler() {
                 disabled={submitting}
                 required
                 autoComplete="new-password"
+                style={getInputStyle(false)}
               />
-              <button type="button" className="toggle-password" onClick={() => setShowPw(v => !v)} tabIndex={-1}>
+              <button type="button" className="toggle-password" onClick={() => setShowPw(v => !v)} tabIndex={-1} style={isPianoGo ? { color: PIANOGO_PALETTE.textSecondary } : undefined}>
                 <EyeIcon open={showPw} />
               </button>
             </div>
@@ -222,14 +314,14 @@ export default function ActionHandler() {
                     />
                   ))}
                 </div>
-                <p className="strength-label">{strength.label}</p>
+                <p className="strength-label" style={isPianoGo ? { color: PIANOGO_PALETTE.textMuted } : undefined}>{strength.label}</p>
               </>
             )}
           </div>
 
           {/* Confirm password */}
           <div className="form-group">
-            <label className="form-label">Xác nhận mật khẩu</label>
+            <label className="form-label" style={isPianoGo ? { color: PIANOGO_PALETTE.deepPurple, fontWeight: 600 } : undefined}>Xác nhận mật khẩu</label>
             <div className="input-wrapper">
               <input
                 className="form-input"
@@ -240,23 +332,39 @@ export default function ActionHandler() {
                 disabled={submitting}
                 required
                 autoComplete="new-password"
-                style={confirmPassword && confirmPassword !== password ? { borderColor: '#ef4444' } : {}}
+                style={getInputStyle(!!(confirmPassword && confirmPassword !== password))}
               />
-              <button type="button" className="toggle-password" onClick={() => setShowConfirm(v => !v)} tabIndex={-1}>
+              <button type="button" className="toggle-password" onClick={() => setShowConfirm(v => !v)} tabIndex={-1} style={isPianoGo ? { color: PIANOGO_PALETTE.textSecondary } : undefined}>
                 <EyeIcon open={showConfirm} />
               </button>
             </div>
             {confirmPassword && confirmPassword !== password && (
-              <p style={{ fontSize: 12, color: '#fca5a5', marginTop: 2 }}>Mật khẩu không khớp</p>
+              <p style={{ fontSize: 12, color: isPianoGo ? '#ef4444' : '#fca5a5', marginTop: 2 }}>Mật khẩu không khớp</p>
             )}
           </div>
 
-          <button type="submit" className="btn-primary" disabled={submitting}>
-            {submitting ? <><div className="spinner" />Đang xử lý…</> : 'Xác nhận đặt lại mật khẩu'}
+          <button type="submit" className="btn-primary" disabled={submitting} style={isPianoGo ? {
+            background: PIANOGO_PALETTE.productGradient,
+            color: '#FFFFFF',
+            boxShadow: `0 8px 20px -4px rgba(108, 65, 234, 0.35)`,
+            padding: '14px',
+            borderRadius: 12,
+            fontSize: 15,
+            fontWeight: 700,
+            border: 'none',
+            cursor: submitting ? 'not-allowed' : 'pointer',
+          } : undefined}>
+            {submitting ? <><div className="spinner" style={isPianoGo ? { border: '2px solid rgba(255, 255, 255, 0.3)', borderTopColor: '#fff' } : undefined} />Đang xử lý…</> : 'Xác nhận đặt lại mật khẩu'}
           </button>
         </form>
 
-        <Link href="/" className="back-link">← Quay lại trang chủ</Link>
+        <Link href={isPianoGo ? "/piano-go/reset-password" : "/"} className="back-link" style={isPianoGo ? {
+          color: PIANOGO_PALETTE.primaryPurple,
+          fontWeight: 600,
+          textDecoration: 'none',
+        } : undefined}>
+          {isPianoGo ? '← Quay lại' : '← Quay lại trang chủ'}
+        </Link>
       </div>
     </div>
   );
