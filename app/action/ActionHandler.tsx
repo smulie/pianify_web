@@ -127,6 +127,11 @@ export default function ActionHandler() {
   /* Verify oobCode on mount */
   useEffect(() => {
     if (mode !== 'resetPassword' || !oobCode) {
+      // If redirected back from Firebase after password reset completion without oobCode
+      if (brandParam) {
+        setStage('success');
+        return;
+      }
       setStage('invalid');
       return;
     }
@@ -135,8 +140,15 @@ export default function ActionHandler() {
         setEmail(userEmail);
         setStage('form');
       })
-      .catch(() => setStage('invalid'));
-  }, [mode, oobCode]);
+      .catch(() => {
+        // If oobCode was already consumed just moments ago by Firebase form redirect
+        if (brandParam) {
+          setStage('success');
+        } else {
+          setStage('invalid');
+        }
+      });
+  }, [mode, oobCode, brandParam]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
